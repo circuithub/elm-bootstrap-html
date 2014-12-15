@@ -1,0 +1,16 @@
+{
+    "version": "1.0.0",
+    "summary": "Html shorthand for Bootstrap",
+    "repository": "https://github.com/circuithub/elm-bootstrap-html.git",
+    "license": "MIT",
+    "source-directories": [
+        "src"
+    ],
+    "exposed-modules": [
+        "Bootstrap.Html"
+    ],
+    "dependencies": {
+        "elm-lang/core": "1.0.0 <= v < 2.0.0",
+        "circuithub/elm-html-shorthand": "1.0.0 <= v < 2.0.0"
+    }
+}
