@@ -360,6 +360,7 @@ import List
 -- Tables
 
 -- Forms
+formGroup_ : List Html -> Html
 formGroup_ = divc "form-group"
 
 -- Buttons
@@ -369,6 +370,7 @@ btnXsSuccessc c (icon,t) =
   in Html.button [ class (c ++ " btn btn-xs btn-success") ]
      <| Maybe.withDefault [textt False]
      <| Maybe.map (\i -> [i, textt True]) icon
+btnXsSuccess' : (Maybe Html, TextString) -> Html
 btnXsSuccess' = btnXsSuccessc ""
 
 -- Images
@@ -384,205 +386,405 @@ btnXsSuccess' = btnXsSuccessc ""
 
 -- COMPONENTS
 -- Glyphicons
+glyphiconAsterisk' : Html
 glyphiconAsterisk' = spanc "glyphicon glyphicon-asterisk" []
+glyphiconPlus' : Html
 glyphiconPlus' = spanc "glyphicon glyphicon-plus" []
+glyphiconEuro' : Html
 glyphiconEuro' = spanc "glyphicon glyphicon-euro" []
+glyphiconMinus' : Html
 glyphiconMinus' = spanc "glyphicon glyphicon-minus" []
+glyphiconCloud' : Html
 glyphiconCloud' = spanc "glyphicon glyphicon-cloud" []
+glyphiconEnvelope' : Html
 glyphiconEnvelope' = spanc "glyphicon glyphicon-envelope" []
+glyphiconPencil' : Html
 glyphiconPencil' = spanc "glyphicon glyphicon-pencil" []
+glyphiconGlass' : Html
 glyphiconGlass' = spanc "glyphicon glyphicon-glass" []
+glyphiconMusic' : Html
 glyphiconMusic' = spanc "glyphicon glyphicon-music" []
+glyphiconSearch' : Html
 glyphiconSearch' = spanc "glyphicon glyphicon-search" []
+glyphiconHeart' : Html
 glyphiconHeart' = spanc "glyphicon glyphicon-heart" []
+glyphiconStar' : Html
 glyphiconStar' = spanc "glyphicon glyphicon-star" []
+glyphiconStarEmpty' : Html
 glyphiconStarEmpty' = spanc "glyphicon glyphicon-star-empty" []
+glyphiconUser' : Html
 glyphiconUser' = spanc "glyphicon glyphicon-user" []
+glyphiconFilm' : Html
 glyphiconFilm' = spanc "glyphicon glyphicon-film" []
+glyphiconThLarge' : Html
 glyphiconThLarge' = spanc "glyphicon glyphicon-th-large" []
+glyphiconTh' : Html
 glyphiconTh' = spanc "glyphicon glyphicon-th" []
+glyphiconThList' : Html
 glyphiconThList' = spanc "glyphicon glyphicon-th-list" []
+glyphiconOk' : Html
 glyphiconOk' = spanc "glyphicon glyphicon-ok" []
+glyphiconRemove' : Html
 glyphiconRemove' = spanc "glyphicon glyphicon-remove" []
+glyphiconZoomIn' : Html
 glyphiconZoomIn' = spanc "glyphicon glyphicon-zoom-in" []
+glyphiconZoomOut' : Html
 glyphiconZoomOut' = spanc "glyphicon glyphicon-zoom-out" []
+glyphiconOff' : Html
 glyphiconOff' = spanc "glyphicon glyphicon-off" []
+glyphiconSignal' : Html
 glyphiconSignal' = spanc "glyphicon glyphicon-signal" []
+glyphiconCog' : Html
 glyphiconCog' = spanc "glyphicon glyphicon-cog" []
+glyphiconTrash' : Html
 glyphiconTrash' = spanc "glyphicon glyphicon-trash" []
+glyphiconHome' : Html
 glyphiconHome' = spanc "glyphicon glyphicon-home" []
+glyphiconFile' : Html
 glyphiconFile' = spanc "glyphicon glyphicon-file" []
+glyphiconTime' : Html
 glyphiconTime' = spanc "glyphicon glyphicon-time" []
+glyphiconRoad' : Html
 glyphiconRoad' = spanc "glyphicon glyphicon-road" []
+glyphiconDownloadAlt' : Html
 glyphiconDownloadAlt' = spanc "glyphicon glyphicon-download-alt" []
+glyphiconDownload' : Html
 glyphiconDownload' = spanc "glyphicon glyphicon-download" []
+glyphiconUpload' : Html
 glyphiconUpload' = spanc "glyphicon glyphicon-upload" []
+glyphiconInbox' : Html
 glyphiconInbox' = spanc "glyphicon glyphicon-inbox" []
+glyphiconPlayCircle' : Html
 glyphiconPlayCircle' = spanc "glyphicon glyphicon-play-circle" []
+glyphiconRepeat' : Html
 glyphiconRepeat' = spanc "glyphicon glyphicon-repeat" []
+glyphiconRefresh' : Html
 glyphiconRefresh' = spanc "glyphicon glyphicon-refresh" []
+glyphiconListAlt' : Html
 glyphiconListAlt' = spanc "glyphicon glyphicon-list-alt" []
+glyphiconLock' : Html
 glyphiconLock' = spanc "glyphicon glyphicon-lock" []
+glyphiconFlag' : Html
 glyphiconFlag' = spanc "glyphicon glyphicon-flag" []
+glyphiconHeadphones' : Html
 glyphiconHeadphones' = spanc "glyphicon glyphicon-headphones" []
+glyphiconVolumeOff' : Html
 glyphiconVolumeOff' = spanc "glyphicon glyphicon-volume-off" []
+glyphiconVolumeDown' : Html
 glyphiconVolumeDown' = spanc "glyphicon glyphicon-volume-down" []
+glyphiconVolumeUp' : Html
 glyphiconVolumeUp' = spanc "glyphicon glyphicon-volume-up" []
+glyphiconQrcode' : Html
 glyphiconQrcode' = spanc "glyphicon glyphicon-qrcode" []
+glyphiconBarcode' : Html
 glyphiconBarcode' = spanc "glyphicon glyphicon-barcode" []
+glyphiconTag' : Html
 glyphiconTag' = spanc "glyphicon glyphicon-tag" []
+glyphiconTags' : Html
 glyphiconTags' = spanc "glyphicon glyphicon-tags" []
+glyphiconBook' : Html
 glyphiconBook' = spanc "glyphicon glyphicon-book" []
+glyphiconBookmark' : Html
 glyphiconBookmark' = spanc "glyphicon glyphicon-bookmark" []
+glyphiconPrint' : Html
 glyphiconPrint' = spanc "glyphicon glyphicon-print" []
+glyphiconCamera' : Html
 glyphiconCamera' = spanc "glyphicon glyphicon-camera" []
+glyphiconFont' : Html
 glyphiconFont' = spanc "glyphicon glyphicon-font" []
+glyphiconBold' : Html
 glyphiconBold' = spanc "glyphicon glyphicon-bold" []
+glyphiconItalic' : Html
 glyphiconItalic' = spanc "glyphicon glyphicon-italic" []
+glyphiconTextHeight' : Html
 glyphiconTextHeight' = spanc "glyphicon glyphicon-text-height" []
+glyphiconTextWidth' : Html
 glyphiconTextWidth' = spanc "glyphicon glyphicon-text-width" []
+glyphiconAlignLeft' : Html
 glyphiconAlignLeft' = spanc "glyphicon glyphicon-align-left" []
+glyphiconAlignCenter' : Html
 glyphiconAlignCenter' = spanc "glyphicon glyphicon-align-center" []
+glyphiconAlignRight' : Html
 glyphiconAlignRight' = spanc "glyphicon glyphicon-align-right" []
+glyphiconAlignJustify' : Html
 glyphiconAlignJustify' = spanc "glyphicon glyphicon-align-justify" []
+glyphiconList' : Html
 glyphiconList' = spanc "glyphicon glyphicon-list" []
+glyphiconIndentLeft' : Html
 glyphiconIndentLeft' = spanc "glyphicon glyphicon-indent-left" []
+glyphiconIndentRight' : Html
 glyphiconIndentRight' = spanc "glyphicon glyphicon-indent-right" []
+glyphiconFacetimeVideo' : Html
 glyphiconFacetimeVideo' = spanc "glyphicon glyphicon-facetime-video" []
+glyphiconPicture' : Html
 glyphiconPicture' = spanc "glyphicon glyphicon-picture" []
+glyphiconMapMarker' : Html
 glyphiconMapMarker' = spanc "glyphicon glyphicon-map-marker" []
+glyphiconAdjust' : Html
 glyphiconAdjust' = spanc "glyphicon glyphicon-adjust" []
+glyphiconTint' : Html
 glyphiconTint' = spanc "glyphicon glyphicon-tint" []
+glyphiconEdit' : Html
 glyphiconEdit' = spanc "glyphicon glyphicon-edit" []
+glyphiconShare' : Html
 glyphiconShare' = spanc "glyphicon glyphicon-share" []
+glyphiconCheck' : Html
 glyphiconCheck' = spanc "glyphicon glyphicon-check" []
+glyphiconMove' : Html
 glyphiconMove' = spanc "glyphicon glyphicon-move" []
+glyphiconStepBackward' : Html
 glyphiconStepBackward' = spanc "glyphicon glyphicon-step-backward" []
+glyphiconFastBackward' : Html
 glyphiconFastBackward' = spanc "glyphicon glyphicon-fast-backward" []
+glyphiconBackward' : Html
 glyphiconBackward' = spanc "glyphicon glyphicon-backward" []
+glyphiconPlay' : Html
 glyphiconPlay' = spanc "glyphicon glyphicon-play" []
+glyphiconPause' : Html
 glyphiconPause' = spanc "glyphicon glyphicon-pause" []
+glyphiconStop' : Html
 glyphiconStop' = spanc "glyphicon glyphicon-stop" []
+glyphiconForward' : Html
 glyphiconForward' = spanc "glyphicon glyphicon-forward" []
+glyphiconFastForward' : Html
 glyphiconFastForward' = spanc "glyphicon glyphicon-fast-forward" []
+glyphiconStepForward' : Html
 glyphiconStepForward' = spanc "glyphicon glyphicon-step-forward" []
+glyphiconEject' : Html
 glyphiconEject' = spanc "glyphicon glyphicon-eject" []
+glyphiconChevronLeft' : Html
 glyphiconChevronLeft' = spanc "glyphicon glyphicon-chevron-left" []
+glyphiconChevronRight' : Html
 glyphiconChevronRight' = spanc "glyphicon glyphicon-chevron-right" []
+glyphiconPlusSign' : Html
 glyphiconPlusSign' = spanc "glyphicon glyphicon-plus-sign" []
+glyphiconMinusSign' : Html
 glyphiconMinusSign' = spanc "glyphicon glyphicon-minus-sign" []
+glyphiconRemoveSign' : Html
 glyphiconRemoveSign' = spanc "glyphicon glyphicon-remove-sign" []
+glyphiconOkSign' : Html
 glyphiconOkSign' = spanc "glyphicon glyphicon-ok-sign" []
+glyphiconQuestionSign' : Html
 glyphiconQuestionSign' = spanc "glyphicon glyphicon-question-sign" []
+glyphiconInfoSign' : Html
 glyphiconInfoSign' = spanc "glyphicon glyphicon-info-sign" []
+glyphiconScreenshot' : Html
 glyphiconScreenshot' = spanc "glyphicon glyphicon-screenshot" []
+glyphiconRemoveCircle' : Html
 glyphiconRemoveCircle' = spanc "glyphicon glyphicon-remove-circle" []
+glyphiconOkCircle' : Html
 glyphiconOkCircle' = spanc "glyphicon glyphicon-ok-circle" []
+glyphiconBanCircle' : Html
 glyphiconBanCircle' = spanc "glyphicon glyphicon-ban-circle" []
+glyphiconArrowLeft' : Html
 glyphiconArrowLeft' = spanc "glyphicon glyphicon-arrow-left" []
+glyphiconArrowRight' : Html
 glyphiconArrowRight' = spanc "glyphicon glyphicon-arrow-right" []
+glyphiconArrowUp' : Html
 glyphiconArrowUp' = spanc "glyphicon glyphicon-arrow-up" []
+glyphiconArrowDown' : Html
 glyphiconArrowDown' = spanc "glyphicon glyphicon-arrow-down" []
+glyphiconShareAlt' : Html
 glyphiconShareAlt' = spanc "glyphicon glyphicon-share-alt" []
+glyphiconResizeFull' : Html
 glyphiconResizeFull' = spanc "glyphicon glyphicon-resize-full" []
+glyphiconResizeSmall' : Html
 glyphiconResizeSmall' = spanc "glyphicon glyphicon-resize-small" []
+glyphiconExclamationSign' : Html
 glyphiconExclamationSign' = spanc "glyphicon glyphicon-exclamation-sign" []
+glyphiconGift' : Html
 glyphiconGift' = spanc "glyphicon glyphicon-gift" []
+glyphiconLeaf' : Html
 glyphiconLeaf' = spanc "glyphicon glyphicon-leaf" []
+glyphiconFire' : Html
 glyphiconFire' = spanc "glyphicon glyphicon-fire" []
+glyphiconEyeOpen' : Html
 glyphiconEyeOpen' = spanc "glyphicon glyphicon-eye-open" []
+glyphiconEyeClose' : Html
 glyphiconEyeClose' = spanc "glyphicon glyphicon-eye-close" []
+glyphiconWarningSign' : Html
 glyphiconWarningSign' = spanc "glyphicon glyphicon-warning-sign" []
+glyphiconPlane' : Html
 glyphiconPlane' = spanc "glyphicon glyphicon-plane" []
+glyphiconCalendar' : Html
 glyphiconCalendar' = spanc "glyphicon glyphicon-calendar" []
+glyphiconRandom' : Html
 glyphiconRandom' = spanc "glyphicon glyphicon-random" []
+glyphiconComment' : Html
 glyphiconComment' = spanc "glyphicon glyphicon-comment" []
+glyphiconMagnet' : Html
 glyphiconMagnet' = spanc "glyphicon glyphicon-magnet" []
+glyphiconChevronUp' : Html
 glyphiconChevronUp' = spanc "glyphicon glyphicon-chevron-up" []
+glyphiconChevronDown' : Html
 glyphiconChevronDown' = spanc "glyphicon glyphicon-chevron-down" []
+glyphiconRetweet' : Html
 glyphiconRetweet' = spanc "glyphicon glyphicon-retweet" []
+glyphiconShoppingCart' : Html
 glyphiconShoppingCart' = spanc "glyphicon glyphicon-shopping-cart" []
+glyphiconFolderClose' : Html
 glyphiconFolderClose' = spanc "glyphicon glyphicon-folder-close" []
+glyphiconFolderOpen' : Html
 glyphiconFolderOpen' = spanc "glyphicon glyphicon-folder-open" []
+glyphiconResizeVertical' : Html
 glyphiconResizeVertical' = spanc "glyphicon glyphicon-resize-vertical" []
+glyphiconResizeHorizontal' : Html
 glyphiconResizeHorizontal' = spanc "glyphicon glyphicon-resize-horizontal" []
+glyphiconHdd' : Html
 glyphiconHdd' = spanc "glyphicon glyphicon-hdd" []
+glyphiconBullhorn' : Html
 glyphiconBullhorn' = spanc "glyphicon glyphicon-bullhorn" []
+glyphiconBell' : Html
 glyphiconBell' = spanc "glyphicon glyphicon-bell" []
+glyphiconCertificate' : Html
 glyphiconCertificate' = spanc "glyphicon glyphicon-certificate" []
+glyphiconThumbsUp' : Html
 glyphiconThumbsUp' = spanc "glyphicon glyphicon-thumbs-up" []
+glyphiconThumbsDown' : Html
 glyphiconThumbsDown' = spanc "glyphicon glyphicon-thumbs-down" []
+glyphiconHandRight' : Html
 glyphiconHandRight' = spanc "glyphicon glyphicon-hand-right" []
+glyphiconHandLeft' : Html
 glyphiconHandLeft' = spanc "glyphicon glyphicon-hand-left" []
+glyphiconHandUp' : Html
 glyphiconHandUp' = spanc "glyphicon glyphicon-hand-up" []
+glyphiconHandDown' : Html
 glyphiconHandDown' = spanc "glyphicon glyphicon-hand-down" []
+glyphiconCircleArrowRight' : Html
 glyphiconCircleArrowRight' = spanc "glyphicon glyphicon-circle-arrow-right" []
+glyphiconCircleArrowLeft' : Html
 glyphiconCircleArrowLeft' = spanc "glyphicon glyphicon-circle-arrow-left" []
+glyphiconCircleArrowUp' : Html
 glyphiconCircleArrowUp' = spanc "glyphicon glyphicon-circle-arrow-up" []
+glyphiconCircleArrowDown' : Html
 glyphiconCircleArrowDown' = spanc "glyphicon glyphicon-circle-arrow-down" []
+glyphiconGlobe' : Html
 glyphiconGlobe' = spanc "glyphicon glyphicon-globe" []
+glyphiconWrench' : Html
 glyphiconWrench' = spanc "glyphicon glyphicon-wrench" []
+glyphiconTasks' : Html
 glyphiconTasks' = spanc "glyphicon glyphicon-tasks" []
+glyphiconFilter' : Html
 glyphiconFilter' = spanc "glyphicon glyphicon-filter" []
+glyphiconBriefcase' : Html
 glyphiconBriefcase' = spanc "glyphicon glyphicon-briefcase" []
+glyphiconFullscreen' : Html
 glyphiconFullscreen' = spanc "glyphicon glyphicon-fullscreen" []
+glyphiconDashboard' : Html
 glyphiconDashboard' = spanc "glyphicon glyphicon-dashboard" []
+glyphiconPaperclip' : Html
 glyphiconPaperclip' = spanc "glyphicon glyphicon-paperclip" []
+glyphiconHeartEmpty' : Html
 glyphiconHeartEmpty' = spanc "glyphicon glyphicon-heart-empty" []
+glyphiconLink' : Html
 glyphiconLink' = spanc "glyphicon glyphicon-link" []
+glyphiconPhone' : Html
 glyphiconPhone' = spanc "glyphicon glyphicon-phone" []
+glyphiconPushpin' : Html
 glyphiconPushpin' = spanc "glyphicon glyphicon-pushpin" []
+glyphiconUsd' : Html
 glyphiconUsd' = spanc "glyphicon glyphicon-usd" []
+glyphiconGbp' : Html
 glyphiconGbp' = spanc "glyphicon glyphicon-gbp" []
+glyphiconSort' : Html
 glyphiconSort' = spanc "glyphicon glyphicon-sort" []
+glyphiconSortByAlphabet' : Html
 glyphiconSortByAlphabet' = spanc "glyphicon glyphicon-sort-by-alphabet" []
+glyphiconSortByAlphabetAlt' : Html
 glyphiconSortByAlphabetAlt' = spanc "glyphicon glyphicon-sort-by-alphabet-alt" []
+glyphiconSortByOrder' : Html
 glyphiconSortByOrder' = spanc "glyphicon glyphicon-sort-by-order" []
+glyphiconSortByOrderAlt' : Html
 glyphiconSortByOrderAlt' = spanc "glyphicon glyphicon-sort-by-order-alt" []
+glyphiconSortByAttributes' : Html
 glyphiconSortByAttributes' = spanc "glyphicon glyphicon-sort-by-attributes" []
+glyphiconSortByAttributesAlt' : Html
 glyphiconSortByAttributesAlt' = spanc "glyphicon glyphicon-sort-by-attributes-alt" []
+glyphiconUnchecked' : Html
 glyphiconUnchecked' = spanc "glyphicon glyphicon-unchecked" []
+glyphiconExpand' : Html
 glyphiconExpand' = spanc "glyphicon glyphicon-expand" []
+glyphiconCollapseDown' : Html
 glyphiconCollapseDown' = spanc "glyphicon glyphicon-collapse-down" []
+glyphiconCollapseUp' : Html
 glyphiconCollapseUp' = spanc "glyphicon glyphicon-collapse-up" []
+glyphiconLogIn' : Html
 glyphiconLogIn' = spanc "glyphicon glyphicon-log-in" []
+glyphiconFlash' : Html
 glyphiconFlash' = spanc "glyphicon glyphicon-flash" []
+glyphiconLogOut' : Html
 glyphiconLogOut' = spanc "glyphicon glyphicon-log-out" []
+glyphiconNewWindow' : Html
 glyphiconNewWindow' = spanc "glyphicon glyphicon-new-window" []
+glyphiconRecord' : Html
 glyphiconRecord' = spanc "glyphicon glyphicon-record" []
+glyphiconSave' : Html
 glyphiconSave' = spanc "glyphicon glyphicon-save" []
+glyphiconOpen' : Html
 glyphiconOpen' = spanc "glyphicon glyphicon-open" []
+glyphiconSaved' : Html
 glyphiconSaved' = spanc "glyphicon glyphicon-saved" []
+glyphiconImport' : Html
 glyphiconImport' = spanc "glyphicon glyphicon-import" []
+glyphiconExport' : Html
 glyphiconExport' = spanc "glyphicon glyphicon-export" []
+glyphiconSend' : Html
 glyphiconSend' = spanc "glyphicon glyphicon-send" []
+glyphiconFloppyDisk' : Html
 glyphiconFloppyDisk' = spanc "glyphicon glyphicon-floppy-disk" []
+glyphiconFloppySaved' : Html
 glyphiconFloppySaved' = spanc "glyphicon glyphicon-floppy-saved" []
+glyphiconFloppyRemove' : Html
 glyphiconFloppyRemove' = spanc "glyphicon glyphicon-floppy-remove" []
+glyphiconFloppySave' : Html
 glyphiconFloppySave' = spanc "glyphicon glyphicon-floppy-save" []
+glyphiconFloppyOpen' : Html
 glyphiconFloppyOpen' = spanc "glyphicon glyphicon-floppy-open" []
+glyphiconCreditCard' : Html
 glyphiconCreditCard' = spanc "glyphicon glyphicon-credit-card" []
+glyphiconTransfer' : Html
 glyphiconTransfer' = spanc "glyphicon glyphicon-transfer" []
+glyphiconCutlery' : Html
 glyphiconCutlery' = spanc "glyphicon glyphicon-cutlery" []
+glyphiconHeader' : Html
 glyphiconHeader' = spanc "glyphicon glyphicon-header" []
+glyphiconCompressed' : Html
 glyphiconCompressed' = spanc "glyphicon glyphicon-compressed" []
+glyphiconEarphone' : Html
 glyphiconEarphone' = spanc "glyphicon glyphicon-earphone" []
+glyphiconPhoneAlt' : Html
 glyphiconPhoneAlt' = spanc "glyphicon glyphicon-phone-alt" []
+glyphiconTower' : Html
 glyphiconTower' = spanc "glyphicon glyphicon-tower" []
+glyphiconStats' : Html
 glyphiconStats' = spanc "glyphicon glyphicon-stats" []
+glyphiconSdVideo' : Html
 glyphiconSdVideo' = spanc "glyphicon glyphicon-sd-video" []
+glyphiconHdVideo' : Html
 glyphiconHdVideo' = spanc "glyphicon glyphicon-hd-video" []
+glyphiconSubtitles' : Html
 glyphiconSubtitles' = spanc "glyphicon glyphicon-subtitles" []
+glyphiconSoundStereo' : Html
 glyphiconSoundStereo' = spanc "glyphicon glyphicon-sound-stereo" []
+glyphiconSoundDolby' : Html
 glyphiconSoundDolby' = spanc "glyphicon glyphicon-sound-dolby" []
+glyphiconSound51' : Html
 glyphiconSound51' = spanc "glyphicon glyphicon-sound-5-1" []
+glyphiconSound61' : Html
 glyphiconSound61' = spanc "glyphicon glyphicon-sound-6-1" []
+glyphiconSound71' : Html
 glyphiconSound71' = spanc "glyphicon glyphicon-sound-7-1" []
+glyphiconCopyrightMark' : Html
 glyphiconCopyrightMark' = spanc "glyphicon glyphicon-copyright-mark" []
+glyphiconRegistrationMark' : Html
 glyphiconRegistrationMark' = spanc "glyphicon glyphicon-registration-mark" []
+glyphiconCloudDownload' : Html
 glyphiconCloudDownload' = spanc "glyphicon glyphicon-cloud-download" []
+glyphiconCloudUpload' : Html
 glyphiconCloudUpload' = spanc "glyphicon glyphicon-cloud-upload" []
+glyphiconTreeConifer' : Html
 glyphiconTreeConifer' = spanc "glyphicon glyphicon-tree-conifer" []
+glyphiconTreeDeciduous' : Html
 glyphiconTreeDeciduous' = spanc "glyphicon glyphicon-tree-deciduous" []
 
 -- Dropdowns
@@ -620,11 +822,16 @@ glyphiconTreeDeciduous' = spanc "glyphicon glyphicon-tree-deciduous" []
 -- List group
 
 -- Panels
-panelDefault_  = divc "panel panel-default"
-panelHeading_  = divc "panel-heading"
-panelBody_     = divc "panel-body"
-panelTitle'    = h2c "panel-title"
+panelDefault_ : List Html -> Html
+panelDefault_ = divc "panel panel-default"
+panelHeading_ : List Html -> Html
+panelHeading_ = divc "panel-heading"
+panelBody_ : List Html -> Html
+panelBody_ = divc "panel-body"
 
+panelTitle' : TextString -> Html
+panelTitle' = h2c "panel-title"
+panelDefault' : TextString -> List (Maybe Html, TextString) -> List Html -> Html
 panelDefault' t btns bs =
   panelDefault_
   [ panelHeading_
