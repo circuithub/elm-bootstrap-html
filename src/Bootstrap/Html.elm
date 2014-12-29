@@ -2,17 +2,16 @@ module Bootstrap.Html where
 {-| Shorthand for Bootstrap Html.
 
 # Conventions
-This package follows similar conventions to those used in Html.Shorthand.
-One difference is that canonical elements such as 'panelDefault'' may be composites consisting of multiple elements.
+This package follows similar conventions to those used in [Html.Shorthand](http://package.elm-lang.org/packages/circuithub/elm-html-shorthand/latest).
+One difference is that canonical elements such as `panelDefault'` may be composites consisting of multiple elements.
 
 # CSS
 
 ## Overview
 * Containers
-@docs
+@docs container',containerFluid'
 
 ## Grid system
-@docs
 * Media queries
 * Grid options
 * Ex: Stacked-to-horizontal
@@ -25,9 +24,9 @@ One difference is that canonical elements such as 'panelDefault'' may be composi
 * Nesting columns
 * Column ordering
 * Less mixins and variables
+@docs row',colXs',colSm',colMd',colLg'
 
 ## Typography
-@docs
 * Headings
 * Body copy
 * Inline text elements
@@ -39,7 +38,6 @@ One difference is that canonical elements such as 'panelDefault'' may be composi
 * Lists
 
 ## Code
-@docs
 * Inline
 * User input
 * Basic block
@@ -47,7 +45,6 @@ One difference is that canonical elements such as 'panelDefault'' may be composi
 * Sample output
 
 ## Tables
-@docs
 * Basic example
 * Striped rows
 * Bordered table
@@ -57,7 +54,6 @@ One difference is that canonical elements such as 'panelDefault'' may be composi
 * Responsive tables
 
 ## Forms
-@docs
 * Basic example
 * Inline form
 * Horizontal form
@@ -71,7 +67,6 @@ One difference is that canonical elements such as 'panelDefault'' may be composi
 * Help text
 
 ## Buttons
-@docs
 * Options
 * Sizes
 * Active state
@@ -79,12 +74,10 @@ One difference is that canonical elements such as 'panelDefault'' may be composi
 * Button tags
 
 ## Images
-@docs
 * Responsive images
 * Image shapes
 
 ## Helper classes
-@docs
 * Contextual colors
 * Contextual backgrounds
 * Close icon
@@ -95,9 +88,9 @@ One difference is that canonical elements such as 'panelDefault'' may be composi
 * Showing and hiding content
 * Screen reader and keyboard navigation content
 * Image replacement
+@docs skipNavigation'
 
 ## Responsive utilities
-@docs
 * Available classes
 * Print classes
 * Test cases
@@ -105,6 +98,8 @@ One difference is that canonical elements such as 'panelDefault'' may be composi
 # Components
 
 ## Glyphicons
+Glyphicons Halflings are normally not available for free, but their creator has made them available for [Bootstrap](http://getbootstrap.com/components/#glyphicons) free of cost. As a thank you, please include a link back to [Glyphicons](http://glyphicons.com/) whenever possible.
+
 @docs glyphiconPlusSign',glyphiconAsterisk',glyphiconPlus',glyphiconEuro',glyphiconMinus'
 @docs glyphiconCloud',glyphiconEnvelope',glyphiconPencil',glyphiconGlass',glyphiconMusic'
 @docs glyphiconSearch',glyphiconHeart',glyphiconStar',glyphiconStarEmpty',glyphiconUser'
@@ -140,7 +135,7 @@ One difference is that canonical elements such as 'panelDefault'' may be composi
 @docs glyphiconDashboard',glyphiconPaperclip',glyphiconHeartEmpty',glyphiconLink',glyphiconPhone'
 @docs glyphiconPushpin',glyphiconUsd',glyphiconGbp',glyphiconSort',glyphiconSortByAlphabet'
 @docs glyphiconSortByAlphabetAlt',glyphiconSortByOrder',glyphiconSortByOrderAlt'
-@docs glyphiconSortByAttributes',glyphiconSortByAttributesAlt',glyphiconUnchecked',glyphiconExpand
+@docs glyphiconSortByAttributes',glyphiconSortByAttributesAlt',glyphiconUnchecked',glyphiconExpand'
 @docs glyphiconCollapseDown',glyphiconCollapseUp',glyphiconLogIn',glyphiconFlash',glyphiconLogOut'
 @docs glyphiconNewWindow',glyphiconRecord',glyphiconSave',glyphiconOpen',glyphiconSaved'
 @docs glyphiconImport',glyphiconExport',glyphiconSend',glyphiconFloppyDisk',glyphiconFloppySaved'
@@ -154,93 +149,59 @@ One difference is that canonical elements such as 'panelDefault'' may be composi
 ## Dropdowns
 @docs
 * Alignment
-@docs
 * Headers
-@docs
 * Divider
-@docs
 * Disabled menu items
-@docs
 
 
 ## Button groups
 @docs
 * Button toolbar
-@docs
 * Sizing
-@docs
 * Nesting
-@docs
 * Vertical variation
-@docs
 * Justified button groups
-@docs
 
 
 ## Button dropdowns
 @docs
 * Single button dropdowns
-@docs
 * Split button dropdowns
-@docs
 * Sizing
-@docs
 * Dropup variation
-@docs
 
 
 ## Input groups
 @docs
 * Basic example
-@docs
 * Sizing
-@docs
 * Checkbox and radios addons
-@docs
 * Button addons
-@docs
 * Buttons with dropdowns
-@docs
 * Segmented buttons
-@docs
 
 ## Navs
 @docs
 * Tabs
-@docs
 * Pills
-@docs
 * Justified
-@docs
 * Disabled links
-@docs
 * Using dropdowns
-@docs
 
 
 ## Navbar
+@docs
 * Default navbar
-@docs
 * Brand image
-@docs
 * Forms
-@docs
 * Buttons
-@docs
 * Text
-@docs
 * Non-nav links
-@docs
 * Component alignment
-@docs
 * Fixed to top
-@docs
 * Fixed to bottom
-@docs
 * Static top
-@docs
 * Inverted navbar
-@docs
 
 ## Breadcrumbs
 @docs
@@ -248,9 +209,7 @@ One difference is that canonical elements such as 'panelDefault'' may be composi
 ## Pagination
 @docs
 * Default pagination
-@docs
 * Pager
-@docs
 
 ## Labels
 @docs
@@ -267,70 +226,47 @@ One difference is that canonical elements such as 'panelDefault'' may be composi
 ## Thumbnails
 @docs
 * Default example
-@docs
 * Custom content
-@docs
 
 ## Alerts
 @docs
 * Examples
-@docs
 * Dismissible alerts
-@docs
 * Links in alerts
-@docs
 
 ## Progress bars
 @docs
 * Basic example
-@docs
 * With label
-@docs
 * Low percentages
-@docs
 * Contextual alternatives
-@docs
 * Striped
-@docs
 * Animated
-@docs
 * Stacked
-@docs
 
 ## Media object
 @docs
 * Default media
-@docs
 * Media list
-@docs
 
 ## List group
 @docs
 * Basic example
-@docs
 * Badges
-@docs
 * Linked items
-@docs
 * Disabled items
-@docs
 * Contextual classes
-@docs
 * Custom content
-@docs
 
 ## Panels
-@docs
+@docs panelDefault_,panelHeading_,panelBody_
+@docs panelTitle', panelDefault'
+
 * Basic example
-@docs
 * Panel with heading
-@docs
 * Contextual alternatives
-@docs
 * With tables
-@docs
-* With lis
-@docs
+* With list groups
 
 ## Responsive embed
 @docs
@@ -350,8 +286,22 @@ import List
 
 -- CSS
 -- Overview
+container' : List Html -> Html
+container'      = divc "container"
+containerFluid' : List Html -> Html
+containerFluid' = divc "container-fluid"
 
 -- Grid system
+row' : List Html -> Html
+row'               = divc "row"
+colXs' : Int -> List Html -> Html
+colXs' xs          = divc ("col-xs-" ++ toString xs)
+colSm' : Int -> Int -> List Html -> Html
+colSm' xs sm       = divc ("col-xs-" ++ toString xs ++ " col-sm-" ++ toString sm)
+colMd' : Int -> Int -> Int -> List Html -> Html
+colMd' xs sm md    = divc ("col-xs-" ++ toString xs ++ " col-sm-" ++ toString sm ++ " col-md-" ++ toString md)
+colLg' : Int -> Int -> Int -> Int -> List Html -> Html
+colLg' xs sm md lg = divc ("col-xs-" ++ toString xs ++ " col-sm-" ++ toString sm ++ " col-md-" ++ toString md ++ " col-lg-" ++ toString lg)
 
 -- Typography
 
@@ -376,6 +326,20 @@ btnXsSuccess' = btnXsSuccessc ""
 -- Images
 
 -- Helper classes
+
+{-| Accessibility - Skip navigation
+
+    body_
+    [ skipNavigation' "Skip to main content"
+    , -- ...
+    , sectionc "container" "content"
+      [ -- ...
+      ]
+    ]
+
+-}
+skipNavigation' : TextString -> Html
+skipNavigation' t = ac "sr-only sr-only-focusable" "#content" t
 
 -- Responsive utilities
 
@@ -798,6 +762,13 @@ glyphiconTreeDeciduous' = spanc "glyphicon glyphicon-tree-deciduous" []
 -- Navs
 
 -- Navbar
+navbarc : ClassString -> List Html -> Html
+navbarc c = navc ("navbar " ++ c)
+navbarDefaultc : ClassString -> List Html -> Html
+navbarDefaultc c = navbarc ("navbar-default" ++ c)
+-- navbarDefaultStaticTop_ = navbarc' "navbar navbar-default navbar-static-top", id "top"{-role "banner"-} ]
+navbarHeader_ : List Html -> Html
+navbarHeader_ = divc "navbar-header"
 
 -- Breadcrumbs
 
