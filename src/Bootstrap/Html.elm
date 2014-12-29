@@ -3,7 +3,7 @@ module Bootstrap.Html where
 
 # Conventions
 This package follows similar conventions to those used in [Html.Shorthand](http://package.elm-lang.org/packages/circuithub/elm-html-shorthand/latest).
-One difference is that canonical elements such as `panelDefault'` may be composites consisting of multiple elements.
+One major difference is that idiomatic elements such as `panelDefault'` are frequently composites consisting of multiple elements.
 
 # CSS
 
@@ -147,7 +147,6 @@ Glyphicons Halflings are normally not available for free, but their creator has 
 @docs glyphiconCloudDownload',glyphiconCloudUpload',glyphiconTreeConifer',glyphiconTreeDeciduous'
 
 ## Dropdowns
-@docs
 * Alignment
 * Headers
 * Divider
@@ -155,7 +154,6 @@ Glyphicons Halflings are normally not available for free, but their creator has 
 
 
 ## Button groups
-@docs
 * Button toolbar
 * Sizing
 * Nesting
@@ -164,7 +162,6 @@ Glyphicons Halflings are normally not available for free, but their creator has 
 
 
 ## Button dropdowns
-@docs
 * Single button dropdowns
 * Split button dropdowns
 * Sizing
@@ -172,7 +169,6 @@ Glyphicons Halflings are normally not available for free, but their creator has 
 
 
 ## Input groups
-@docs
 * Basic example
 * Sizing
 * Checkbox and radios addons
@@ -181,7 +177,6 @@ Glyphicons Halflings are normally not available for free, but their creator has 
 * Segmented buttons
 
 ## Navs
-@docs
 * Tabs
 * Pills
 * Justified
@@ -190,7 +185,6 @@ Glyphicons Halflings are normally not available for free, but their creator has 
 
 
 ## Navbar
-@docs
 * Default navbar
 * Brand image
 * Forms
@@ -204,38 +198,29 @@ Glyphicons Halflings are normally not available for free, but their creator has 
 * Inverted navbar
 
 ## Breadcrumbs
-@docs
 
 ## Pagination
-@docs
 * Default pagination
 * Pager
 
 ## Labels
-@docs
 
 ## Badges
-@docs
 
 ## Jumbotron
-@docs
 
 ## Page header
-@docs
 
 ## Thumbnails
-@docs
 * Default example
 * Custom content
 
 ## Alerts
-@docs
 * Examples
 * Dismissible alerts
 * Links in alerts
 
 ## Progress bars
-@docs
 * Basic example
 * With label
 * Low percentages
@@ -245,12 +230,10 @@ Glyphicons Halflings are normally not available for free, but their creator has 
 * Stacked
 
 ## Media object
-@docs
 * Default media
 * Media list
 
 ## List group
-@docs
 * Basic example
 * Badges
 * Linked items
@@ -259,20 +242,17 @@ Glyphicons Halflings are normally not available for free, but their creator has 
 * Custom content
 
 ## Panels
-@docs panelDefault_,panelHeading_,panelBody_
-@docs panelTitle', panelDefault'
-
 * Basic example
 * Panel with heading
 * Contextual alternatives
 * With tables
 * With list groups
+@docs panelDefault_,panelHeading_,panelBody_
+@docs panelTitle', panelDefault'
 
 ## Responsive embed
-@docs
 
 ## Wells
-@docs
 
 -}
 
