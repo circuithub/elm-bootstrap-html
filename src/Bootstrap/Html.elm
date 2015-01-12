@@ -47,6 +47,7 @@ One major difference is that idiomatic elements such as `panelDefault'` are freq
 ## Tables
 * Basic example
 * Striped rows
+@docs tableStripedc, tableStriped_, tableBodyStripedc, tableBodyStriped_
 * Bordered table
 * Hover rows
 * Condensed table
@@ -162,10 +163,7 @@ Glyphicons Halflings are normally not available for free, but their creator has 
 
 
 ## Button dropdowns
-* Single button dropdowns
-* Split button dropdowns
-* Sizing
-* Dropup variation
+See [elm-bootstrap-dropdown](https://github.com/circuithub/elm-bootstrap-dropdown)
 
 
 ## Input groups
@@ -256,13 +254,13 @@ Glyphicons Halflings are normally not available for free, but their creator has 
 
 -}
 
-import Html
-import Html (Html, text, toElement, fromElement)
+import Html (..)
 import Html.Attributes (..)
 import Html.Shorthand (..)
 import String
 import Maybe
 import List
+-- import Bootstrap.Html.Internal (..)
 
 -- CSS
 -- Overview
@@ -288,6 +286,18 @@ colLg' xs sm md lg = divc ("col-xs-" ++ toString xs ++ " col-sm-" ++ toString sm
 -- Code
 
 -- Tables
+--tablec : ClassString -> List Html -> Html
+--tablec c = Html.tablec ("table " ++ c)
+--table_ : List Html -> Html
+--table_ c = tablec ""
+tableStripedc : ClassString -> List Html -> Html
+tableStripedc c = tablec ("table table-striped " ++ c)
+tableStriped_ : List Html -> Html
+tableStriped_ = tableBodyStripedc ""
+tableBodyStripedc : ClassString -> List Html -> Html
+tableBodyStripedc c = tablec ("table table-body-striped " ++ c)
+tableBodyStriped_ : List Html -> Html
+tableBodyStriped_ = tableBodyStripedc ""
 
 -- Forms
 formGroup_ : List Html -> Html
@@ -297,7 +307,7 @@ formGroup_ = divc "form-group"
 btnXsSuccessc : ClassString -> (Maybe Html, TextString) -> Html
 btnXsSuccessc c (icon,t) =
   let textt space = if space then text (' ' `String.cons` t) else text t
-  in Html.button [ class (c ++ " btn btn-xs btn-success") ]
+  in button [ class (c ++ " btn btn-xs btn-success") ]
      <| Maybe.withDefault [textt False]
      <| Maybe.map (\i -> [i, textt True]) icon
 btnXsSuccess' : (Maybe Html, TextString) -> Html
@@ -1134,8 +1144,26 @@ glyphiconTreeDeciduous' = glyphiconTreeDeciduousc ""
 -- Dropdowns
 
 -- Button groups
+--btnGroup' =
+--  <div class="btn-group" role="group" aria-label="...">
+--    <button type="button" class="btn btn-default">Left</button>
+--    <button type="button" class="btn btn-default">Middle</button>
+--    <button type="button" class="btn btn-default">Right</button>
+--  </div>
+--btnGroupLg' =
+--btnGroupSm' =
+--btnGroupXs' =
 
--- Button dropdowns
+--btnToolbar =
+--  <div class="btn-toolbar" role="toolbar" aria-label="...">
+--    <div class="btn-group" role="group" aria-label="...">...</div>
+--    <div class="btn-group" role="group" aria-label="...">...</div>
+--    <div class="btn-group" role="group" aria-label="...">...</div>
+--  </div>
+
+--btnGroupVertical' =
+--btnGroupJustified'
+--  <div class="btn-group btn-group-justified" role="group" aria-label="...">
 
 -- Input groups
 
