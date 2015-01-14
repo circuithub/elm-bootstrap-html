@@ -256,10 +256,13 @@ See [elm-bootstrap-dropdown](https://github.com/circuithub/elm-bootstrap-dropdow
 
 import Html (..)
 import Html.Attributes (..)
+import Html.Events (onClick)
 import Html.Shorthand (..)
 import String
 import Maybe
 import List
+import List ((::))
+import Signal
 -- import Bootstrap.Html.Internal (..)
 
 -- CSS
@@ -304,14 +307,59 @@ formGroup_ : List Html -> Html
 formGroup_ = divc "form-group"
 
 -- Buttons
-btnXsSuccessc : ClassString -> (Maybe Html, TextString) -> Html
-btnXsSuccessc c (icon,t) =
-  let textt space = if space then text (' ' `String.cons` t) else text t
-  in button [ class (c ++ " btn btn-xs btn-success") ]
-     <| Maybe.withDefault [textt False]
-     <| Maybe.map (\i -> [i, textt True]) icon
-btnXsSuccess' : (Maybe Html, TextString) -> Html
+-- TODO: perhaps instead
+--type alias BtnApi = 
+--  { xs : { success : ClassString -> (Maybe Html, TextString, Maybe String) -> Html }
+--  }
+
+--btn = 
+--  { xs = { success = btnXsSuccess' }
+--  }
+type alias BtnParams =
+  { icon    : Maybe Html
+  , label   : Maybe TextString
+  , tooltip : Maybe String
+  }
+btnDefaults : BtnParams
+btnDefaults =
+  { icon  = Nothing
+  , label = Nothing
+  , tooltip = Nothing
+  }
+
+btnXsSuccessc : ClassString -> BtnParams -> Signal.Message -> Html
+btnXsSuccessc c {icon,label,tooltip} click =
+  let consList = flip (::) []
+  in button 
+      ( (class' <| c ++ " btn btn-xs btn-success")
+        :: onClick click
+        :: Maybe.withDefault [] (Maybe.map (consList << title) tooltip)
+      )
+      ( case (icon, label) of
+          (Just icon', Just label') -> [icon', text (' ' `String.cons` label')]
+          (Just icon', _          ) -> [icon']
+          (_         , Just label') -> [text label']
+          _                         -> []
+      )
+btnXsSuccess' : BtnParams -> Signal.Message -> Html
 btnXsSuccess' = btnXsSuccessc ""
+
+btnSmSuccessc : ClassString -> BtnParams -> Signal.Message -> Html
+btnSmSuccessc c {icon,label,tooltip} click =
+  let consList = flip (::) []
+  in button 
+      ( (class' <| c ++ " btn btn-sm btn-success")
+        :: onClick click
+        :: Maybe.withDefault [] (Maybe.map (consList << title) tooltip)
+      )
+      ( case (icon, label) of
+          (Just icon', Just label') -> [icon', text (' ' `String.cons` label')]
+          (Just icon', _          ) -> [icon']
+          (_         , Just label') -> [text label']
+          _                         -> []
+      )
+btnSmSuccess' : BtnParams -> Signal.Message -> Html
+btnSmSuccess' = btnSmSuccessc ""
 
 -- Images
 
@@ -1210,11 +1258,11 @@ panelBody_ = divc "panel-body"
 
 panelTitle' : TextString -> Html
 panelTitle' = h2c "panel-title"
-panelDefault' : TextString -> List (Maybe Html, TextString) -> List Html -> Html
+panelDefault' : TextString -> List (BtnParams, Signal.Message) -> List Html -> Html
 panelDefault' t btns bs =
   panelDefault_
   [ panelHeading_
-    ((btnXsSuccessc "pull-right" `List.map` List.reverse btns) ++ [ panelTitle' t ])
+    ((uncurry (btnXsSuccessc "pull-right") `List.map` List.reverse btns) ++ [ panelTitle' t ])
   , panelBody_ bs
   ]
 
