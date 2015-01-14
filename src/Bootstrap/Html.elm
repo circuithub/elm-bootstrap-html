@@ -73,6 +73,8 @@ One major difference is that idiomatic elements such as `panelDefault'` are freq
 * Active state
 * Disabled state
 * Button tags
+@docs BtnParams, btnDefaults
+@docs btnXsSuccessc, btnXsSuccess', btnSmSuccessc, btnSmSuccess'
 
 ## Images
 * Responsive images
@@ -194,6 +196,7 @@ See [elm-bootstrap-dropdown](https://github.com/circuithub/elm-bootstrap-dropdow
 * Fixed to bottom
 * Static top
 * Inverted navbar
+@docs navbarc, navbarDefaultc, navbarHeader_
 
 ## Breadcrumbs
 
@@ -315,11 +318,24 @@ formGroup_ = divc "form-group"
 --btn = 
 --  { xs = { success = btnXsSuccess' }
 --  }
+
+{-|
+* icon - an icon for the button (see `glyphicon`s)
+* label - a text label for the button
+* tooltip - some hover-over tooltip text for the button
+-}
 type alias BtnParams =
   { icon    : Maybe Html
   , label   : Maybe TextString
   , tooltip : Maybe String
   }
+
+{-| Default parameters for a button. Use this to select only one or two options.
+
+    { btnDefaults
+    | label <- "This button doesn't have an icon or a tooltip"
+    }
+-}
 btnDefaults : BtnParams
 btnDefaults =
   { icon  = Nothing
@@ -327,6 +343,8 @@ btnDefaults =
   , tooltip = Nothing
   }
 
+{-| Buttons
+-}
 btnXsSuccessc : ClassString -> BtnParams -> Signal.Message -> Html
 btnXsSuccessc c {icon,label,tooltip} click =
   let consList = flip (::) []
