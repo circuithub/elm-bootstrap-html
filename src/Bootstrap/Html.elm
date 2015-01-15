@@ -73,8 +73,13 @@ One major difference is that idiomatic elements such as `panelDefault'` are freq
 * Active state
 * Disabled state
 * Button tags
-@docs BtnParams, btnDefaults
-@docs btnXsSuccessc, btnXsSuccess', btnSmSuccessc, btnSmSuccess'
+@docs BtnParams, btnParams
+@docs btnDefaultc, btnDefault', btnXsDefaultc, btnXsDefault', btnSmDefaultc, btnSmDefault', btnLgDefaultc, btnLgDefault'
+@docs btnPrimaryc, btnPrimary', btnXsPrimaryc, btnXsPrimary', btnSmPrimaryc, btnSmPrimary', btnLgPrimaryc, btnLgPrimary'
+@docs btnSuccessc, btnSuccess', btnXsSuccessc, btnXsSuccess', btnSmSuccessc, btnSmSuccess', btnLgSuccessc, btnLgSuccess'
+@docs btnInfoc, btnInfo', btnXsInfoc, btnXsInfo', btnSmInfoc, btnSmInfo', btnLgInfoc, btnLgInfo'
+@docs btnWarningc, btnWarning', btnXsWarningc, btnXsWarning', btnSmWarningc, btnSmWarning', btnLgWarningc, btnLgWarning'
+@docs btnDangerc, btnDanger', btnXsDangerc, btnXsDanger', btnSmDangerc, btnSmDanger', btnLgDangerc, btnLgDanger'
 
 ## Images
 * Responsive images
@@ -259,14 +264,13 @@ See [elm-bootstrap-dropdown](https://github.com/circuithub/elm-bootstrap-dropdow
 
 import Html (..)
 import Html.Attributes (..)
-import Html.Events (onClick)
 import Html.Shorthand (..)
 import String
 import Maybe
 import List
 import List ((::))
 import Signal
--- import Bootstrap.Html.Internal (..)
+import Bootstrap.Html.Internal as Internal
 
 -- CSS
 -- Overview
@@ -319,65 +323,128 @@ formGroup_ = divc "form-group"
 --  { xs = { success = btnXsSuccess' }
 --  }
 
-{-|
-* icon - an icon for the button (see `glyphicon`s)
-* label - a text label for the button
-* tooltip - some hover-over tooltip text for the button
+{-| Optional parameters for bootstrap buttons.
+
+* `icon` - an icon for the button (see `glyphicon`s)
+* `label` - a text label for the button
+* `tooltip` - some hover-over tooltip text for the button
 -}
-type alias BtnParams =
-  { icon    : Maybe Html
-  , label   : Maybe TextString
-  , tooltip : Maybe String
-  }
+type alias BtnParams = Internal.BtnParams
 
 {-| Default parameters for a button. Use this to select only one or two options.
 
-    { btnDefaults
+    { btnParams
     | label <- "This button doesn't have an icon or a tooltip"
     }
 -}
-btnDefaults : BtnParams
-btnDefaults =
+btnParams : BtnParams
+btnParams =
   { icon  = Nothing
   , label = Nothing
   , tooltip = Nothing
   }
 
-{-| Buttons
--}
-btnXsSuccessc : ClassString -> BtnParams -> Signal.Message -> Html
-btnXsSuccessc c {icon,label,tooltip} click =
-  let consList = flip (::) []
-  in button 
-      ( (class' <| c ++ " btn btn-xs btn-success")
-        :: onClick click
-        :: Maybe.withDefault [] (Maybe.map (consList << title) tooltip)
-      )
-      ( case (icon, label) of
-          (Just icon', Just label') -> [icon', text (' ' `String.cons` label')]
-          (Just icon', _          ) -> [icon']
-          (_         , Just label') -> [text label']
-          _                         -> []
-      )
-btnXsSuccess' : BtnParams -> Signal.Message -> Html
-btnXsSuccess' = btnXsSuccessc ""
+btnDefaultc : ClassString -> BtnParams -> Signal.Message -> Html
+btnDefaultc c = Internal.btnc ("btn-default " ++ c)
+btnDefault' : BtnParams -> Signal.Message -> Html
+btnDefault' = Internal.btnc "btn-default"
+btnXsDefaultc : ClassString -> BtnParams -> Signal.Message -> Html
+btnXsDefaultc c = Internal.btnc ("btn-xs btn-default  " ++ c)
+btnXsDefault' : BtnParams -> Signal.Message -> Html
+btnXsDefault' = Internal.btnc "btn-xs btn-default "
+btnSmDefaultc : ClassString -> BtnParams -> Signal.Message -> Html
+btnSmDefaultc c = Internal.btnc ("btn-sm btn-default " ++ c)
+btnSmDefault' : BtnParams -> Signal.Message -> Html
+btnSmDefault' = Internal.btnc "btn-sm btn-default"
+btnLgDefaultc : ClassString -> BtnParams -> Signal.Message -> Html
+btnLgDefaultc c = Internal.btnc ("btn-lg btn-default " ++ c)
+btnLgDefault' : BtnParams -> Signal.Message -> Html
+btnLgDefault' = Internal.btnc "btn-lg btn-default"
 
+btnPrimaryc : ClassString -> BtnParams -> Signal.Message -> Html
+btnPrimaryc c = Internal.btnc ("btn-primary " ++ c)
+btnPrimary' : BtnParams -> Signal.Message -> Html
+btnPrimary' = Internal.btnc "btn-primary"
+btnXsPrimaryc : ClassString -> BtnParams -> Signal.Message -> Html
+btnXsPrimaryc c = Internal.btnc ("btn-xs btn-primary " ++ c)
+btnXsPrimary' : BtnParams -> Signal.Message -> Html
+btnXsPrimary' = Internal.btnc "btn-xs btn-primary "
+btnSmPrimaryc : ClassString -> BtnParams -> Signal.Message -> Html
+btnSmPrimaryc c = Internal.btnc ("btn-sm btn-primary " ++ c)
+btnSmPrimary' : BtnParams -> Signal.Message -> Html
+btnSmPrimary' = Internal.btnc "btn-sm btn-primary"
+btnLgPrimaryc : ClassString -> BtnParams -> Signal.Message -> Html
+btnLgPrimaryc c = Internal.btnc ("btn-lg btn-primary " ++ c)
+btnLgPrimary' : BtnParams -> Signal.Message -> Html
+btnLgPrimary' = Internal.btnc "btn-lg btn-primary"
+
+btnSuccessc : ClassString -> BtnParams -> Signal.Message -> Html
+btnSuccessc c = Internal.btnc ("btn-success " ++ c)
+btnSuccess' : BtnParams -> Signal.Message -> Html
+btnSuccess' = Internal.btnc "btn-success"
+btnXsSuccessc : ClassString -> BtnParams -> Signal.Message -> Html
+btnXsSuccessc c = Internal.btnc ("btn-xs btn-success " ++ c)
+btnXsSuccess' : BtnParams -> Signal.Message -> Html
+btnXsSuccess' = Internal.btnc "btn-xs btn-success "
 btnSmSuccessc : ClassString -> BtnParams -> Signal.Message -> Html
-btnSmSuccessc c {icon,label,tooltip} click =
-  let consList = flip (::) []
-  in button 
-      ( (class' <| c ++ " btn btn-sm btn-success")
-        :: onClick click
-        :: Maybe.withDefault [] (Maybe.map (consList << title) tooltip)
-      )
-      ( case (icon, label) of
-          (Just icon', Just label') -> [icon', text (' ' `String.cons` label')]
-          (Just icon', _          ) -> [icon']
-          (_         , Just label') -> [text label']
-          _                         -> []
-      )
+btnSmSuccessc c = Internal.btnc ("btn-sm btn-success " ++ c)
 btnSmSuccess' : BtnParams -> Signal.Message -> Html
-btnSmSuccess' = btnSmSuccessc ""
+btnSmSuccess' = Internal.btnc "btn-sm btn-success"
+btnLgSuccessc : ClassString -> BtnParams -> Signal.Message -> Html
+btnLgSuccessc c = Internal.btnc ("btn-lg btn-success " ++ c)
+btnLgSuccess' : BtnParams -> Signal.Message -> Html
+btnLgSuccess' = Internal.btnc "btn-lg btn-success"
+
+btnInfoc : ClassString -> BtnParams -> Signal.Message -> Html
+btnInfoc c = Internal.btnc ("btn-info " ++ c)
+btnInfo' : BtnParams -> Signal.Message -> Html
+btnInfo' = Internal.btnc "btn-info"
+btnXsInfoc : ClassString -> BtnParams -> Signal.Message -> Html
+btnXsInfoc c = Internal.btnc ("btn-xs btn-info " ++ c)
+btnXsInfo' : BtnParams -> Signal.Message -> Html
+btnXsInfo' = Internal.btnc "btn-xs btn-info "
+btnSmInfoc : ClassString -> BtnParams -> Signal.Message -> Html
+btnSmInfoc c = Internal.btnc ("btn-sm btn-info " ++ c)
+btnSmInfo' : BtnParams -> Signal.Message -> Html
+btnSmInfo' = Internal.btnc "btn-sm btn-info"
+btnLgInfoc : ClassString -> BtnParams -> Signal.Message -> Html
+btnLgInfoc c = Internal.btnc ("btn-lg btn-info " ++ c)
+btnLgInfo' : BtnParams -> Signal.Message -> Html
+btnLgInfo' = Internal.btnc "btn-lg btn-info"
+
+btnWarningc : ClassString -> BtnParams -> Signal.Message -> Html
+btnWarningc c = Internal.btnc ("btn-warning " ++ c)
+btnWarning' : BtnParams -> Signal.Message -> Html
+btnWarning' = Internal.btnc "btn-warning"
+btnXsWarningc : ClassString -> BtnParams -> Signal.Message -> Html
+btnXsWarningc c = Internal.btnc ("btn-xs btn-warning " ++ c)
+btnXsWarning' : BtnParams -> Signal.Message -> Html
+btnXsWarning' = Internal.btnc "btn-xs btn-warning "
+btnSmWarningc : ClassString -> BtnParams -> Signal.Message -> Html
+btnSmWarningc c = Internal.btnc ("btn-sm btn-warning " ++ c)
+btnSmWarning' : BtnParams -> Signal.Message -> Html
+btnSmWarning' = Internal.btnc "btn-sm btn-warning"
+btnLgWarningc : ClassString -> BtnParams -> Signal.Message -> Html
+btnLgWarningc c = Internal.btnc ("btn-lg btn-warning " ++ c)
+btnLgWarning' : BtnParams -> Signal.Message -> Html
+btnLgWarning' = Internal.btnc "btn-lg btn-warning"
+
+btnDangerc : ClassString -> BtnParams -> Signal.Message -> Html
+btnDangerc c = Internal.btnc ("btn-danger " ++ c)
+btnDanger' : BtnParams -> Signal.Message -> Html
+btnDanger' = Internal.btnc "btn-danger"
+btnXsDangerc : ClassString -> BtnParams -> Signal.Message -> Html
+btnXsDangerc c = Internal.btnc ("btn-xs btn-danger " ++ c)
+btnXsDanger' : BtnParams -> Signal.Message -> Html
+btnXsDanger' = Internal.btnc "btn-xs btn-danger "
+btnSmDangerc : ClassString -> BtnParams -> Signal.Message -> Html
+btnSmDangerc c = Internal.btnc ("btn-sm btn-danger " ++ c)
+btnSmDanger' : BtnParams -> Signal.Message -> Html
+btnSmDanger' = Internal.btnc "btn-sm btn-danger"
+btnLgDangerc : ClassString -> BtnParams -> Signal.Message -> Html
+btnLgDangerc c = Internal.btnc ("btn-lg btn-danger " ++ c)
+btnLgDanger' : BtnParams -> Signal.Message -> Html
+btnLgDanger' = Internal.btnc "btn-lg btn-danger"
 
 -- Images
 
