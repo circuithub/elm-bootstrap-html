@@ -23,7 +23,8 @@ btnc : ClassString -> BtnParams -> Signal.Message -> Html
 btnc c {icon,label,tooltip} click =
   let consList = flip (::) []
   in button
-      ( (class' <| "btn " ++ c)
+      ( type' "button"
+        :: (class' <| "btn " ++ c)
         :: onClick click
         :: Maybe.withDefault [] (Maybe.map (consList << title) tooltip)
       )
