@@ -73,7 +73,7 @@ One major difference is that idiomatic elements such as `panelDefault'` are freq
 * Active state
 * Disabled state
 * Button tags
-@docs BtnParams, btnParams
+@docs BtnParam, btnParam
 @docs btnDefaultc, btnDefault', btnXsDefaultc, btnXsDefault', btnSmDefaultc, btnSmDefault', btnLgDefaultc, btnLgDefault'
 @docs btnPrimaryc, btnPrimary', btnXsPrimaryc, btnXsPrimary', btnSmPrimaryc, btnSmPrimary', btnLgPrimaryc, btnLgPrimary'
 @docs btnSuccessc, btnSuccess', btnXsSuccessc, btnXsSuccess', btnSmSuccessc, btnSmSuccess', btnLgSuccessc, btnLgSuccess'
@@ -329,121 +329,121 @@ formGroup_ = divc "form-group"
 * `label` - a text label for the button
 * `tooltip` - some hover-over tooltip text for the button
 -}
-type alias BtnParams = Internal.BtnParams
+type alias BtnParam = Internal.BtnParam
 
 {-| Default parameters for a button. Use this to select only one or two options.
 
-    { btnParams
+    { btnParam
     | label <- "This button doesn't have an icon or a tooltip"
     }
 -}
-btnParams : BtnParams
-btnParams =
+btnParam : BtnParam
+btnParam =
   { icon  = Nothing
   , label = Nothing
   , tooltip = Nothing
   }
 
-btnDefaultc : ClassString -> BtnParams -> Signal.Message -> Html
+btnDefaultc : ClassString -> BtnParam -> Signal.Message -> Html
 btnDefaultc c = Internal.btnc ("btn-default " ++ c)
-btnDefault' : BtnParams -> Signal.Message -> Html
+btnDefault' : BtnParam -> Signal.Message -> Html
 btnDefault' = Internal.btnc "btn-default"
-btnXsDefaultc : ClassString -> BtnParams -> Signal.Message -> Html
+btnXsDefaultc : ClassString -> BtnParam -> Signal.Message -> Html
 btnXsDefaultc c = Internal.btnc ("btn-xs btn-default  " ++ c)
-btnXsDefault' : BtnParams -> Signal.Message -> Html
+btnXsDefault' : BtnParam -> Signal.Message -> Html
 btnXsDefault' = Internal.btnc "btn-xs btn-default "
-btnSmDefaultc : ClassString -> BtnParams -> Signal.Message -> Html
+btnSmDefaultc : ClassString -> BtnParam -> Signal.Message -> Html
 btnSmDefaultc c = Internal.btnc ("btn-sm btn-default " ++ c)
-btnSmDefault' : BtnParams -> Signal.Message -> Html
+btnSmDefault' : BtnParam -> Signal.Message -> Html
 btnSmDefault' = Internal.btnc "btn-sm btn-default"
-btnLgDefaultc : ClassString -> BtnParams -> Signal.Message -> Html
+btnLgDefaultc : ClassString -> BtnParam -> Signal.Message -> Html
 btnLgDefaultc c = Internal.btnc ("btn-lg btn-default " ++ c)
-btnLgDefault' : BtnParams -> Signal.Message -> Html
+btnLgDefault' : BtnParam -> Signal.Message -> Html
 btnLgDefault' = Internal.btnc "btn-lg btn-default"
 
-btnPrimaryc : ClassString -> BtnParams -> Signal.Message -> Html
+btnPrimaryc : ClassString -> BtnParam -> Signal.Message -> Html
 btnPrimaryc c = Internal.btnc ("btn-primary " ++ c)
-btnPrimary' : BtnParams -> Signal.Message -> Html
+btnPrimary' : BtnParam -> Signal.Message -> Html
 btnPrimary' = Internal.btnc "btn-primary"
-btnXsPrimaryc : ClassString -> BtnParams -> Signal.Message -> Html
+btnXsPrimaryc : ClassString -> BtnParam -> Signal.Message -> Html
 btnXsPrimaryc c = Internal.btnc ("btn-xs btn-primary " ++ c)
-btnXsPrimary' : BtnParams -> Signal.Message -> Html
+btnXsPrimary' : BtnParam -> Signal.Message -> Html
 btnXsPrimary' = Internal.btnc "btn-xs btn-primary "
-btnSmPrimaryc : ClassString -> BtnParams -> Signal.Message -> Html
+btnSmPrimaryc : ClassString -> BtnParam -> Signal.Message -> Html
 btnSmPrimaryc c = Internal.btnc ("btn-sm btn-primary " ++ c)
-btnSmPrimary' : BtnParams -> Signal.Message -> Html
+btnSmPrimary' : BtnParam -> Signal.Message -> Html
 btnSmPrimary' = Internal.btnc "btn-sm btn-primary"
-btnLgPrimaryc : ClassString -> BtnParams -> Signal.Message -> Html
+btnLgPrimaryc : ClassString -> BtnParam -> Signal.Message -> Html
 btnLgPrimaryc c = Internal.btnc ("btn-lg btn-primary " ++ c)
-btnLgPrimary' : BtnParams -> Signal.Message -> Html
+btnLgPrimary' : BtnParam -> Signal.Message -> Html
 btnLgPrimary' = Internal.btnc "btn-lg btn-primary"
 
-btnSuccessc : ClassString -> BtnParams -> Signal.Message -> Html
+btnSuccessc : ClassString -> BtnParam -> Signal.Message -> Html
 btnSuccessc c = Internal.btnc ("btn-success " ++ c)
-btnSuccess' : BtnParams -> Signal.Message -> Html
+btnSuccess' : BtnParam -> Signal.Message -> Html
 btnSuccess' = Internal.btnc "btn-success"
-btnXsSuccessc : ClassString -> BtnParams -> Signal.Message -> Html
+btnXsSuccessc : ClassString -> BtnParam -> Signal.Message -> Html
 btnXsSuccessc c = Internal.btnc ("btn-xs btn-success " ++ c)
-btnXsSuccess' : BtnParams -> Signal.Message -> Html
+btnXsSuccess' : BtnParam -> Signal.Message -> Html
 btnXsSuccess' = Internal.btnc "btn-xs btn-success "
-btnSmSuccessc : ClassString -> BtnParams -> Signal.Message -> Html
+btnSmSuccessc : ClassString -> BtnParam -> Signal.Message -> Html
 btnSmSuccessc c = Internal.btnc ("btn-sm btn-success " ++ c)
-btnSmSuccess' : BtnParams -> Signal.Message -> Html
+btnSmSuccess' : BtnParam -> Signal.Message -> Html
 btnSmSuccess' = Internal.btnc "btn-sm btn-success"
-btnLgSuccessc : ClassString -> BtnParams -> Signal.Message -> Html
+btnLgSuccessc : ClassString -> BtnParam -> Signal.Message -> Html
 btnLgSuccessc c = Internal.btnc ("btn-lg btn-success " ++ c)
-btnLgSuccess' : BtnParams -> Signal.Message -> Html
+btnLgSuccess' : BtnParam -> Signal.Message -> Html
 btnLgSuccess' = Internal.btnc "btn-lg btn-success"
 
-btnInfoc : ClassString -> BtnParams -> Signal.Message -> Html
+btnInfoc : ClassString -> BtnParam -> Signal.Message -> Html
 btnInfoc c = Internal.btnc ("btn-info " ++ c)
-btnInfo' : BtnParams -> Signal.Message -> Html
+btnInfo' : BtnParam -> Signal.Message -> Html
 btnInfo' = Internal.btnc "btn-info"
-btnXsInfoc : ClassString -> BtnParams -> Signal.Message -> Html
+btnXsInfoc : ClassString -> BtnParam -> Signal.Message -> Html
 btnXsInfoc c = Internal.btnc ("btn-xs btn-info " ++ c)
-btnXsInfo' : BtnParams -> Signal.Message -> Html
+btnXsInfo' : BtnParam -> Signal.Message -> Html
 btnXsInfo' = Internal.btnc "btn-xs btn-info "
-btnSmInfoc : ClassString -> BtnParams -> Signal.Message -> Html
+btnSmInfoc : ClassString -> BtnParam -> Signal.Message -> Html
 btnSmInfoc c = Internal.btnc ("btn-sm btn-info " ++ c)
-btnSmInfo' : BtnParams -> Signal.Message -> Html
+btnSmInfo' : BtnParam -> Signal.Message -> Html
 btnSmInfo' = Internal.btnc "btn-sm btn-info"
-btnLgInfoc : ClassString -> BtnParams -> Signal.Message -> Html
+btnLgInfoc : ClassString -> BtnParam -> Signal.Message -> Html
 btnLgInfoc c = Internal.btnc ("btn-lg btn-info " ++ c)
-btnLgInfo' : BtnParams -> Signal.Message -> Html
+btnLgInfo' : BtnParam -> Signal.Message -> Html
 btnLgInfo' = Internal.btnc "btn-lg btn-info"
 
-btnWarningc : ClassString -> BtnParams -> Signal.Message -> Html
+btnWarningc : ClassString -> BtnParam -> Signal.Message -> Html
 btnWarningc c = Internal.btnc ("btn-warning " ++ c)
-btnWarning' : BtnParams -> Signal.Message -> Html
+btnWarning' : BtnParam -> Signal.Message -> Html
 btnWarning' = Internal.btnc "btn-warning"
-btnXsWarningc : ClassString -> BtnParams -> Signal.Message -> Html
+btnXsWarningc : ClassString -> BtnParam -> Signal.Message -> Html
 btnXsWarningc c = Internal.btnc ("btn-xs btn-warning " ++ c)
-btnXsWarning' : BtnParams -> Signal.Message -> Html
+btnXsWarning' : BtnParam -> Signal.Message -> Html
 btnXsWarning' = Internal.btnc "btn-xs btn-warning "
-btnSmWarningc : ClassString -> BtnParams -> Signal.Message -> Html
+btnSmWarningc : ClassString -> BtnParam -> Signal.Message -> Html
 btnSmWarningc c = Internal.btnc ("btn-sm btn-warning " ++ c)
-btnSmWarning' : BtnParams -> Signal.Message -> Html
+btnSmWarning' : BtnParam -> Signal.Message -> Html
 btnSmWarning' = Internal.btnc "btn-sm btn-warning"
-btnLgWarningc : ClassString -> BtnParams -> Signal.Message -> Html
+btnLgWarningc : ClassString -> BtnParam -> Signal.Message -> Html
 btnLgWarningc c = Internal.btnc ("btn-lg btn-warning " ++ c)
-btnLgWarning' : BtnParams -> Signal.Message -> Html
+btnLgWarning' : BtnParam -> Signal.Message -> Html
 btnLgWarning' = Internal.btnc "btn-lg btn-warning"
 
-btnDangerc : ClassString -> BtnParams -> Signal.Message -> Html
+btnDangerc : ClassString -> BtnParam -> Signal.Message -> Html
 btnDangerc c = Internal.btnc ("btn-danger " ++ c)
-btnDanger' : BtnParams -> Signal.Message -> Html
+btnDanger' : BtnParam -> Signal.Message -> Html
 btnDanger' = Internal.btnc "btn-danger"
-btnXsDangerc : ClassString -> BtnParams -> Signal.Message -> Html
+btnXsDangerc : ClassString -> BtnParam -> Signal.Message -> Html
 btnXsDangerc c = Internal.btnc ("btn-xs btn-danger " ++ c)
-btnXsDanger' : BtnParams -> Signal.Message -> Html
+btnXsDanger' : BtnParam -> Signal.Message -> Html
 btnXsDanger' = Internal.btnc "btn-xs btn-danger "
-btnSmDangerc : ClassString -> BtnParams -> Signal.Message -> Html
+btnSmDangerc : ClassString -> BtnParam -> Signal.Message -> Html
 btnSmDangerc c = Internal.btnc ("btn-sm btn-danger " ++ c)
-btnSmDanger' : BtnParams -> Signal.Message -> Html
+btnSmDanger' : BtnParam -> Signal.Message -> Html
 btnSmDanger' = Internal.btnc "btn-sm btn-danger"
-btnLgDangerc : ClassString -> BtnParams -> Signal.Message -> Html
+btnLgDangerc : ClassString -> BtnParam -> Signal.Message -> Html
 btnLgDangerc c = Internal.btnc ("btn-lg btn-danger " ++ c)
-btnLgDanger' : BtnParams -> Signal.Message -> Html
+btnLgDanger' : BtnParam -> Signal.Message -> Html
 btnLgDanger' = Internal.btnc "btn-lg btn-danger"
 
 -- Images
@@ -1343,7 +1343,7 @@ panelBody_ = divc "panel-body"
 
 panelTitle' : TextString -> Html
 panelTitle' = h2c "panel-title"
-panelDefault' : TextString -> List (BtnParams, Signal.Message) -> List Html -> Html
+panelDefault' : TextString -> List (BtnParam, Signal.Message) -> List Html -> Html
 panelDefault' t btns bs =
   panelDefault_
   [ panelHeading_

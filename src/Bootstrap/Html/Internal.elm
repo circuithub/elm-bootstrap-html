@@ -13,13 +13,13 @@ import Signal
 --appendWithSpace : String -> String -> String
 --appendWithSpace x y = x ++ ' ' `String.cons` y
 
-type alias BtnParams =
+type alias BtnParam =
   { icon    : Maybe Html
   , label   : Maybe TextString
   , tooltip : Maybe String
   }
 
-btnc : ClassString -> BtnParams -> Signal.Message -> Html
+btnc : ClassString -> BtnParam -> Signal.Message -> Html
 btnc c {icon,label,tooltip} click =
   let consList = flip (::) []
   in button
