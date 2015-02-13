@@ -275,21 +275,21 @@ import Bootstrap.Html.Internal as Internal
 -- CSS
 -- Overview
 container' : List Html -> Html
-container'      = divc "container"
+container'      = div' {class = "container"}
 containerFluid' : List Html -> Html
-containerFluid' = divc "container-fluid"
+containerFluid' = div' {class = "container-fluid"}
 
 -- Grid system
 row' : List Html -> Html
-row'               = divc "row"
+row'               = div' {class = "row"}
 colXs' : Int -> List Html -> Html
-colXs' xs          = divc ("col-xs-" ++ toString xs)
+colXs' xs          = div' {class = "col-xs-" ++ toString xs}
 colSm' : Int -> Int -> List Html -> Html
-colSm' xs sm       = divc ("col-xs-" ++ toString xs ++ " col-sm-" ++ toString sm)
+colSm' xs sm       = div' {class = "col-xs-" ++ toString xs ++ " col-sm-" ++ toString sm}
 colMd' : Int -> Int -> Int -> List Html -> Html
-colMd' xs sm md    = divc ("col-xs-" ++ toString xs ++ " col-sm-" ++ toString sm ++ " col-md-" ++ toString md)
+colMd' xs sm md    = div' {class = "col-xs-" ++ toString xs ++ " col-sm-" ++ toString sm ++ " col-md-" ++ toString md}
 colLg' : Int -> Int -> Int -> Int -> List Html -> Html
-colLg' xs sm md lg = divc ("col-xs-" ++ toString xs ++ " col-sm-" ++ toString sm ++ " col-md-" ++ toString md ++ " col-lg-" ++ toString lg)
+colLg' xs sm md lg = div' {class = "col-xs-" ++ toString xs ++ " col-sm-" ++ toString sm ++ " col-md-" ++ toString md ++ " col-lg-" ++ toString lg}
 
 -- Typography
 
@@ -301,25 +301,25 @@ colLg' xs sm md lg = divc ("col-xs-" ++ toString xs ++ " col-sm-" ++ toString sm
 --table_ : List Html -> Html
 --table_ c = tablec ""
 tableStripedc : ClassString -> List Html -> Html
-tableStripedc c = tablec ("table table-striped " ++ c)
+tableStripedc c = table' {class = "table table-striped " ++ c}
 tableStriped_ : List Html -> Html
 tableStriped_ = tableBodyStripedc ""
 tableBodyStripedc : ClassString -> List Html -> Html
-tableBodyStripedc c = tablec ("table table-body-striped " ++ c)
+tableBodyStripedc c = table' {class = "table table-body-striped " ++ c}
 tableBodyStriped_ : List Html -> Html
 tableBodyStriped_ = tableBodyStripedc ""
 
 -- Forms
 formGroup_ : List Html -> Html
-formGroup_ = divc "form-group"
+formGroup_ = div' {class = "form-group"}
 
 -- Buttons
 -- TODO: perhaps instead
---type alias BtnApi = 
+--type alias BtnApi =
 --  { xs : { success : ClassString -> (Maybe Html, TextString, Maybe String) -> Html }
 --  }
 
---btn = 
+--btn =
 --  { xs = { success = btnXsSuccess' }
 --  }
 
@@ -462,7 +462,12 @@ btnLgDanger' = Internal.btnc "btn-lg btn-danger"
 
 -}
 skipNavigation' : TextString -> Html
-skipNavigation' t = ac "sr-only sr-only-focusable" "#content" t
+skipNavigation' t =
+  a'
+  { class = "sr-only sr-only-focusable"
+  , href = "#content"
+  }
+  [text t]
 
 -- Responsive utilities
 
@@ -474,803 +479,803 @@ skipNavigation' t = ac "sr-only sr-only-focusable" "#content" t
 -- COMPONENTS
 -- Glyphicons
 glyphiconAsteriskc : ClassString -> Html
-glyphiconAsteriskc c = spanc ("glyphicon glyphicon-asterisk " ++ c) []
+glyphiconAsteriskc c = span' {class = "glyphicon glyphicon-asterisk " ++ c} []
 glyphiconAsterisk' : Html
 glyphiconAsterisk' = glyphiconAsteriskc ""
 glyphiconPlusc : ClassString -> Html
-glyphiconPlusc c = spanc ("glyphicon glyphicon-plus " ++ c) []
+glyphiconPlusc c = span' {class = "glyphicon glyphicon-plus " ++ c} []
 glyphiconPlus' : Html
 glyphiconPlus' = glyphiconPlusc ""
 glyphiconEuroc : ClassString -> Html
-glyphiconEuroc c = spanc ("glyphicon glyphicon-euro " ++ c) []
+glyphiconEuroc c = span' {class = "glyphicon glyphicon-euro " ++ c} []
 glyphiconEuro' : Html
 glyphiconEuro' = glyphiconEuroc ""
 glyphiconMinusc : ClassString -> Html
-glyphiconMinusc c = spanc ("glyphicon glyphicon-minus " ++ c) []
+glyphiconMinusc c = span' {class = "glyphicon glyphicon-minus " ++ c} []
 glyphiconMinus' : Html
 glyphiconMinus' = glyphiconMinusc ""
 glyphiconCloudc : ClassString -> Html
-glyphiconCloudc c = spanc ("glyphicon glyphicon-cloud " ++ c) []
+glyphiconCloudc c = span' {class = "glyphicon glyphicon-cloud " ++ c} []
 glyphiconCloud' : Html
 glyphiconCloud' = glyphiconCloudc ""
 glyphiconEnvelopec : ClassString -> Html
-glyphiconEnvelopec c = spanc ("glyphicon glyphicon-envelope " ++ c) []
+glyphiconEnvelopec c = span' {class = "glyphicon glyphicon-envelope " ++ c} []
 glyphiconEnvelope' : Html
 glyphiconEnvelope' = glyphiconEnvelopec ""
 glyphiconPencilc : ClassString -> Html
-glyphiconPencilc c = spanc ("glyphicon glyphicon-pencil " ++ c) []
+glyphiconPencilc c = span' {class = "glyphicon glyphicon-pencil " ++ c} []
 glyphiconPencil' : Html
 glyphiconPencil' = glyphiconPencilc ""
 glyphiconGlassc : ClassString -> Html
-glyphiconGlassc c = spanc ("glyphicon glyphicon-glass " ++ c) []
+glyphiconGlassc c = span' {class = "glyphicon glyphicon-glass " ++ c} []
 glyphiconGlass' : Html
 glyphiconGlass' = glyphiconGlassc ""
 glyphiconMusicc : ClassString -> Html
-glyphiconMusicc c = spanc ("glyphicon glyphicon-music " ++ c) []
+glyphiconMusicc c = span' {class = "glyphicon glyphicon-music " ++ c} []
 glyphiconMusic' : Html
 glyphiconMusic' = glyphiconMusicc ""
 glyphiconSearchc : ClassString -> Html
-glyphiconSearchc c = spanc ("glyphicon glyphicon-search " ++ c) []
+glyphiconSearchc c = span' {class = "glyphicon glyphicon-search " ++ c} []
 glyphiconSearch' : Html
 glyphiconSearch' = glyphiconSearchc ""
 glyphiconHeartc : ClassString -> Html
-glyphiconHeartc c = spanc ("glyphicon glyphicon-heart " ++ c) []
+glyphiconHeartc c = span' {class = "glyphicon glyphicon-heart " ++ c} []
 glyphiconHeart' : Html
 glyphiconHeart' = glyphiconHeartc ""
 glyphiconStarc : ClassString -> Html
-glyphiconStarc c = spanc ("glyphicon glyphicon-star " ++ c) []
+glyphiconStarc c = span' {class = "glyphicon glyphicon-star " ++ c} []
 glyphiconStar' : Html
 glyphiconStar' = glyphiconStarc ""
 glyphiconStarEmptyc : ClassString -> Html
-glyphiconStarEmptyc c = spanc ("glyphicon glyphicon-star-empty " ++ c) []
+glyphiconStarEmptyc c = span' {class = "glyphicon glyphicon-star-empty " ++ c} []
 glyphiconStarEmpty' : Html
 glyphiconStarEmpty' = glyphiconStarEmptyc ""
 glyphiconUserc : ClassString -> Html
-glyphiconUserc c = spanc ("glyphicon glyphicon-user " ++ c) []
+glyphiconUserc c = span' {class = "glyphicon glyphicon-user " ++ c} []
 glyphiconUser' : Html
 glyphiconUser' = glyphiconUserc ""
 glyphiconFilmc : ClassString -> Html
-glyphiconFilmc c = spanc ("glyphicon glyphicon-film " ++ c) []
+glyphiconFilmc c = span' {class = "glyphicon glyphicon-film " ++ c} []
 glyphiconFilm' : Html
 glyphiconFilm' = glyphiconFilmc ""
 glyphiconThLargec : ClassString -> Html
-glyphiconThLargec c = spanc ("glyphicon glyphicon-th-large " ++ c) []
+glyphiconThLargec c = span' {class = "glyphicon glyphicon-th-large " ++ c} []
 glyphiconThLarge' : Html
 glyphiconThLarge' = glyphiconThLargec ""
 glyphiconThc : ClassString -> Html
-glyphiconThc c = spanc ("glyphicon glyphicon-th " ++ c) []
+glyphiconThc c = span' {class = "glyphicon glyphicon-th " ++ c} []
 glyphiconTh' : Html
 glyphiconTh' = glyphiconThc ""
 glyphiconThListc : ClassString -> Html
-glyphiconThListc c = spanc ("glyphicon glyphicon-th-list " ++ c) []
+glyphiconThListc c = span' {class = "glyphicon glyphicon-th-list " ++ c} []
 glyphiconThList' : Html
 glyphiconThList' = glyphiconThListc ""
 glyphiconOkc : ClassString -> Html
-glyphiconOkc c = spanc ("glyphicon glyphicon-ok " ++ c) []
+glyphiconOkc c = span' {class = "glyphicon glyphicon-ok " ++ c} []
 glyphiconOk' : Html
 glyphiconOk' = glyphiconOkc ""
 glyphiconRemovec : ClassString -> Html
-glyphiconRemovec c = spanc ("glyphicon glyphicon-remove " ++ c) []
+glyphiconRemovec c = span' {class = "glyphicon glyphicon-remove " ++ c} []
 glyphiconRemove' : Html
 glyphiconRemove' = glyphiconRemovec ""
 glyphiconZoomInc : ClassString -> Html
-glyphiconZoomInc c = spanc ("glyphicon glyphicon-zoom-in " ++ c) []
+glyphiconZoomInc c = span' {class = "glyphicon glyphicon-zoom-in " ++ c} []
 glyphiconZoomIn' : Html
 glyphiconZoomIn' = glyphiconZoomInc ""
 glyphiconZoomOutc : ClassString -> Html
-glyphiconZoomOutc c = spanc ("glyphicon glyphicon-zoom-out " ++ c) []
+glyphiconZoomOutc c = span' {class = "glyphicon glyphicon-zoom-out " ++ c} []
 glyphiconZoomOut' : Html
 glyphiconZoomOut' = glyphiconZoomOutc ""
 glyphiconOffc : ClassString -> Html
-glyphiconOffc c = spanc ("glyphicon glyphicon-off " ++ c) []
+glyphiconOffc c = span' {class = "glyphicon glyphicon-off " ++ c} []
 glyphiconOff' : Html
 glyphiconOff' = glyphiconOffc ""
 glyphiconSignalc : ClassString -> Html
-glyphiconSignalc c = spanc ("glyphicon glyphicon-signal " ++ c) []
+glyphiconSignalc c = span' {class = "glyphicon glyphicon-signal " ++ c} []
 glyphiconSignal' : Html
 glyphiconSignal' = glyphiconSignalc ""
 glyphiconCogc : ClassString -> Html
-glyphiconCogc c = spanc ("glyphicon glyphicon-cog " ++ c) []
+glyphiconCogc c = span' {class = "glyphicon glyphicon-cog " ++ c} []
 glyphiconCog' : Html
 glyphiconCog' = glyphiconCogc ""
 glyphiconTrashc : ClassString -> Html
-glyphiconTrashc c = spanc ("glyphicon glyphicon-trash " ++ c) []
+glyphiconTrashc c = span' {class = "glyphicon glyphicon-trash " ++ c} []
 glyphiconTrash' : Html
 glyphiconTrash' = glyphiconTrashc ""
 glyphiconHomec : ClassString -> Html
-glyphiconHomec c = spanc ("glyphicon glyphicon-home " ++ c) []
+glyphiconHomec c = span' {class = "glyphicon glyphicon-home " ++ c} []
 glyphiconHome' : Html
 glyphiconHome' = glyphiconHomec ""
 glyphiconFilec : ClassString -> Html
-glyphiconFilec c = spanc ("glyphicon glyphicon-file " ++ c) []
+glyphiconFilec c = span' {class = "glyphicon glyphicon-file " ++ c} []
 glyphiconFile' : Html
 glyphiconFile' = glyphiconFilec ""
 glyphiconTimec : ClassString -> Html
-glyphiconTimec c = spanc ("glyphicon glyphicon-time " ++ c) []
+glyphiconTimec c = span' {class = "glyphicon glyphicon-time " ++ c} []
 glyphiconTime' : Html
 glyphiconTime' = glyphiconTimec ""
 glyphiconRoadc : ClassString -> Html
-glyphiconRoadc c = spanc ("glyphicon glyphicon-road " ++ c) []
+glyphiconRoadc c = span' {class = "glyphicon glyphicon-road " ++ c} []
 glyphiconRoad' : Html
 glyphiconRoad' = glyphiconRoadc ""
 glyphiconDownloadAltc : ClassString -> Html
-glyphiconDownloadAltc c = spanc ("glyphicon glyphicon-download-alt " ++ c) []
+glyphiconDownloadAltc c = span' {class = "glyphicon glyphicon-download-alt " ++ c} []
 glyphiconDownloadAlt' : Html
 glyphiconDownloadAlt' = glyphiconDownloadAltc ""
 glyphiconDownloadc : ClassString -> Html
-glyphiconDownloadc c = spanc ("glyphicon glyphicon-download " ++ c) []
+glyphiconDownloadc c = span' {class = "glyphicon glyphicon-download " ++ c} []
 glyphiconDownload' : Html
 glyphiconDownload' = glyphiconDownloadc ""
 glyphiconUploadc : ClassString -> Html
-glyphiconUploadc c = spanc ("glyphicon glyphicon-upload " ++ c) []
+glyphiconUploadc c = span' {class = "glyphicon glyphicon-upload " ++ c} []
 glyphiconUpload' : Html
 glyphiconUpload' = glyphiconUploadc ""
 glyphiconInboxc : ClassString -> Html
-glyphiconInboxc c = spanc ("glyphicon glyphicon-inbox " ++ c) []
+glyphiconInboxc c = span' {class = "glyphicon glyphicon-inbox " ++ c} []
 glyphiconInbox' : Html
 glyphiconInbox' = glyphiconInboxc ""
 glyphiconPlayCirclec : ClassString -> Html
-glyphiconPlayCirclec c = spanc ("glyphicon glyphicon-play-circle " ++ c) []
+glyphiconPlayCirclec c = span' {class = "glyphicon glyphicon-play-circle " ++ c} []
 glyphiconPlayCircle' : Html
 glyphiconPlayCircle' = glyphiconPlayCirclec ""
 glyphiconRepeatc : ClassString -> Html
-glyphiconRepeatc c = spanc ("glyphicon glyphicon-repeat " ++ c) []
+glyphiconRepeatc c = span' {class = "glyphicon glyphicon-repeat " ++ c} []
 glyphiconRepeat' : Html
 glyphiconRepeat' = glyphiconRepeatc ""
 glyphiconRefreshc : ClassString -> Html
-glyphiconRefreshc c = spanc ("glyphicon glyphicon-refresh " ++ c) []
+glyphiconRefreshc c = span' {class = "glyphicon glyphicon-refresh " ++ c} []
 glyphiconRefresh' : Html
 glyphiconRefresh' = glyphiconRefreshc ""
 glyphiconListAltc : ClassString -> Html
-glyphiconListAltc c = spanc ("glyphicon glyphicon-list-alt " ++ c) []
+glyphiconListAltc c = span' {class = "glyphicon glyphicon-list-alt " ++ c} []
 glyphiconListAlt' : Html
 glyphiconListAlt' = glyphiconListAltc ""
 glyphiconLockc : ClassString -> Html
-glyphiconLockc c = spanc ("glyphicon glyphicon-lock " ++ c) []
+glyphiconLockc c = span' {class = "glyphicon glyphicon-lock " ++ c} []
 glyphiconLock' : Html
 glyphiconLock' = glyphiconLockc ""
 glyphiconFlagc : ClassString -> Html
-glyphiconFlagc c = spanc ("glyphicon glyphicon-flag " ++ c) []
+glyphiconFlagc c = span' {class = "glyphicon glyphicon-flag " ++ c} []
 glyphiconFlag' : Html
 glyphiconFlag' = glyphiconFlagc ""
 glyphiconHeadphonesc : ClassString -> Html
-glyphiconHeadphonesc c = spanc ("glyphicon glyphicon-headphones " ++ c) []
+glyphiconHeadphonesc c = span' {class = "glyphicon glyphicon-headphones " ++ c} []
 glyphiconHeadphones' : Html
 glyphiconHeadphones' = glyphiconHeadphonesc ""
 glyphiconVolumeOffc : ClassString -> Html
-glyphiconVolumeOffc c = spanc ("glyphicon glyphicon-volume-off " ++ c) []
+glyphiconVolumeOffc c = span' {class = "glyphicon glyphicon-volume-off " ++ c} []
 glyphiconVolumeOff' : Html
 glyphiconVolumeOff' = glyphiconVolumeOffc ""
 glyphiconVolumeDownc : ClassString -> Html
-glyphiconVolumeDownc c = spanc ("glyphicon glyphicon-volume-down " ++ c) []
+glyphiconVolumeDownc c = span' {class = "glyphicon glyphicon-volume-down " ++ c} []
 glyphiconVolumeDown' : Html
 glyphiconVolumeDown' = glyphiconVolumeDownc ""
 glyphiconVolumeUpc : ClassString -> Html
-glyphiconVolumeUpc c = spanc ("glyphicon glyphicon-volume-up " ++ c) []
+glyphiconVolumeUpc c = span' {class = "glyphicon glyphicon-volume-up " ++ c} []
 glyphiconVolumeUp' : Html
 glyphiconVolumeUp' = glyphiconVolumeUpc ""
 glyphiconQrcodec : ClassString -> Html
-glyphiconQrcodec c = spanc ("glyphicon glyphicon-qrcode " ++ c) []
+glyphiconQrcodec c = span' {class = "glyphicon glyphicon-qrcode " ++ c} []
 glyphiconQrcode' : Html
 glyphiconQrcode' = glyphiconQrcodec ""
 glyphiconBarcodec : ClassString -> Html
-glyphiconBarcodec c = spanc ("glyphicon glyphicon-barcode " ++ c) []
+glyphiconBarcodec c = span' {class = "glyphicon glyphicon-barcode " ++ c} []
 glyphiconBarcode' : Html
 glyphiconBarcode' = glyphiconBarcodec ""
 glyphiconTagc : ClassString -> Html
-glyphiconTagc c = spanc ("glyphicon glyphicon-tag " ++ c) []
+glyphiconTagc c = span' {class = "glyphicon glyphicon-tag " ++ c} []
 glyphiconTag' : Html
 glyphiconTag' = glyphiconTagc ""
 glyphiconTagsc : ClassString -> Html
-glyphiconTagsc c = spanc ("glyphicon glyphicon-tags " ++ c) []
+glyphiconTagsc c = span' {class = "glyphicon glyphicon-tags " ++ c} []
 glyphiconTags' : Html
 glyphiconTags' = glyphiconTagsc ""
 glyphiconBookc : ClassString -> Html
-glyphiconBookc c = spanc ("glyphicon glyphicon-book " ++ c) []
+glyphiconBookc c = span' {class = "glyphicon glyphicon-book " ++ c} []
 glyphiconBook' : Html
 glyphiconBook' = glyphiconBookc ""
 glyphiconBookmarkc : ClassString -> Html
-glyphiconBookmarkc c = spanc ("glyphicon glyphicon-bookmark " ++ c) []
+glyphiconBookmarkc c = span' {class = "glyphicon glyphicon-bookmark " ++ c} []
 glyphiconBookmark' : Html
 glyphiconBookmark' = glyphiconBookmarkc ""
 glyphiconPrintc : ClassString -> Html
-glyphiconPrintc c = spanc ("glyphicon glyphicon-print " ++ c) []
+glyphiconPrintc c = span' {class = "glyphicon glyphicon-print " ++ c} []
 glyphiconPrint' : Html
 glyphiconPrint' = glyphiconPrintc ""
 glyphiconCamerac : ClassString -> Html
-glyphiconCamerac c = spanc ("glyphicon glyphicon-camera " ++ c) []
+glyphiconCamerac c = span' {class = "glyphicon glyphicon-camera " ++ c} []
 glyphiconCamera' : Html
 glyphiconCamera' = glyphiconCamerac ""
 glyphiconFontc : ClassString -> Html
-glyphiconFontc c = spanc ("glyphicon glyphicon-font " ++ c) []
+glyphiconFontc c = span' {class = "glyphicon glyphicon-font " ++ c} []
 glyphiconFont' : Html
 glyphiconFont' = glyphiconFontc ""
 glyphiconBoldc : ClassString -> Html
-glyphiconBoldc c = spanc ("glyphicon glyphicon-bold " ++ c) []
+glyphiconBoldc c = span' {class = "glyphicon glyphicon-bold " ++ c} []
 glyphiconBold' : Html
 glyphiconBold' = glyphiconBoldc ""
 glyphiconItalicc : ClassString -> Html
-glyphiconItalicc c = spanc ("glyphicon glyphicon-italic " ++ c) []
+glyphiconItalicc c = span' {class = "glyphicon glyphicon-italic " ++ c} []
 glyphiconItalic' : Html
 glyphiconItalic' = glyphiconItalicc ""
 glyphiconTextHeightc : ClassString -> Html
-glyphiconTextHeightc c = spanc ("glyphicon glyphicon-text-height " ++ c) []
+glyphiconTextHeightc c = span' {class = "glyphicon glyphicon-text-height " ++ c} []
 glyphiconTextHeight' : Html
 glyphiconTextHeight' = glyphiconTextHeightc ""
 glyphiconTextWidthc : ClassString -> Html
-glyphiconTextWidthc c = spanc ("glyphicon glyphicon-text-width " ++ c) []
+glyphiconTextWidthc c = span' {class = "glyphicon glyphicon-text-width " ++ c} []
 glyphiconTextWidth' : Html
 glyphiconTextWidth' = glyphiconTextWidthc ""
 glyphiconAlignLeftc : ClassString -> Html
-glyphiconAlignLeftc c = spanc ("glyphicon glyphicon-align-left " ++ c) []
+glyphiconAlignLeftc c = span' {class = "glyphicon glyphicon-align-left " ++ c} []
 glyphiconAlignLeft' : Html
 glyphiconAlignLeft' = glyphiconAlignLeftc ""
 glyphiconAlignCenterc : ClassString -> Html
-glyphiconAlignCenterc c = spanc ("glyphicon glyphicon-align-center " ++ c) []
+glyphiconAlignCenterc c = span' {class = "glyphicon glyphicon-align-center " ++ c} []
 glyphiconAlignCenter' : Html
 glyphiconAlignCenter' = glyphiconAlignCenterc ""
 glyphiconAlignRightc : ClassString -> Html
-glyphiconAlignRightc c = spanc ("glyphicon glyphicon-align-right " ++ c) []
+glyphiconAlignRightc c = span' {class = "glyphicon glyphicon-align-right " ++ c} []
 glyphiconAlignRight' : Html
 glyphiconAlignRight' = glyphiconAlignRightc ""
 glyphiconAlignJustifyc : ClassString -> Html
-glyphiconAlignJustifyc c = spanc ("glyphicon glyphicon-align-justify " ++ c) []
+glyphiconAlignJustifyc c = span' {class = "glyphicon glyphicon-align-justify " ++ c} []
 glyphiconAlignJustify' : Html
 glyphiconAlignJustify' = glyphiconAlignJustifyc ""
 glyphiconListc : ClassString -> Html
-glyphiconListc c = spanc ("glyphicon glyphicon-list " ++ c) []
+glyphiconListc c = span' {class = "glyphicon glyphicon-list " ++ c} []
 glyphiconList' : Html
 glyphiconList' = glyphiconListc ""
 glyphiconIndentLeftc : ClassString -> Html
-glyphiconIndentLeftc c = spanc ("glyphicon glyphicon-indent-left " ++ c) []
+glyphiconIndentLeftc c = span' {class = "glyphicon glyphicon-indent-left " ++ c} []
 glyphiconIndentLeft' : Html
 glyphiconIndentLeft' = glyphiconIndentLeftc ""
 glyphiconIndentRightc : ClassString -> Html
-glyphiconIndentRightc c = spanc ("glyphicon glyphicon-indent-right " ++ c) []
+glyphiconIndentRightc c = span' {class = "glyphicon glyphicon-indent-right " ++ c} []
 glyphiconIndentRight' : Html
 glyphiconIndentRight' = glyphiconIndentRightc ""
 glyphiconFacetimeVideoc : ClassString -> Html
-glyphiconFacetimeVideoc c = spanc ("glyphicon glyphicon-facetime-video " ++ c) []
+glyphiconFacetimeVideoc c = span' {class = "glyphicon glyphicon-facetime-video " ++ c} []
 glyphiconFacetimeVideo' : Html
 glyphiconFacetimeVideo' = glyphiconFacetimeVideoc ""
 glyphiconPicturec : ClassString -> Html
-glyphiconPicturec c = spanc ("glyphicon glyphicon-picture " ++ c) []
+glyphiconPicturec c = span' {class = "glyphicon glyphicon-picture " ++ c} []
 glyphiconPicture' : Html
 glyphiconPicture' = glyphiconPicturec ""
 glyphiconMapMarkerc : ClassString -> Html
-glyphiconMapMarkerc c = spanc ("glyphicon glyphicon-map-marker " ++ c) []
+glyphiconMapMarkerc c = span' {class = "glyphicon glyphicon-map-marker " ++ c} []
 glyphiconMapMarker' : Html
 glyphiconMapMarker' = glyphiconMapMarkerc ""
 glyphiconAdjustc : ClassString -> Html
-glyphiconAdjustc c = spanc ("glyphicon glyphicon-adjust " ++ c) []
+glyphiconAdjustc c = span' {class = "glyphicon glyphicon-adjust " ++ c} []
 glyphiconAdjust' : Html
 glyphiconAdjust' = glyphiconAdjustc ""
 glyphiconTintc : ClassString -> Html
-glyphiconTintc c = spanc ("glyphicon glyphicon-tint " ++ c) []
+glyphiconTintc c = span' {class = "glyphicon glyphicon-tint " ++ c} []
 glyphiconTint' : Html
 glyphiconTint' = glyphiconTintc ""
 glyphiconEditc : ClassString -> Html
-glyphiconEditc c = spanc ("glyphicon glyphicon-edit " ++ c) []
+glyphiconEditc c = span' {class = "glyphicon glyphicon-edit " ++ c} []
 glyphiconEdit' : Html
 glyphiconEdit' = glyphiconEditc ""
 glyphiconSharec : ClassString -> Html
-glyphiconSharec c = spanc ("glyphicon glyphicon-share " ++ c) []
+glyphiconSharec c = span' {class = "glyphicon glyphicon-share " ++ c} []
 glyphiconShare' : Html
 glyphiconShare' = glyphiconSharec ""
 glyphiconCheckc : ClassString -> Html
-glyphiconCheckc c = spanc ("glyphicon glyphicon-check " ++ c) []
+glyphiconCheckc c = span' {class = "glyphicon glyphicon-check " ++ c} []
 glyphiconCheck' : Html
 glyphiconCheck' = glyphiconCheckc ""
 glyphiconMovec : ClassString -> Html
-glyphiconMovec c = spanc ("glyphicon glyphicon-move " ++ c) []
+glyphiconMovec c = span' {class = "glyphicon glyphicon-move " ++ c} []
 glyphiconMove' : Html
 glyphiconMove' = glyphiconMovec ""
 glyphiconStepBackwardc : ClassString -> Html
-glyphiconStepBackwardc c = spanc ("glyphicon glyphicon-step-backward " ++ c) []
+glyphiconStepBackwardc c = span' {class = "glyphicon glyphicon-step-backward " ++ c} []
 glyphiconStepBackward' : Html
 glyphiconStepBackward' = glyphiconStepBackwardc ""
 glyphiconFastBackwardc : ClassString -> Html
-glyphiconFastBackwardc c = spanc ("glyphicon glyphicon-fast-backward " ++ c) []
+glyphiconFastBackwardc c = span' {class = "glyphicon glyphicon-fast-backward " ++ c} []
 glyphiconFastBackward' : Html
 glyphiconFastBackward' = glyphiconFastBackwardc ""
 glyphiconBackwardc : ClassString -> Html
-glyphiconBackwardc c = spanc ("glyphicon glyphicon-backward " ++ c) []
+glyphiconBackwardc c = span' {class = "glyphicon glyphicon-backward " ++ c} []
 glyphiconBackward' : Html
 glyphiconBackward' = glyphiconBackwardc ""
 glyphiconPlayc : ClassString -> Html
-glyphiconPlayc c = spanc ("glyphicon glyphicon-play " ++ c) []
+glyphiconPlayc c = span' {class = "glyphicon glyphicon-play " ++ c} []
 glyphiconPlay' : Html
 glyphiconPlay' = glyphiconPlayc ""
 glyphiconPausec : ClassString -> Html
-glyphiconPausec c = spanc ("glyphicon glyphicon-pause " ++ c) []
+glyphiconPausec c = span' {class = "glyphicon glyphicon-pause " ++ c} []
 glyphiconPause' : Html
 glyphiconPause' = glyphiconPausec ""
 glyphiconStopc : ClassString -> Html
-glyphiconStopc c = spanc ("glyphicon glyphicon-stop " ++ c) []
+glyphiconStopc c = span' {class = "glyphicon glyphicon-stop " ++ c} []
 glyphiconStop' : Html
 glyphiconStop' = glyphiconStopc ""
 glyphiconForwardc : ClassString -> Html
-glyphiconForwardc c = spanc ("glyphicon glyphicon-forward " ++ c) []
+glyphiconForwardc c = span' {class = "glyphicon glyphicon-forward " ++ c} []
 glyphiconForward' : Html
 glyphiconForward' = glyphiconForwardc ""
 glyphiconFastForwardc : ClassString -> Html
-glyphiconFastForwardc c = spanc ("glyphicon glyphicon-fast-forward " ++ c) []
+glyphiconFastForwardc c = span' {class = "glyphicon glyphicon-fast-forward " ++ c} []
 glyphiconFastForward' : Html
 glyphiconFastForward' = glyphiconFastForwardc ""
 glyphiconStepForwardc : ClassString -> Html
-glyphiconStepForwardc c = spanc ("glyphicon glyphicon-step-forward " ++ c) []
+glyphiconStepForwardc c = span' {class = "glyphicon glyphicon-step-forward " ++ c} []
 glyphiconStepForward' : Html
 glyphiconStepForward' = glyphiconStepForwardc ""
 glyphiconEjectc : ClassString -> Html
-glyphiconEjectc c = spanc ("glyphicon glyphicon-eject " ++ c) []
+glyphiconEjectc c = span' {class = "glyphicon glyphicon-eject " ++ c} []
 glyphiconEject' : Html
 glyphiconEject' = glyphiconEjectc ""
 glyphiconChevronLeftc : ClassString -> Html
-glyphiconChevronLeftc c = spanc ("glyphicon glyphicon-chevron-left " ++ c) []
+glyphiconChevronLeftc c = span' {class = "glyphicon glyphicon-chevron-left " ++ c} []
 glyphiconChevronLeft' : Html
 glyphiconChevronLeft' = glyphiconChevronLeftc ""
 glyphiconChevronRightc : ClassString -> Html
-glyphiconChevronRightc c = spanc ("glyphicon glyphicon-chevron-right " ++ c) []
+glyphiconChevronRightc c = span' {class = "glyphicon glyphicon-chevron-right " ++ c} []
 glyphiconChevronRight' : Html
 glyphiconChevronRight' = glyphiconChevronRightc ""
 glyphiconPlusSignc : ClassString -> Html
-glyphiconPlusSignc c = spanc ("glyphicon glyphicon-plus-sign " ++ c) []
+glyphiconPlusSignc c = span' {class = "glyphicon glyphicon-plus-sign " ++ c} []
 glyphiconPlusSign' : Html
 glyphiconPlusSign' = glyphiconPlusSignc ""
 glyphiconMinusSignc : ClassString -> Html
-glyphiconMinusSignc c = spanc ("glyphicon glyphicon-minus-sign " ++ c) []
+glyphiconMinusSignc c = span' {class = "glyphicon glyphicon-minus-sign " ++ c} []
 glyphiconMinusSign' : Html
 glyphiconMinusSign' = glyphiconMinusSignc ""
 glyphiconRemoveSignc : ClassString -> Html
-glyphiconRemoveSignc c = spanc ("glyphicon glyphicon-remove-sign " ++ c) []
+glyphiconRemoveSignc c = span' {class = "glyphicon glyphicon-remove-sign " ++ c} []
 glyphiconRemoveSign' : Html
 glyphiconRemoveSign' = glyphiconRemoveSignc ""
 glyphiconOkSignc : ClassString -> Html
-glyphiconOkSignc c = spanc ("glyphicon glyphicon-ok-sign " ++ c) []
+glyphiconOkSignc c = span' {class = "glyphicon glyphicon-ok-sign " ++ c} []
 glyphiconOkSign' : Html
 glyphiconOkSign' = glyphiconOkSignc ""
 glyphiconQuestionSignc : ClassString -> Html
-glyphiconQuestionSignc c = spanc ("glyphicon glyphicon-question-sign " ++ c) []
+glyphiconQuestionSignc c = span' {class = "glyphicon glyphicon-question-sign " ++ c} []
 glyphiconQuestionSign' : Html
 glyphiconQuestionSign' = glyphiconQuestionSignc ""
 glyphiconInfoSignc : ClassString -> Html
-glyphiconInfoSignc c = spanc ("glyphicon glyphicon-info-sign " ++ c) []
+glyphiconInfoSignc c = span' {class = "glyphicon glyphicon-info-sign " ++ c} []
 glyphiconInfoSign' : Html
 glyphiconInfoSign' = glyphiconInfoSignc ""
 glyphiconScreenshotc : ClassString -> Html
-glyphiconScreenshotc c = spanc ("glyphicon glyphicon-screenshot " ++ c) []
+glyphiconScreenshotc c = span' {class = "glyphicon glyphicon-screenshot " ++ c} []
 glyphiconScreenshot' : Html
 glyphiconScreenshot' = glyphiconScreenshotc ""
 glyphiconRemoveCirclec : ClassString -> Html
-glyphiconRemoveCirclec c = spanc ("glyphicon glyphicon-remove-circle " ++ c) []
+glyphiconRemoveCirclec c = span' {class = "glyphicon glyphicon-remove-circle " ++ c} []
 glyphiconRemoveCircle' : Html
 glyphiconRemoveCircle' = glyphiconRemoveCirclec ""
 glyphiconOkCirclec : ClassString -> Html
-glyphiconOkCirclec c = spanc ("glyphicon glyphicon-ok-circle " ++ c) []
+glyphiconOkCirclec c = span' {class = "glyphicon glyphicon-ok-circle " ++ c} []
 glyphiconOkCircle' : Html
 glyphiconOkCircle' = glyphiconOkCirclec ""
 glyphiconBanCirclec : ClassString -> Html
-glyphiconBanCirclec c = spanc ("glyphicon glyphicon-ban-circle " ++ c) []
+glyphiconBanCirclec c = span' {class = "glyphicon glyphicon-ban-circle " ++ c} []
 glyphiconBanCircle' : Html
 glyphiconBanCircle' = glyphiconBanCirclec ""
 glyphiconArrowLeftc : ClassString -> Html
-glyphiconArrowLeftc c = spanc ("glyphicon glyphicon-arrow-left " ++ c) []
+glyphiconArrowLeftc c = span' {class = "glyphicon glyphicon-arrow-left " ++ c} []
 glyphiconArrowLeft' : Html
 glyphiconArrowLeft' = glyphiconArrowLeftc ""
 glyphiconArrowRightc : ClassString -> Html
-glyphiconArrowRightc c = spanc ("glyphicon glyphicon-arrow-right " ++ c) []
+glyphiconArrowRightc c = span' {class = "glyphicon glyphicon-arrow-right " ++ c} []
 glyphiconArrowRight' : Html
 glyphiconArrowRight' = glyphiconArrowRightc ""
 glyphiconArrowUpc : ClassString -> Html
-glyphiconArrowUpc c = spanc ("glyphicon glyphicon-arrow-up " ++ c) []
+glyphiconArrowUpc c = span' {class = "glyphicon glyphicon-arrow-up " ++ c} []
 glyphiconArrowUp' : Html
 glyphiconArrowUp' = glyphiconArrowUpc ""
 glyphiconArrowDownc : ClassString -> Html
-glyphiconArrowDownc c = spanc ("glyphicon glyphicon-arrow-down " ++ c) []
+glyphiconArrowDownc c = span' {class = "glyphicon glyphicon-arrow-down " ++ c} []
 glyphiconArrowDown' : Html
 glyphiconArrowDown' = glyphiconArrowDownc ""
 glyphiconShareAltc : ClassString -> Html
-glyphiconShareAltc c = spanc ("glyphicon glyphicon-share-alt " ++ c) []
+glyphiconShareAltc c = span' {class = "glyphicon glyphicon-share-alt " ++ c} []
 glyphiconShareAlt' : Html
 glyphiconShareAlt' = glyphiconShareAltc ""
 glyphiconResizeFullc : ClassString -> Html
-glyphiconResizeFullc c = spanc ("glyphicon glyphicon-resize-full " ++ c) []
+glyphiconResizeFullc c = span' {class = "glyphicon glyphicon-resize-full " ++ c} []
 glyphiconResizeFull' : Html
 glyphiconResizeFull' = glyphiconResizeFullc ""
 glyphiconResizeSmallc : ClassString -> Html
-glyphiconResizeSmallc c = spanc ("glyphicon glyphicon-resize-small " ++ c) []
+glyphiconResizeSmallc c = span' {class = "glyphicon glyphicon-resize-small " ++ c} []
 glyphiconResizeSmall' : Html
 glyphiconResizeSmall' = glyphiconResizeSmallc ""
 glyphiconExclamationSignc : ClassString -> Html
-glyphiconExclamationSignc c = spanc ("glyphicon glyphicon-exclamation-sign " ++ c) []
+glyphiconExclamationSignc c = span' {class = "glyphicon glyphicon-exclamation-sign " ++ c} []
 glyphiconExclamationSign' : Html
 glyphiconExclamationSign' = glyphiconExclamationSignc ""
 glyphiconGiftc : ClassString -> Html
-glyphiconGiftc c = spanc ("glyphicon glyphicon-gift " ++ c) []
+glyphiconGiftc c = span' {class = "glyphicon glyphicon-gift " ++ c} []
 glyphiconGift' : Html
 glyphiconGift' = glyphiconGiftc ""
 glyphiconLeafc : ClassString -> Html
-glyphiconLeafc c = spanc ("glyphicon glyphicon-leaf " ++ c) []
+glyphiconLeafc c = span' {class = "glyphicon glyphicon-leaf " ++ c} []
 glyphiconLeaf' : Html
 glyphiconLeaf' = glyphiconLeafc ""
 glyphiconFirec : ClassString -> Html
-glyphiconFirec c = spanc ("glyphicon glyphicon-fire " ++ c) []
+glyphiconFirec c = span' {class = "glyphicon glyphicon-fire " ++ c} []
 glyphiconFire' : Html
 glyphiconFire' = glyphiconFirec ""
 glyphiconEyeOpenc : ClassString -> Html
-glyphiconEyeOpenc c = spanc ("glyphicon glyphicon-eye-open " ++ c) []
+glyphiconEyeOpenc c = span' {class = "glyphicon glyphicon-eye-open " ++ c} []
 glyphiconEyeOpen' : Html
 glyphiconEyeOpen' = glyphiconEyeOpenc ""
 glyphiconEyeClosec : ClassString -> Html
-glyphiconEyeClosec c = spanc ("glyphicon glyphicon-eye-close " ++ c) []
+glyphiconEyeClosec c = span' {class = "glyphicon glyphicon-eye-close " ++ c} []
 glyphiconEyeClose' : Html
 glyphiconEyeClose' = glyphiconEyeClosec ""
 glyphiconWarningSignc : ClassString -> Html
-glyphiconWarningSignc c = spanc ("glyphicon glyphicon-warning-sign " ++ c) []
+glyphiconWarningSignc c = span' {class = "glyphicon glyphicon-warning-sign " ++ c} []
 glyphiconWarningSign' : Html
 glyphiconWarningSign' = glyphiconWarningSignc ""
 glyphiconPlanec : ClassString -> Html
-glyphiconPlanec c = spanc ("glyphicon glyphicon-plane " ++ c) []
+glyphiconPlanec c = span' {class = "glyphicon glyphicon-plane " ++ c} []
 glyphiconPlane' : Html
 glyphiconPlane' = glyphiconPlanec ""
 glyphiconCalendarc : ClassString -> Html
-glyphiconCalendarc c = spanc ("glyphicon glyphicon-calendar " ++ c) []
+glyphiconCalendarc c = span' {class = "glyphicon glyphicon-calendar " ++ c} []
 glyphiconCalendar' : Html
 glyphiconCalendar' = glyphiconCalendarc ""
 glyphiconRandomc : ClassString -> Html
-glyphiconRandomc c = spanc ("glyphicon glyphicon-random " ++ c) []
+glyphiconRandomc c = span' {class = "glyphicon glyphicon-random " ++ c} []
 glyphiconRandom' : Html
 glyphiconRandom' = glyphiconRandomc ""
 glyphiconCommentc : ClassString -> Html
-glyphiconCommentc c = spanc ("glyphicon glyphicon-comment " ++ c) []
+glyphiconCommentc c = span' {class = "glyphicon glyphicon-comment " ++ c} []
 glyphiconComment' : Html
 glyphiconComment' = glyphiconCommentc ""
 glyphiconMagnetc : ClassString -> Html
-glyphiconMagnetc c = spanc ("glyphicon glyphicon-magnet " ++ c) []
+glyphiconMagnetc c = span' {class = "glyphicon glyphicon-magnet " ++ c} []
 glyphiconMagnet' : Html
 glyphiconMagnet' = glyphiconMagnetc ""
 glyphiconChevronUpc : ClassString -> Html
-glyphiconChevronUpc c = spanc ("glyphicon glyphicon-chevron-up " ++ c) []
+glyphiconChevronUpc c = span' {class = "glyphicon glyphicon-chevron-up " ++ c} []
 glyphiconChevronUp' : Html
 glyphiconChevronUp' = glyphiconChevronUpc ""
 glyphiconChevronDownc : ClassString -> Html
-glyphiconChevronDownc c = spanc ("glyphicon glyphicon-chevron-down " ++ c) []
+glyphiconChevronDownc c = span' {class = "glyphicon glyphicon-chevron-down " ++ c} []
 glyphiconChevronDown' : Html
 glyphiconChevronDown' = glyphiconChevronDownc ""
 glyphiconRetweetc : ClassString -> Html
-glyphiconRetweetc c = spanc ("glyphicon glyphicon-retweet " ++ c) []
+glyphiconRetweetc c = span' {class = "glyphicon glyphicon-retweet " ++ c} []
 glyphiconRetweet' : Html
 glyphiconRetweet' = glyphiconRetweetc ""
 glyphiconShoppingCartc : ClassString -> Html
-glyphiconShoppingCartc c = spanc ("glyphicon glyphicon-shopping-cart " ++ c) []
+glyphiconShoppingCartc c = span' {class = "glyphicon glyphicon-shopping-cart " ++ c} []
 glyphiconShoppingCart' : Html
 glyphiconShoppingCart' = glyphiconShoppingCartc ""
 glyphiconFolderClosec : ClassString -> Html
-glyphiconFolderClosec c = spanc ("glyphicon glyphicon-folder-close " ++ c) []
+glyphiconFolderClosec c = span' {class = "glyphicon glyphicon-folder-close " ++ c} []
 glyphiconFolderClose' : Html
 glyphiconFolderClose' = glyphiconFolderClosec ""
 glyphiconFolderOpenc : ClassString -> Html
-glyphiconFolderOpenc c = spanc ("glyphicon glyphicon-folder-open " ++ c) []
+glyphiconFolderOpenc c = span' {class = "glyphicon glyphicon-folder-open " ++ c} []
 glyphiconFolderOpen' : Html
 glyphiconFolderOpen' = glyphiconFolderOpenc ""
 glyphiconResizeVerticalc : ClassString -> Html
-glyphiconResizeVerticalc c = spanc ("glyphicon glyphicon-resize-vertical " ++ c) []
+glyphiconResizeVerticalc c = span' {class = "glyphicon glyphicon-resize-vertical " ++ c} []
 glyphiconResizeVertical' : Html
 glyphiconResizeVertical' = glyphiconResizeVerticalc ""
 glyphiconResizeHorizontalc : ClassString -> Html
-glyphiconResizeHorizontalc c = spanc ("glyphicon glyphicon-resize-horizontal " ++ c) []
+glyphiconResizeHorizontalc c = span' {class = "glyphicon glyphicon-resize-horizontal " ++ c} []
 glyphiconResizeHorizontal' : Html
 glyphiconResizeHorizontal' = glyphiconResizeHorizontalc ""
 glyphiconHddc : ClassString -> Html
-glyphiconHddc c = spanc ("glyphicon glyphicon-hdd " ++ c) []
+glyphiconHddc c = span' {class = "glyphicon glyphicon-hdd " ++ c} []
 glyphiconHdd' : Html
 glyphiconHdd' = glyphiconHddc ""
 glyphiconBullhornc : ClassString -> Html
-glyphiconBullhornc c = spanc ("glyphicon glyphicon-bullhorn " ++ c) []
+glyphiconBullhornc c = span' {class = "glyphicon glyphicon-bullhorn " ++ c} []
 glyphiconBullhorn' : Html
 glyphiconBullhorn' = glyphiconBullhornc ""
 glyphiconBellc : ClassString -> Html
-glyphiconBellc c = spanc ("glyphicon glyphicon-bell " ++ c) []
+glyphiconBellc c = span' {class = "glyphicon glyphicon-bell " ++ c} []
 glyphiconBell' : Html
 glyphiconBell' = glyphiconBellc ""
 glyphiconCertificatec : ClassString -> Html
-glyphiconCertificatec c = spanc ("glyphicon glyphicon-certificate " ++ c) []
+glyphiconCertificatec c = span' {class = "glyphicon glyphicon-certificate " ++ c} []
 glyphiconCertificate' : Html
 glyphiconCertificate' = glyphiconCertificatec ""
 glyphiconThumbsUpc : ClassString -> Html
-glyphiconThumbsUpc c = spanc ("glyphicon glyphicon-thumbs-up " ++ c) []
+glyphiconThumbsUpc c = span' {class = "glyphicon glyphicon-thumbs-up " ++ c} []
 glyphiconThumbsUp' : Html
 glyphiconThumbsUp' = glyphiconThumbsUpc ""
 glyphiconThumbsDownc : ClassString -> Html
-glyphiconThumbsDownc c = spanc ("glyphicon glyphicon-thumbs-down " ++ c) []
+glyphiconThumbsDownc c = span' {class = "glyphicon glyphicon-thumbs-down " ++ c} []
 glyphiconThumbsDown' : Html
 glyphiconThumbsDown' = glyphiconThumbsDownc ""
 glyphiconHandRightc : ClassString -> Html
-glyphiconHandRightc c = spanc ("glyphicon glyphicon-hand-right " ++ c) []
+glyphiconHandRightc c = span' {class = "glyphicon glyphicon-hand-right " ++ c} []
 glyphiconHandRight' : Html
 glyphiconHandRight' = glyphiconHandRightc ""
 glyphiconHandLeftc : ClassString -> Html
-glyphiconHandLeftc c = spanc ("glyphicon glyphicon-hand-left " ++ c) []
+glyphiconHandLeftc c = span' {class = "glyphicon glyphicon-hand-left " ++ c} []
 glyphiconHandLeft' : Html
 glyphiconHandLeft' = glyphiconHandLeftc ""
 glyphiconHandUpc : ClassString -> Html
-glyphiconHandUpc c = spanc ("glyphicon glyphicon-hand-up " ++ c) []
+glyphiconHandUpc c = span' {class = "glyphicon glyphicon-hand-up " ++ c} []
 glyphiconHandUp' : Html
 glyphiconHandUp' = glyphiconHandUpc ""
 glyphiconHandDownc : ClassString -> Html
-glyphiconHandDownc c = spanc ("glyphicon glyphicon-hand-down " ++ c) []
+glyphiconHandDownc c = span' {class = "glyphicon glyphicon-hand-down " ++ c} []
 glyphiconHandDown' : Html
 glyphiconHandDown' = glyphiconHandDownc ""
 glyphiconCircleArrowRightc : ClassString -> Html
-glyphiconCircleArrowRightc c = spanc ("glyphicon glyphicon-circle-arrow-right " ++ c) []
+glyphiconCircleArrowRightc c = span' {class = "glyphicon glyphicon-circle-arrow-right " ++ c} []
 glyphiconCircleArrowRight' : Html
 glyphiconCircleArrowRight' = glyphiconCircleArrowRightc ""
 glyphiconCircleArrowLeftc : ClassString -> Html
-glyphiconCircleArrowLeftc c = spanc ("glyphicon glyphicon-circle-arrow-left " ++ c) []
+glyphiconCircleArrowLeftc c = span' {class = "glyphicon glyphicon-circle-arrow-left " ++ c} []
 glyphiconCircleArrowLeft' : Html
 glyphiconCircleArrowLeft' = glyphiconCircleArrowLeftc ""
 glyphiconCircleArrowUpc : ClassString -> Html
-glyphiconCircleArrowUpc c = spanc ("glyphicon glyphicon-circle-arrow-up " ++ c) []
+glyphiconCircleArrowUpc c = span' {class = "glyphicon glyphicon-circle-arrow-up " ++ c} []
 glyphiconCircleArrowUp' : Html
 glyphiconCircleArrowUp' = glyphiconCircleArrowUpc ""
 glyphiconCircleArrowDownc : ClassString -> Html
-glyphiconCircleArrowDownc c = spanc ("glyphicon glyphicon-circle-arrow-down " ++ c) []
+glyphiconCircleArrowDownc c = span' {class = "glyphicon glyphicon-circle-arrow-down " ++ c} []
 glyphiconCircleArrowDown' : Html
 glyphiconCircleArrowDown' = glyphiconCircleArrowDownc ""
 glyphiconGlobec : ClassString -> Html
-glyphiconGlobec c = spanc ("glyphicon glyphicon-globe " ++ c) []
+glyphiconGlobec c = span' {class = "glyphicon glyphicon-globe " ++ c} []
 glyphiconGlobe' : Html
 glyphiconGlobe' = glyphiconGlobec ""
 glyphiconWrenchc : ClassString -> Html
-glyphiconWrenchc c = spanc ("glyphicon glyphicon-wrench " ++ c) []
+glyphiconWrenchc c = span' {class = "glyphicon glyphicon-wrench " ++ c} []
 glyphiconWrench' : Html
 glyphiconWrench' = glyphiconWrenchc ""
 glyphiconTasksc : ClassString -> Html
-glyphiconTasksc c = spanc ("glyphicon glyphicon-tasks " ++ c) []
+glyphiconTasksc c = span' {class = "glyphicon glyphicon-tasks " ++ c} []
 glyphiconTasks' : Html
 glyphiconTasks' = glyphiconTasksc ""
 glyphiconFilterc : ClassString -> Html
-glyphiconFilterc c = spanc ("glyphicon glyphicon-filter " ++ c) []
+glyphiconFilterc c = span' {class = "glyphicon glyphicon-filter " ++ c} []
 glyphiconFilter' : Html
 glyphiconFilter' = glyphiconFilterc ""
 glyphiconBriefcasec : ClassString -> Html
-glyphiconBriefcasec c = spanc ("glyphicon glyphicon-briefcase " ++ c) []
+glyphiconBriefcasec c = span' {class = "glyphicon glyphicon-briefcase " ++ c} []
 glyphiconBriefcase' : Html
 glyphiconBriefcase' = glyphiconBriefcasec ""
 glyphiconFullscreenc : ClassString -> Html
-glyphiconFullscreenc c = spanc ("glyphicon glyphicon-fullscreen " ++ c) []
+glyphiconFullscreenc c = span' {class = "glyphicon glyphicon-fullscreen " ++ c} []
 glyphiconFullscreen' : Html
 glyphiconFullscreen' = glyphiconFullscreenc ""
 glyphiconDashboardc : ClassString -> Html
-glyphiconDashboardc c = spanc ("glyphicon glyphicon-dashboard " ++ c) []
+glyphiconDashboardc c = span' {class = "glyphicon glyphicon-dashboard " ++ c} []
 glyphiconDashboard' : Html
 glyphiconDashboard' = glyphiconDashboardc ""
 glyphiconPaperclipc : ClassString -> Html
-glyphiconPaperclipc c = spanc ("glyphicon glyphicon-paperclip " ++ c) []
+glyphiconPaperclipc c = span' {class = "glyphicon glyphicon-paperclip " ++ c} []
 glyphiconPaperclip' : Html
 glyphiconPaperclip' = glyphiconPaperclipc ""
 glyphiconHeartEmptyc : ClassString -> Html
-glyphiconHeartEmptyc c = spanc ("glyphicon glyphicon-heart-empty " ++ c) []
+glyphiconHeartEmptyc c = span' {class = "glyphicon glyphicon-heart-empty " ++ c} []
 glyphiconHeartEmpty' : Html
 glyphiconHeartEmpty' = glyphiconHeartEmptyc ""
 glyphiconLinkc : ClassString -> Html
-glyphiconLinkc c = spanc ("glyphicon glyphicon-link " ++ c) []
+glyphiconLinkc c = span' {class = "glyphicon glyphicon-link " ++ c} []
 glyphiconLink' : Html
 glyphiconLink' = glyphiconLinkc ""
 glyphiconPhonec : ClassString -> Html
-glyphiconPhonec c = spanc ("glyphicon glyphicon-phone " ++ c) []
+glyphiconPhonec c = span' {class = "glyphicon glyphicon-phone " ++ c} []
 glyphiconPhone' : Html
 glyphiconPhone' = glyphiconPhonec ""
 glyphiconPushpinc : ClassString -> Html
-glyphiconPushpinc c = spanc ("glyphicon glyphicon-pushpin " ++ c) []
+glyphiconPushpinc c = span' {class = "glyphicon glyphicon-pushpin " ++ c} []
 glyphiconPushpin' : Html
 glyphiconPushpin' = glyphiconPushpinc ""
 glyphiconUsdc : ClassString -> Html
-glyphiconUsdc c = spanc ("glyphicon glyphicon-usd " ++ c) []
+glyphiconUsdc c = span' {class = "glyphicon glyphicon-usd " ++ c} []
 glyphiconUsd' : Html
 glyphiconUsd' = glyphiconUsdc ""
 glyphiconGbpc : ClassString -> Html
-glyphiconGbpc c = spanc ("glyphicon glyphicon-gbp " ++ c) []
+glyphiconGbpc c = span' {class = "glyphicon glyphicon-gbp " ++ c} []
 glyphiconGbp' : Html
 glyphiconGbp' = glyphiconGbpc ""
 glyphiconSortc : ClassString -> Html
-glyphiconSortc c = spanc ("glyphicon glyphicon-sort " ++ c) []
+glyphiconSortc c = span' {class = "glyphicon glyphicon-sort " ++ c} []
 glyphiconSort' : Html
 glyphiconSort' = glyphiconSortc ""
 glyphiconSortByAlphabetc : ClassString -> Html
-glyphiconSortByAlphabetc c = spanc ("glyphicon glyphicon-sort-by-alphabet " ++ c) []
+glyphiconSortByAlphabetc c = span' {class = "glyphicon glyphicon-sort-by-alphabet " ++ c} []
 glyphiconSortByAlphabet' : Html
 glyphiconSortByAlphabet' = glyphiconSortByAlphabetc ""
 glyphiconSortByAlphabetAltc : ClassString -> Html
-glyphiconSortByAlphabetAltc c = spanc ("glyphicon glyphicon-sort-by-alphabet-alt " ++ c) []
+glyphiconSortByAlphabetAltc c = span' {class = "glyphicon glyphicon-sort-by-alphabet-alt " ++ c} []
 glyphiconSortByAlphabetAlt' : Html
 glyphiconSortByAlphabetAlt' = glyphiconSortByAlphabetAltc ""
 glyphiconSortByOrderc : ClassString -> Html
-glyphiconSortByOrderc c = spanc ("glyphicon glyphicon-sort-by-order " ++ c) []
+glyphiconSortByOrderc c = span' {class = "glyphicon glyphicon-sort-by-order " ++ c} []
 glyphiconSortByOrder' : Html
 glyphiconSortByOrder' = glyphiconSortByOrderc ""
 glyphiconSortByOrderAltc : ClassString -> Html
-glyphiconSortByOrderAltc c = spanc ("glyphicon glyphicon-sort-by-order-alt " ++ c) []
+glyphiconSortByOrderAltc c = span' {class = "glyphicon glyphicon-sort-by-order-alt " ++ c} []
 glyphiconSortByOrderAlt' : Html
 glyphiconSortByOrderAlt' = glyphiconSortByOrderAltc ""
 glyphiconSortByAttributesc : ClassString -> Html
-glyphiconSortByAttributesc c = spanc ("glyphicon glyphicon-sort-by-attributes " ++ c) []
+glyphiconSortByAttributesc c = span' {class = "glyphicon glyphicon-sort-by-attributes " ++ c} []
 glyphiconSortByAttributes' : Html
 glyphiconSortByAttributes' = glyphiconSortByAttributesc ""
 glyphiconSortByAttributesAltc : ClassString -> Html
-glyphiconSortByAttributesAltc c = spanc ("glyphicon glyphicon-sort-by-attributes-alt " ++ c) []
+glyphiconSortByAttributesAltc c = span' {class = "glyphicon glyphicon-sort-by-attributes-alt " ++ c} []
 glyphiconSortByAttributesAlt' : Html
 glyphiconSortByAttributesAlt' = glyphiconSortByAttributesAltc ""
 glyphiconUncheckedc : ClassString -> Html
-glyphiconUncheckedc c = spanc ("glyphicon glyphicon-unchecked " ++ c) []
+glyphiconUncheckedc c = span' {class = "glyphicon glyphicon-unchecked " ++ c} []
 glyphiconUnchecked' : Html
 glyphiconUnchecked' = glyphiconUncheckedc ""
 glyphiconExpandc : ClassString -> Html
-glyphiconExpandc c = spanc ("glyphicon glyphicon-expand " ++ c) []
+glyphiconExpandc c = span' {class = "glyphicon glyphicon-expand " ++ c} []
 glyphiconExpand' : Html
 glyphiconExpand' = glyphiconExpandc ""
 glyphiconCollapseDownc : ClassString -> Html
-glyphiconCollapseDownc c = spanc ("glyphicon glyphicon-collapse-down " ++ c) []
+glyphiconCollapseDownc c = span' {class = "glyphicon glyphicon-collapse-down " ++ c} []
 glyphiconCollapseDown' : Html
 glyphiconCollapseDown' = glyphiconCollapseDownc ""
 glyphiconCollapseUpc : ClassString -> Html
-glyphiconCollapseUpc c = spanc ("glyphicon glyphicon-collapse-up " ++ c) []
+glyphiconCollapseUpc c = span' {class = "glyphicon glyphicon-collapse-up " ++ c} []
 glyphiconCollapseUp' : Html
 glyphiconCollapseUp' = glyphiconCollapseUpc ""
 glyphiconLogInc : ClassString -> Html
-glyphiconLogInc c = spanc ("glyphicon glyphicon-log-in " ++ c) []
+glyphiconLogInc c = span' {class = "glyphicon glyphicon-log-in " ++ c} []
 glyphiconLogIn' : Html
 glyphiconLogIn' = glyphiconLogInc ""
 glyphiconFlashc : ClassString -> Html
-glyphiconFlashc c = spanc ("glyphicon glyphicon-flash " ++ c) []
+glyphiconFlashc c = span' {class = "glyphicon glyphicon-flash " ++ c} []
 glyphiconFlash' : Html
 glyphiconFlash' = glyphiconFlashc ""
 glyphiconLogOutc : ClassString -> Html
-glyphiconLogOutc c = spanc ("glyphicon glyphicon-log-out " ++ c) []
+glyphiconLogOutc c = span' {class = "glyphicon glyphicon-log-out " ++ c} []
 glyphiconLogOut' : Html
 glyphiconLogOut' = glyphiconLogOutc ""
 glyphiconNewWindowc : ClassString -> Html
-glyphiconNewWindowc c = spanc ("glyphicon glyphicon-new-window " ++ c) []
+glyphiconNewWindowc c = span' {class = "glyphicon glyphicon-new-window " ++ c} []
 glyphiconNewWindow' : Html
 glyphiconNewWindow' = glyphiconNewWindowc ""
 glyphiconRecordc : ClassString -> Html
-glyphiconRecordc c = spanc ("glyphicon glyphicon-record " ++ c) []
+glyphiconRecordc c = span' {class = "glyphicon glyphicon-record " ++ c} []
 glyphiconRecord' : Html
 glyphiconRecord' = glyphiconRecordc ""
 glyphiconSavec : ClassString -> Html
-glyphiconSavec c = spanc ("glyphicon glyphicon-save " ++ c) []
+glyphiconSavec c = span' {class = "glyphicon glyphicon-save " ++ c} []
 glyphiconSave' : Html
 glyphiconSave' = glyphiconSavec ""
 glyphiconOpenc : ClassString -> Html
-glyphiconOpenc c = spanc ("glyphicon glyphicon-open " ++ c) []
+glyphiconOpenc c = span' {class = "glyphicon glyphicon-open " ++ c} []
 glyphiconOpen' : Html
 glyphiconOpen' = glyphiconOpenc ""
 glyphiconSavedc : ClassString -> Html
-glyphiconSavedc c = spanc ("glyphicon glyphicon-saved " ++ c) []
+glyphiconSavedc c = span' {class = "glyphicon glyphicon-saved " ++ c} []
 glyphiconSaved' : Html
 glyphiconSaved' = glyphiconSavedc ""
 glyphiconImportc : ClassString -> Html
-glyphiconImportc c = spanc ("glyphicon glyphicon-import " ++ c) []
+glyphiconImportc c = span' {class = "glyphicon glyphicon-import " ++ c} []
 glyphiconImport' : Html
 glyphiconImport' = glyphiconImportc ""
 glyphiconExportc : ClassString -> Html
-glyphiconExportc c = spanc ("glyphicon glyphicon-export " ++ c) []
+glyphiconExportc c = span' {class = "glyphicon glyphicon-export " ++ c} []
 glyphiconExport' : Html
 glyphiconExport' = glyphiconExportc ""
 glyphiconSendc : ClassString -> Html
-glyphiconSendc c = spanc ("glyphicon glyphicon-send " ++ c) []
+glyphiconSendc c = span' {class = "glyphicon glyphicon-send " ++ c} []
 glyphiconSend' : Html
 glyphiconSend' = glyphiconSendc ""
 glyphiconFloppyDiskc : ClassString -> Html
-glyphiconFloppyDiskc c = spanc ("glyphicon glyphicon-floppy-disk " ++ c) []
+glyphiconFloppyDiskc c = span' {class = "glyphicon glyphicon-floppy-disk " ++ c} []
 glyphiconFloppyDisk' : Html
 glyphiconFloppyDisk' = glyphiconFloppyDiskc ""
 glyphiconFloppySavedc : ClassString -> Html
-glyphiconFloppySavedc c = spanc ("glyphicon glyphicon-floppy-saved " ++ c) []
+glyphiconFloppySavedc c = span' {class = "glyphicon glyphicon-floppy-saved " ++ c} []
 glyphiconFloppySaved' : Html
 glyphiconFloppySaved' = glyphiconFloppySavedc ""
 glyphiconFloppyRemovec : ClassString -> Html
-glyphiconFloppyRemovec c = spanc ("glyphicon glyphicon-floppy-remove " ++ c) []
+glyphiconFloppyRemovec c = span' {class = "glyphicon glyphicon-floppy-remove " ++ c} []
 glyphiconFloppyRemove' : Html
 glyphiconFloppyRemove' = glyphiconFloppyRemovec ""
 glyphiconFloppySavec : ClassString -> Html
-glyphiconFloppySavec c = spanc ("glyphicon glyphicon-floppy-save " ++ c) []
+glyphiconFloppySavec c = span' {class = "glyphicon glyphicon-floppy-save " ++ c} []
 glyphiconFloppySave' : Html
 glyphiconFloppySave' = glyphiconFloppySavec ""
 glyphiconFloppyOpenc : ClassString -> Html
-glyphiconFloppyOpenc c = spanc ("glyphicon glyphicon-floppy-open " ++ c) []
+glyphiconFloppyOpenc c = span' {class = "glyphicon glyphicon-floppy-open " ++ c} []
 glyphiconFloppyOpen' : Html
 glyphiconFloppyOpen' = glyphiconFloppyOpenc ""
 glyphiconCreditCardc : ClassString -> Html
-glyphiconCreditCardc c = spanc ("glyphicon glyphicon-credit-card " ++ c) []
+glyphiconCreditCardc c = span' {class = "glyphicon glyphicon-credit-card " ++ c} []
 glyphiconCreditCard' : Html
 glyphiconCreditCard' = glyphiconCreditCardc ""
 glyphiconTransferc : ClassString -> Html
-glyphiconTransferc c = spanc ("glyphicon glyphicon-transfer " ++ c) []
+glyphiconTransferc c = span' {class = "glyphicon glyphicon-transfer " ++ c} []
 glyphiconTransfer' : Html
 glyphiconTransfer' = glyphiconTransferc ""
 glyphiconCutleryc : ClassString -> Html
-glyphiconCutleryc c = spanc ("glyphicon glyphicon-cutlery " ++ c) []
+glyphiconCutleryc c = span' {class = "glyphicon glyphicon-cutlery " ++ c} []
 glyphiconCutlery' : Html
 glyphiconCutlery' = glyphiconCutleryc ""
 glyphiconHeaderc : ClassString -> Html
-glyphiconHeaderc c = spanc ("glyphicon glyphicon-header " ++ c) []
+glyphiconHeaderc c = span' {class = "glyphicon glyphicon-header " ++ c} []
 glyphiconHeader' : Html
 glyphiconHeader' = glyphiconHeaderc ""
 glyphiconCompressedc : ClassString -> Html
-glyphiconCompressedc c = spanc ("glyphicon glyphicon-compressed " ++ c) []
+glyphiconCompressedc c = span' {class = "glyphicon glyphicon-compressed " ++ c} []
 glyphiconCompressed' : Html
 glyphiconCompressed' = glyphiconCompressedc ""
 glyphiconEarphonec : ClassString -> Html
-glyphiconEarphonec c = spanc ("glyphicon glyphicon-earphone " ++ c) []
+glyphiconEarphonec c = span' {class = "glyphicon glyphicon-earphone " ++ c} []
 glyphiconEarphone' : Html
 glyphiconEarphone' = glyphiconEarphonec ""
 glyphiconPhoneAltc : ClassString -> Html
-glyphiconPhoneAltc c = spanc ("glyphicon glyphicon-phone-alt " ++ c) []
+glyphiconPhoneAltc c = span' {class = "glyphicon glyphicon-phone-alt " ++ c} []
 glyphiconPhoneAlt' : Html
 glyphiconPhoneAlt' = glyphiconPhoneAltc ""
 glyphiconTowerc : ClassString -> Html
-glyphiconTowerc c = spanc ("glyphicon glyphicon-tower " ++ c) []
+glyphiconTowerc c = span' {class = "glyphicon glyphicon-tower " ++ c} []
 glyphiconTower' : Html
 glyphiconTower' = glyphiconTowerc ""
 glyphiconStatsc : ClassString -> Html
-glyphiconStatsc c = spanc ("glyphicon glyphicon-stats " ++ c) []
+glyphiconStatsc c = span' {class = "glyphicon glyphicon-stats " ++ c} []
 glyphiconStats' : Html
 glyphiconStats' = glyphiconStatsc ""
 glyphiconSdVideoc : ClassString -> Html
-glyphiconSdVideoc c = spanc ("glyphicon glyphicon-sd-video " ++ c) []
+glyphiconSdVideoc c = span' {class = "glyphicon glyphicon-sd-video " ++ c} []
 glyphiconSdVideo' : Html
 glyphiconSdVideo' = glyphiconSdVideoc ""
 glyphiconHdVideoc : ClassString -> Html
-glyphiconHdVideoc c = spanc ("glyphicon glyphicon-hd-video " ++ c) []
+glyphiconHdVideoc c = span' {class = "glyphicon glyphicon-hd-video " ++ c} []
 glyphiconHdVideo' : Html
 glyphiconHdVideo' = glyphiconHdVideoc ""
 glyphiconSubtitlesc : ClassString -> Html
-glyphiconSubtitlesc c = spanc ("glyphicon glyphicon-subtitles " ++ c) []
+glyphiconSubtitlesc c = span' {class = "glyphicon glyphicon-subtitles " ++ c} []
 glyphiconSubtitles' : Html
 glyphiconSubtitles' = glyphiconSubtitlesc ""
 glyphiconSoundStereoc : ClassString -> Html
-glyphiconSoundStereoc c = spanc ("glyphicon glyphicon-sound-stereo " ++ c) []
+glyphiconSoundStereoc c = span' {class = "glyphicon glyphicon-sound-stereo " ++ c} []
 glyphiconSoundStereo' : Html
 glyphiconSoundStereo' = glyphiconSoundStereoc ""
 glyphiconSoundDolbyc : ClassString -> Html
-glyphiconSoundDolbyc c = spanc ("glyphicon glyphicon-sound-dolby " ++ c) []
+glyphiconSoundDolbyc c = span' {class = "glyphicon glyphicon-sound-dolby " ++ c} []
 glyphiconSoundDolby' : Html
 glyphiconSoundDolby' = glyphiconSoundDolbyc ""
 glyphiconSound51c : ClassString -> Html
-glyphiconSound51c c = spanc ("glyphicon glyphicon-sound-5-1 " ++ c) []
+glyphiconSound51c c = span' {class = "glyphicon glyphicon-sound-5-1 " ++ c} []
 glyphiconSound51' : Html
 glyphiconSound51' = glyphiconSound51c ""
 glyphiconSound61c : ClassString -> Html
-glyphiconSound61c c = spanc ("glyphicon glyphicon-sound-6-1 " ++ c) []
+glyphiconSound61c c = span' {class = "glyphicon glyphicon-sound-6-1 " ++ c} []
 glyphiconSound61' : Html
 glyphiconSound61' = glyphiconSound61c ""
 glyphiconSound71c : ClassString -> Html
-glyphiconSound71c c = spanc ("glyphicon glyphicon-sound-7-1 " ++ c) []
+glyphiconSound71c c = span' {class = "glyphicon glyphicon-sound-7-1 " ++ c} []
 glyphiconSound71' : Html
 glyphiconSound71' = glyphiconSound71c ""
 glyphiconCopyrightMarkc : ClassString -> Html
-glyphiconCopyrightMarkc c = spanc ("glyphicon glyphicon-copyright-mark " ++ c) []
+glyphiconCopyrightMarkc c = span' {class = "glyphicon glyphicon-copyright-mark " ++ c} []
 glyphiconCopyrightMark' : Html
 glyphiconCopyrightMark' = glyphiconCopyrightMarkc ""
 glyphiconRegistrationMarkc : ClassString -> Html
-glyphiconRegistrationMarkc c = spanc ("glyphicon glyphicon-registration-mark " ++ c) []
+glyphiconRegistrationMarkc c = span' {class = "glyphicon glyphicon-registration-mark " ++ c} []
 glyphiconRegistrationMark' : Html
 glyphiconRegistrationMark' = glyphiconRegistrationMarkc ""
 glyphiconCloudDownloadc : ClassString -> Html
-glyphiconCloudDownloadc c = spanc ("glyphicon glyphicon-cloud-download " ++ c) []
+glyphiconCloudDownloadc c = span' {class = "glyphicon glyphicon-cloud-download " ++ c} []
 glyphiconCloudDownload' : Html
 glyphiconCloudDownload' = glyphiconCloudDownloadc ""
 glyphiconCloudUploadc : ClassString -> Html
-glyphiconCloudUploadc c = spanc ("glyphicon glyphicon-cloud-upload " ++ c) []
+glyphiconCloudUploadc c = span' {class = "glyphicon glyphicon-cloud-upload " ++ c} []
 glyphiconCloudUpload' : Html
 glyphiconCloudUpload' = glyphiconCloudUploadc ""
 glyphiconTreeConiferc : ClassString -> Html
-glyphiconTreeConiferc c = spanc ("glyphicon glyphicon-tree-conifer " ++ c) []
+glyphiconTreeConiferc c = span' {class = "glyphicon glyphicon-tree-conifer " ++ c} []
 glyphiconTreeConifer' : Html
 glyphiconTreeConifer' = glyphiconTreeConiferc ""
 glyphiconTreeDeciduousc : ClassString -> Html
-glyphiconTreeDeciduousc c = spanc ("glyphicon glyphicon-tree-deciduous " ++ c) []
+glyphiconTreeDeciduousc c = span' {class = "glyphicon glyphicon-tree-deciduous " ++ c} []
 glyphiconTreeDeciduous' : Html
 glyphiconTreeDeciduous' = glyphiconTreeDeciduousc ""
 
@@ -1304,12 +1309,12 @@ glyphiconTreeDeciduous' = glyphiconTreeDeciduousc ""
 
 -- Navbar
 navbarc : ClassString -> List Html -> Html
-navbarc c = navc ("navbar " ++ c)
+navbarc c = nav' {class = "navbar " ++ c}
 navbarDefaultc : ClassString -> List Html -> Html
 navbarDefaultc c = navbarc ("navbar-default " ++ c)
 -- navbarDefaultStaticTop_ = navbarc' "navbar navbar-default navbar-static-top", id "top"{-role "banner"-} ]
 navbarHeader_ : List Html -> Html
-navbarHeader_ = divc "navbar-header"
+navbarHeader_ = div' {class = "navbar-header"}
 
 -- Breadcrumbs
 
@@ -1335,14 +1340,14 @@ navbarHeader_ = divc "navbar-header"
 
 -- Panels
 panelDefault_ : List Html -> Html
-panelDefault_ = divc "panel panel-default"
+panelDefault_ = div' {class = "panel panel-default"}
 panelHeading_ : List Html -> Html
-panelHeading_ = divc "panel-heading"
+panelHeading_ = div' {class = "panel-heading"}
 panelBody_ : List Html -> Html
-panelBody_ = divc "panel-body"
+panelBody_ = div' {class = "panel-body"}
 
 panelTitle' : TextString -> Html
-panelTitle' = h2c "panel-title"
+panelTitle' t = h2' {class = "panel-title", text = t}
 panelDefault' : TextString -> List (BtnParam, Signal.Message) -> List Html -> Html
 panelDefault' t btns bs =
   panelDefault_
