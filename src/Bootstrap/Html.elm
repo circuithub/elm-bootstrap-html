@@ -80,6 +80,7 @@ One major difference is that idiomatic elements such as `panelDefault'` are freq
 @docs btnInfoc, btnInfo', btnXsInfoc, btnXsInfo', btnSmInfoc, btnSmInfo', btnLgInfoc, btnLgInfo'
 @docs btnWarningc, btnWarning', btnXsWarningc, btnXsWarning', btnSmWarningc, btnSmWarning', btnLgWarningc, btnLgWarning'
 @docs btnDangerc, btnDanger', btnXsDangerc, btnXsDanger', btnSmDangerc, btnSmDanger', btnLgDangerc, btnLgDanger'
+@docs btnSubmitPrimaryc, btnSubmitPrimary', btnSubmitXsPrimaryc, btnSubmitXsPrimary', btnSubmitSmPrimaryc, btnSubmitSmPrimary', btnSubmitLgPrimaryc, btnSubmitLgPrimary'
 
 ## Images
 * Responsive images
@@ -345,106 +346,123 @@ btnParam =
   }
 
 btnDefaultc : ClassString -> BtnParam -> Signal.Message -> Html
-btnDefaultc c = Internal.btnc ("btn-default " ++ c)
+btnDefaultc c p = Internal.btnc ("btn-default " ++ c) "button" p << Just
 btnDefault' : BtnParam -> Signal.Message -> Html
-btnDefault' = Internal.btnc "btn-default"
+btnDefault' p = Internal.btnc "btn-default" "button" p << Just
 btnXsDefaultc : ClassString -> BtnParam -> Signal.Message -> Html
-btnXsDefaultc c = Internal.btnc ("btn-xs btn-default  " ++ c)
+btnXsDefaultc c p = Internal.btnc ("btn-xs btn-default  " ++ c) "button" p << Just
 btnXsDefault' : BtnParam -> Signal.Message -> Html
-btnXsDefault' = Internal.btnc "btn-xs btn-default "
+btnXsDefault' p = Internal.btnc "btn-xs btn-default " "button" p << Just
 btnSmDefaultc : ClassString -> BtnParam -> Signal.Message -> Html
-btnSmDefaultc c = Internal.btnc ("btn-sm btn-default " ++ c)
+btnSmDefaultc c p = Internal.btnc ("btn-sm btn-default " ++ c) "button" p << Just
 btnSmDefault' : BtnParam -> Signal.Message -> Html
-btnSmDefault' = Internal.btnc "btn-sm btn-default"
+btnSmDefault' p = Internal.btnc "btn-sm btn-default" "button" p << Just
 btnLgDefaultc : ClassString -> BtnParam -> Signal.Message -> Html
-btnLgDefaultc c = Internal.btnc ("btn-lg btn-default " ++ c)
+btnLgDefaultc c p = Internal.btnc ("btn-lg btn-default " ++ c) "button" p << Just
 btnLgDefault' : BtnParam -> Signal.Message -> Html
-btnLgDefault' = Internal.btnc "btn-lg btn-default"
+btnLgDefault' p = Internal.btnc "btn-lg btn-default" "button" p << Just
 
 btnPrimaryc : ClassString -> BtnParam -> Signal.Message -> Html
-btnPrimaryc c = Internal.btnc ("btn-primary " ++ c)
+btnPrimaryc c p = Internal.btnc ("btn-primary " ++ c) "button" p << Just
 btnPrimary' : BtnParam -> Signal.Message -> Html
-btnPrimary' = Internal.btnc "btn-primary"
+btnPrimary' p = Internal.btnc "btn-primary" "button" p << Just
 btnXsPrimaryc : ClassString -> BtnParam -> Signal.Message -> Html
-btnXsPrimaryc c = Internal.btnc ("btn-xs btn-primary " ++ c)
+btnXsPrimaryc c p = Internal.btnc ("btn-xs btn-primary " ++ c) "button" p << Just
 btnXsPrimary' : BtnParam -> Signal.Message -> Html
-btnXsPrimary' = Internal.btnc "btn-xs btn-primary "
+btnXsPrimary' p = Internal.btnc "btn-xs btn-primary " "button" p << Just
 btnSmPrimaryc : ClassString -> BtnParam -> Signal.Message -> Html
-btnSmPrimaryc c = Internal.btnc ("btn-sm btn-primary " ++ c)
+btnSmPrimaryc c p = Internal.btnc ("btn-sm btn-primary " ++ c) "button" p << Just
 btnSmPrimary' : BtnParam -> Signal.Message -> Html
-btnSmPrimary' = Internal.btnc "btn-sm btn-primary"
+btnSmPrimary' p = Internal.btnc "btn-sm btn-primary" "button" p << Just
 btnLgPrimaryc : ClassString -> BtnParam -> Signal.Message -> Html
-btnLgPrimaryc c = Internal.btnc ("btn-lg btn-primary " ++ c)
+btnLgPrimaryc c p = Internal.btnc ("btn-lg btn-primary " ++ c) "button" p << Just
 btnLgPrimary' : BtnParam -> Signal.Message -> Html
-btnLgPrimary' = Internal.btnc "btn-lg btn-primary"
+btnLgPrimary' p = Internal.btnc "btn-lg btn-primary" "button" p << Just
 
 btnSuccessc : ClassString -> BtnParam -> Signal.Message -> Html
-btnSuccessc c = Internal.btnc ("btn-success " ++ c)
+btnSuccessc c p = Internal.btnc ("btn-success " ++ c) "button" p << Just
 btnSuccess' : BtnParam -> Signal.Message -> Html
-btnSuccess' = Internal.btnc "btn-success"
+btnSuccess' p = Internal.btnc "btn-success" "button" p << Just
 btnXsSuccessc : ClassString -> BtnParam -> Signal.Message -> Html
-btnXsSuccessc c = Internal.btnc ("btn-xs btn-success " ++ c)
+btnXsSuccessc c p = Internal.btnc ("btn-xs btn-success " ++ c) "button" p << Just
 btnXsSuccess' : BtnParam -> Signal.Message -> Html
-btnXsSuccess' = Internal.btnc "btn-xs btn-success "
+btnXsSuccess' p = Internal.btnc "btn-xs btn-success " "button" p << Just
 btnSmSuccessc : ClassString -> BtnParam -> Signal.Message -> Html
-btnSmSuccessc c = Internal.btnc ("btn-sm btn-success " ++ c)
+btnSmSuccessc c p = Internal.btnc ("btn-sm btn-success " ++ c) "button" p << Just
 btnSmSuccess' : BtnParam -> Signal.Message -> Html
-btnSmSuccess' = Internal.btnc "btn-sm btn-success"
+btnSmSuccess' p = Internal.btnc "btn-sm btn-success" "button" p << Just
 btnLgSuccessc : ClassString -> BtnParam -> Signal.Message -> Html
-btnLgSuccessc c = Internal.btnc ("btn-lg btn-success " ++ c)
+btnLgSuccessc c p = Internal.btnc ("btn-lg btn-success " ++ c) "button" p << Just
 btnLgSuccess' : BtnParam -> Signal.Message -> Html
-btnLgSuccess' = Internal.btnc "btn-lg btn-success"
+btnLgSuccess' p = Internal.btnc "btn-lg btn-success" "button" p << Just
 
 btnInfoc : ClassString -> BtnParam -> Signal.Message -> Html
-btnInfoc c = Internal.btnc ("btn-info " ++ c)
+btnInfoc c p = Internal.btnc ("btn-info " ++ c) "button" p << Just
 btnInfo' : BtnParam -> Signal.Message -> Html
-btnInfo' = Internal.btnc "btn-info"
+btnInfo' p = Internal.btnc "btn-info" "button" p << Just
 btnXsInfoc : ClassString -> BtnParam -> Signal.Message -> Html
-btnXsInfoc c = Internal.btnc ("btn-xs btn-info " ++ c)
+btnXsInfoc c p = Internal.btnc ("btn-xs btn-info " ++ c) "button" p << Just
 btnXsInfo' : BtnParam -> Signal.Message -> Html
-btnXsInfo' = Internal.btnc "btn-xs btn-info "
+btnXsInfo' p = Internal.btnc "btn-xs btn-info " "button" p << Just
 btnSmInfoc : ClassString -> BtnParam -> Signal.Message -> Html
-btnSmInfoc c = Internal.btnc ("btn-sm btn-info " ++ c)
+btnSmInfoc c p = Internal.btnc ("btn-sm btn-info " ++ c) "button" p << Just
 btnSmInfo' : BtnParam -> Signal.Message -> Html
-btnSmInfo' = Internal.btnc "btn-sm btn-info"
+btnSmInfo' p = Internal.btnc "btn-sm btn-info" "button" p << Just
 btnLgInfoc : ClassString -> BtnParam -> Signal.Message -> Html
-btnLgInfoc c = Internal.btnc ("btn-lg btn-info " ++ c)
+btnLgInfoc c p = Internal.btnc ("btn-lg btn-info " ++ c) "button" p << Just
 btnLgInfo' : BtnParam -> Signal.Message -> Html
-btnLgInfo' = Internal.btnc "btn-lg btn-info"
+btnLgInfo' p = Internal.btnc "btn-lg btn-info" "button" p << Just
 
 btnWarningc : ClassString -> BtnParam -> Signal.Message -> Html
-btnWarningc c = Internal.btnc ("btn-warning " ++ c)
+btnWarningc c p = Internal.btnc ("btn-warning " ++ c) "button" p << Just
 btnWarning' : BtnParam -> Signal.Message -> Html
-btnWarning' = Internal.btnc "btn-warning"
+btnWarning' p = Internal.btnc "btn-warning" "button" p << Just
 btnXsWarningc : ClassString -> BtnParam -> Signal.Message -> Html
-btnXsWarningc c = Internal.btnc ("btn-xs btn-warning " ++ c)
+btnXsWarningc c p = Internal.btnc ("btn-xs btn-warning " ++ c) "button" p << Just
 btnXsWarning' : BtnParam -> Signal.Message -> Html
-btnXsWarning' = Internal.btnc "btn-xs btn-warning "
+btnXsWarning' p = Internal.btnc "btn-xs btn-warning " "button" p << Just
 btnSmWarningc : ClassString -> BtnParam -> Signal.Message -> Html
-btnSmWarningc c = Internal.btnc ("btn-sm btn-warning " ++ c)
+btnSmWarningc c p = Internal.btnc ("btn-sm btn-warning " ++ c) "button" p << Just
 btnSmWarning' : BtnParam -> Signal.Message -> Html
-btnSmWarning' = Internal.btnc "btn-sm btn-warning"
+btnSmWarning' p = Internal.btnc "btn-sm btn-warning" "button" p << Just
 btnLgWarningc : ClassString -> BtnParam -> Signal.Message -> Html
-btnLgWarningc c = Internal.btnc ("btn-lg btn-warning " ++ c)
+btnLgWarningc c p = Internal.btnc ("btn-lg btn-warning " ++ c) "button" p << Just
 btnLgWarning' : BtnParam -> Signal.Message -> Html
-btnLgWarning' = Internal.btnc "btn-lg btn-warning"
+btnLgWarning' p = Internal.btnc "btn-lg btn-warning" "button" p << Just
 
 btnDangerc : ClassString -> BtnParam -> Signal.Message -> Html
-btnDangerc c = Internal.btnc ("btn-danger " ++ c)
+btnDangerc c p = Internal.btnc ("btn-danger " ++ c) "button" p << Just
 btnDanger' : BtnParam -> Signal.Message -> Html
-btnDanger' = Internal.btnc "btn-danger"
+btnDanger' p = Internal.btnc "btn-danger" "button" p << Just
 btnXsDangerc : ClassString -> BtnParam -> Signal.Message -> Html
-btnXsDangerc c = Internal.btnc ("btn-xs btn-danger " ++ c)
+btnXsDangerc c p = Internal.btnc ("btn-xs btn-danger " ++ c) "button" p << Just
 btnXsDanger' : BtnParam -> Signal.Message -> Html
-btnXsDanger' = Internal.btnc "btn-xs btn-danger "
+btnXsDanger' p = Internal.btnc "btn-xs btn-danger " "button" p << Just
 btnSmDangerc : ClassString -> BtnParam -> Signal.Message -> Html
-btnSmDangerc c = Internal.btnc ("btn-sm btn-danger " ++ c)
+btnSmDangerc c p = Internal.btnc ("btn-sm btn-danger " ++ c) "button" p << Just
 btnSmDanger' : BtnParam -> Signal.Message -> Html
-btnSmDanger' = Internal.btnc "btn-sm btn-danger"
+btnSmDanger' p = Internal.btnc "btn-sm btn-danger" "button" p << Just
 btnLgDangerc : ClassString -> BtnParam -> Signal.Message -> Html
-btnLgDangerc c = Internal.btnc ("btn-lg btn-danger " ++ c)
+btnLgDangerc c p = Internal.btnc ("btn-lg btn-danger " ++ c) "button" p << Just
 btnLgDanger' : BtnParam -> Signal.Message -> Html
-btnLgDanger' = Internal.btnc "btn-lg btn-danger"
+btnLgDanger' p = Internal.btnc "btn-lg btn-danger" "button" p << Just
+
+btnSubmitPrimaryc : ClassString -> BtnParam -> Html
+btnSubmitPrimaryc c p = Internal.btnc ("btn-primary " ++ c) "submit" p Nothing
+btnSubmitPrimary' : BtnParam -> Html
+btnSubmitPrimary' p = Internal.btnc "btn-primary" "submit" p Nothing
+btnSubmitXsPrimaryc : ClassString -> BtnParam -> Html
+btnSubmitXsPrimaryc c p = Internal.btnc ("btn-xs btn-primary " ++ c) "submit" p Nothing
+btnSubmitXsPrimary' : BtnParam -> Html
+btnSubmitXsPrimary' p = Internal.btnc "btn-xs btn-primary " "submit" p Nothing
+btnSubmitSmPrimaryc : ClassString -> BtnParam -> Html
+btnSubmitSmPrimaryc c p = Internal.btnc ("btn-sm btn-primary " ++ c) "submit" p Nothing
+btnSubmitSmPrimary' : BtnParam -> Html
+btnSubmitSmPrimary' p = Internal.btnc "btn-sm btn-primary" "submit" p Nothing
+btnSubmitLgPrimaryc : ClassString -> BtnParam -> Html
+btnSubmitLgPrimaryc c p = Internal.btnc ("btn-lg btn-primary " ++ c) "submit" p Nothing
+btnSubmitLgPrimary' : BtnParam -> Html
+btnSubmitLgPrimary' p = Internal.btnc "btn-lg btn-primary" "submit" p Nothing
 
 -- Images
 

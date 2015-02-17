@@ -6,6 +6,7 @@ import Html.Attributes (..)
 import Html.Shorthand (..)
 import String
 import List ((::))
+import List
 import Html.Events (onClick)
 import Maybe
 import Signal
@@ -19,14 +20,16 @@ type alias BtnParam =
   , tooltip : Maybe String
   }
 
-btnc : ClassString -> BtnParam -> Signal.Message -> Html
-btnc c {icon,label,tooltip} click =
-  let consList = flip (::) []
+btnc : ClassString -> String -> BtnParam -> Maybe Signal.Message -> Html
+btnc c typ {icon,label,tooltip} click =
+  let filter = List.filterMap identity
   in button
-      ( type' "button"
+      ( type' typ
         :: (class' <| "btn " ++ c)
-        :: onClick click
-        :: Maybe.withDefault [] (Maybe.map (consList << title) tooltip)
+        :: filter
+            [ Maybe.map onClick click
+            , Maybe.map title tooltip
+            ]
       )
       ( case (icon, label) of
           (Just icon', Just label') -> [icon', text (' ' `String.cons` label')]
