@@ -3,7 +3,7 @@ module Bootstrap.Html where
 
 # Conventions
 This package follows somewhat similar conventions to those used in [Html.Shorthand](http://package.elm-lang.org/packages/circuithub/elm-html-shorthand/latest).
-One major difference is that idiomatic elements such as `panelDefault_` are frequently composites consisting of multiple elements.
+One major difference is that idiomatic elements such as `panelDefault'` are frequently composites consisting of multiple elements.
 
 # CSS
 
@@ -375,6 +375,9 @@ formGroup_ = div' {class = "form-group"}
 * `icon` - an icon for the button (see `glyphicon`s)
 * `label` - a text label for the button
 * `tooltip` - some hover-over tooltip text for the button
+
+See also [BtnParam](http://package.elm-lang.org/packages/circuithub/elm-bootstrap-html/latest/Bootstrap-Html-Internal#BtnParam)
+
 -}
 type alias BtnParam = Internal.BtnParam
 
@@ -383,6 +386,7 @@ type alias BtnParam = Internal.BtnParam
     { btnParam
     | label <- "This button doesn't have an icon or a tooltip"
     }
+
 -}
 btnParam : BtnParam
 btnParam =

@@ -1,4 +1,6 @@
 module Bootstrap.Html.Internal where
+{-| Internals for Bootstrap.Html See [Bootstrap.Html](http://package.elm-lang.org/packages/circuithub/elm-bootstrap-html/latest/Bootstrap-Html)
+-}
 
 --import String
 import Html (..)
