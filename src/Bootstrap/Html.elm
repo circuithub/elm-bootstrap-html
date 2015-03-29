@@ -24,7 +24,7 @@ One major difference is that idiomatic elements such as `panelDefault'` are freq
 * Nesting columns
 * Column ordering
 * Less mixins and variables
-@docs row',colXs',colSm',colMd',colLg'
+@docs row_,colXs_,colSm_,colMd_,colLg_
 
 ## Typography
 * Headings
@@ -66,6 +66,7 @@ One major difference is that idiomatic elements such as `panelDefault'` are freq
 * Validation states
 * Control sizing
 * Help text
+@docs formGroup_
 
 ## Buttons
 * Options
