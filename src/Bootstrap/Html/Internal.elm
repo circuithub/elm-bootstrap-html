@@ -3,13 +3,14 @@ module Bootstrap.Html.Internal where
 -}
 
 --import String
-import Html (..)
-import Html.Attributes (..)
-import Html.Shorthand (..)
+import Html exposing (..)
+import Html.Attributes exposing (..)
+import Html.Shorthand exposing (..)
 import String
-import List ((::))
+import List exposing ((::))
 import List
-import Html.Events (onClick)
+import Html.Events exposing (on)
+import Json.Decode as Json
 import Maybe
 import Signal
 
@@ -29,7 +30,7 @@ btnc c typ {icon,label,tooltip} click =
       ( type' typ
         :: (class' <| "btn " ++ c)
         :: filter
-            [ Maybe.map onClick click
+            [ Maybe.map (on "click" Json.value << always) click
             , Maybe.map title tooltip
             ]
       )

@@ -310,13 +310,13 @@ See [elm-bootstrap-dropdown](https://github.com/circuithub/elm-bootstrap-dropdow
 
 -}
 
-import Html (..)
-import Html.Attributes (..)
-import Html.Shorthand (..)
+import Html exposing (..)
+import Html.Attributes exposing (..)
+import Html.Shorthand exposing (..)
 import String
 import Maybe
 import List
-import List ((::))
+import List exposing ((::))
 import Signal
 import Bootstrap.Html.Internal as Internal
 
