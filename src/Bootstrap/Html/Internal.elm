@@ -6,32 +6,51 @@ module Bootstrap.Html.Internal where
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Shorthand exposing (..)
+import Html.Events as Html exposing (on)
+import Json.Decode as Json
 import String
 import List exposing ((::))
-import List
-import Html.Events exposing (on)
-import Json.Decode as Json
 import Maybe
-import Signal
+import Signal exposing (Address)
 
 --appendWithSpace : String -> String -> String
 --appendWithSpace x y = x ++ ' ' `String.cons` y
 
+--| Button parameters
 type alias BtnParam =
   { icon    : Maybe Html
   , label   : Maybe TextString
   , tooltip : Maybe String
   }
 
-btnc : ClassString -> String -> BtnParam -> Maybe Signal.Message -> Html
-btnc c typ {icon,label,tooltip} click =
-  let filter = List.filterMap identity
+--| Helper for creating buttons
+btnc : ClassString -> String -> BtnParam -> Address a -> a -> Html
+btnc c typ {icon,label,tooltip} addr x =
+  let filterJust = List.filterMap identity
   in button
       ( type' typ
-        :: (class' <| "btn " ++ c)
-        :: filter
-            [ Maybe.map (on "click" Json.value << always) click
-            , Maybe.map title tooltip
+        :: class' ("btn " ++ c)
+        :: Html.onClick addr x
+        :: filterJust
+            [ Maybe.map title tooltip
+            ]
+      )
+      ( case (icon, label) of
+          (Just icon', Just label') -> [icon', text (' ' `String.cons` label')]
+          (Just icon', _          ) -> [icon']
+          (_         , Just label') -> [text label']
+          _                         -> []
+      )
+
+--| Same as `btnc`, but without an event (used for submit buttons)
+btncNoevent : ClassString -> String -> BtnParam -> Html
+btncNoevent c typ {icon,label,tooltip} =
+  let filterJust = List.filterMap identity
+  in button
+      ( type' typ
+        :: class' ("btn " ++ c)
+        :: filterJust
+            [ Maybe.map title tooltip
             ]
       )
       ( case (icon, label) of
