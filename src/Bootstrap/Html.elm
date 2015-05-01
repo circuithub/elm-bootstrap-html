@@ -348,43 +348,44 @@ colLg_ xs sm md lg = div' {class = "col-xs-" ++ toString xs ++ " col-sm-" ++ toS
 --table_ : List Html -> Html
 --table_ c = tablec ""
 
-{-| A striped table
-
+{-| A table with [striped rows](http://getbootstrap.com/css/#tables-striped)
+-}
+tableStriped' : ClassString -> List Html -> Html
+tableStriped' c = table' {class = "table table-striped " ++ c}
+{-|
     import Html
     import Html.Shorthand exposing (..)
 
-    tableBodyStriped_
+    tableStriped_
     [ thead_
       [ th' {class = "text-left"} [ text  "Item #" ]
       , th' {class = "text-left"} [ text "Long Description" ]
       , th' {class = "text-right"} [ text "Units" ]
       , th' {class = "text-right"} [ text "Price" ]
       ]
-    , tbody_
-      [ tr_
-        [ td_ [ text "X" ]
-        , td_ [ text "This is an X"]
-        , td_ [ text "55"]
-        , td_ [ text "$ 100"]
-        ]
+    , tr_
+      [ td_ [ text "X" ]
+      , td_ [ text "This is an X"]
+      , td_ [ text "55"]
+      , td_ [ text "$ 100"]
       ]
-    , tbody_
-      [ tr_
-        [ td_ [ text "Y" ]
-        , td_ [ text "This is an Y"]
-        , td_ [ text "3"]
-        , td_ [ text "$ 10"]
-        ]
+    , tr_
+      [ td_ [ text "Y" ]
+      , td_ [ text "This is an Y"]
+      , td_ [ text "3"]
+      , td_ [ text "$ 10"]
       ]
     ]
 -}
-tableStriped' : ClassString -> List Html -> Html
-tableStriped' c = table' {class = "table table-striped " ++ c}
 tableStriped_ : List Html -> Html
 tableStriped_ = tableBodyStriped' ""
 
-{-| A striped table consisting of multiple body elements instead of rows
+{-| A table with striped `tbody`s instead of rows. See [Can we have multiple &lt;tbody&gt; in same &lt;table&gt;?](http://stackoverflow.com/questions/3076708/can-we-have-multiple-tbody-in-same-table)
+-}
+tableBodyStriped' : ClassString -> List Html -> Html
+tableBodyStriped' c = table' {class = "table table-body-striped " ++ c}
 
+{-|
     import Html exposing (text)
     import Html.Shorthand exposing (..)
 
@@ -419,8 +420,6 @@ tableStriped_ = tableBodyStriped' ""
       ]
     ]
 -}
-tableBodyStriped' : ClassString -> List Html -> Html
-tableBodyStriped' c = table' {class = "table table-body-striped " ++ c}
 tableBodyStriped_ : List Html -> Html
 tableBodyStriped_ = tableBodyStriped' ""
 
@@ -1485,9 +1484,12 @@ panelBody_ = div' {class = "panel-body"}
 panelTitle_ : TextString -> Html
 panelTitle_ t = h2' {class = "panel-title"} [text t]
 
-{-| [Default panel style](http://getbootstrap.com/components/#panels-heading)
+{-| A panel with the [default style](http://getbootstrap.com/components/#panels-heading).
 
-    type Action = NoOp | CreateNewButton
+    import Html
+    import Html.Shorthand exposing (..)
+
+    type Action = NoOp | NewProject
 
     actions : Mailbox Action
     actions = Signal.mailbox NoOp
@@ -1496,15 +1498,15 @@ panelTitle_ t = h2' {class = "panel-title"} [text t]
     { class = ""
     , id = "projects"
     }
-    [ panelDefault' "Projects"
-      [ ( { icon = Just glyphiconPlusSign')
+    [ panelDefault' "My Projects"               -- The heading
+      [ ( { icon = Just glyphiconPlusSign')     -- Optional buttons to the right of the heading
           , label = Just "New project"
           , tooltip = Just "Create a new project"
           }
-        , (actions.address, CreateNewButton)
+        , (actions.address, NewProject)
         )
       ]
-      [ p_
+      [ p_                                      -- Body contents
         [ text "Contents of the panel"
         ]
       ]
