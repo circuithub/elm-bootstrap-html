@@ -9,7 +9,7 @@ One major difference is that idiomatic elements such as `panelDefault'` are freq
 
 ## Overview
 * Containers
-@docs container',containerFluid'
+@docs container_,containerFluid_
 
 ## Grid system
 * Media queries
@@ -347,10 +347,78 @@ colLg_ xs sm md lg = div' {class = "col-xs-" ++ toString xs ++ " col-sm-" ++ toS
 --table' c = Html.tablec ("table " ++ c)
 --table_ : List Html -> Html
 --table_ c = tablec ""
+
+{-| A striped table
+
+    import Html
+    import Html.Shorthand exposing (..)
+
+    tableBodyStriped_
+    [ thead_
+      [ th' {class = "text-left"} [ text  "Item #" ]
+      , th' {class = "text-left"} [ text "Long Description" ]
+      , th' {class = "text-right"} [ text "Units" ]
+      , th' {class = "text-right"} [ text "Price" ]
+      ]
+    , tbody_
+      [ tr_
+        [ td_ [ text "X" ]
+        , td_ [ text "This is an X"]
+        , td_ [ text "55"]
+        , td_ [ text "$ 100"]
+        ]
+      ]
+    , tbody_
+      [ tr_
+        [ td_ [ text "Y" ]
+        , td_ [ text "This is an Y"]
+        , td_ [ text "3"]
+        , td_ [ text "$ 10"]
+        ]
+      ]
+    ]
+-}
 tableStriped' : ClassString -> List Html -> Html
 tableStriped' c = table' {class = "table table-striped " ++ c}
 tableStriped_ : List Html -> Html
 tableStriped_ = tableBodyStriped' ""
+
+{-| A striped table consisting of multiple body elements instead of rows
+
+    import Html exposing (text)
+    import Html.Shorthand exposing (..)
+
+    tableBodyStriped_
+    [ thead_
+      [ th' {class = "text-left"} [ text  "Item #" ]
+      , th' {class = "text-left"} [ text "Long Description" ]
+      , th' {class = "text-right"} [ text "Units" ]
+      , th' {class = "text-right"} [ text "Price" ]
+      ]
+    , tbody_
+      [ tr_
+        [ td_ [ text "X" ]
+        , td_ [ text "This is an X"]
+        , td_ [ text "55"]
+        , td_ [ text "$ 100"]
+        ]
+      , tr_
+        [ Html.td [Html.colspan 4] [ text "Comments...." ]
+        ]
+      ]
+    , tbody_
+      [ tr_
+        [ td_ [ text "Y" ]
+        , td_ [ text "This is an Y"]
+        , td_ [ text "3"]
+        , td_ [ text "$ 10"]
+        ]
+      , tr_
+        [ Html.td [Html.colspan 4] [ text "Comments...." ]
+        ]
+      ]
+    ]
+-}
 tableBodyStriped' : ClassString -> List Html -> Html
 tableBodyStriped' c = table' {class = "table table-body-striped " ++ c}
 tableBodyStriped_ : List Html -> Html
@@ -384,7 +452,7 @@ type alias BtnParam = Internal.BtnParam
 {-| Default parameters for a button. Use this to select only one or two options.
 
     { btnParam
-    | label <- "This button doesn't have an icon or a tooltip"
+    | label <- Just "This button doesn't have an icon or a tooltip"
     }
 
 -}
@@ -1416,6 +1484,32 @@ panelBody_ = div' {class = "panel-body"}
 
 panelTitle_ : TextString -> Html
 panelTitle_ t = h2' {class = "panel-title"} [text t]
+
+{-| [Default panel style](http://getbootstrap.com/components/#panels-heading)
+
+    type Action = NoOp | CreateNewButton
+
+    actions : Mailbox Action
+    actions = Signal.mailbox NoOp
+
+    section'
+    { class = ""
+    , id = "projects"
+    }
+    [ panelDefault' "Projects"
+      [ ( { icon = Just glyphiconPlusSign')
+          , label = Just "New project"
+          , tooltip = Just "Create a new project"
+          }
+        , (actions.address, CreateNewButton)
+        )
+      ]
+      [ p_
+        [ text "Contents of the panel"
+        ]
+      ]
+    ]
+-}
 panelDefault' : TextString -> List (BtnParam, (Address a, a)) -> List Html -> Html
 panelDefault' t btns bs =
   let uncurry3 = \f (x,(y,z)) -> f x y z
