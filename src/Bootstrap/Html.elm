@@ -353,29 +353,34 @@ colLg_ xs sm md lg = div' {class = "col-xs-" ++ toString xs ++ " col-sm-" ++ toS
 tableStriped' : ClassString -> List Html -> Html
 tableStriped' c = table' {class = "table table-striped " ++ c}
 {-|
-    import Html
+    import Html exposing (..)
     import Html.Shorthand exposing (..)
+    import Bootstrap.Html exposing (..)
 
-    tableStriped_
-    [ thead_
-      [ th' {class = "text-left"} [ text  "Item #" ]
-      , th' {class = "text-left"} [ text "Long Description" ]
-      , th' {class = "text-right"} [ text "Units" ]
-      , th' {class = "text-right"} [ text "Price" ]
+    view : Html
+    view = tableStriped_
+      [ thead_
+        [ th' {class = "text-left"} [ text  "Item #" ]
+        , th' {class = "text-left"} [ text "Long Description" ]
+        , th' {class = "text-right"} [ text "Units" ]
+        , th' {class = "text-right"} [ text "Price" ]
+        ]
+      , tr_
+        [ td_ [ text "X" ]
+        , td_ [ text "This is an X"]
+        , td_ [ text "55"]
+        , td_ [ text "$ 100"]
+        ]
+      , tr_
+        [ td_ [ text "Y" ]
+        , td_ [ text "This is an Y"]
+        , td_ [ text "3"]
+        , td_ [ text "$ 10"]
+        ]
       ]
-    , tr_
-      [ td_ [ text "X" ]
-      , td_ [ text "This is an X"]
-      , td_ [ text "55"]
-      , td_ [ text "$ 100"]
-      ]
-    , tr_
-      [ td_ [ text "Y" ]
-      , td_ [ text "This is an Y"]
-      , td_ [ text "3"]
-      , td_ [ text "$ 10"]
-      ]
-    ]
+
+    main : Html
+    main = view
 -}
 tableStriped_ : List Html -> Html
 tableStriped_ = tableBodyStriped' ""
