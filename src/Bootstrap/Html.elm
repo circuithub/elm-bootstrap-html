@@ -24,7 +24,7 @@ One major difference is that idiomatic elements such as `panelDefault'` are freq
 * Nesting columns
 * Column ordering
 * Less mixins and variables
-@docs row_,colXs_,colSm_,colMd_,colLg_
+@docs row_,colXs_,colSm_,colMd_,colLg_,colXsOffset_,colSmOffset_,colMdOffset_,colLgOffset_
 
 ## Typography
 * Headings
@@ -337,6 +337,26 @@ colMd_ : Int -> Int -> Int -> List Html -> Html
 colMd_ xs sm md    = div' {class = "col-xs-" ++ toString xs ++ " col-sm-" ++ toString sm ++ " col-md-" ++ toString md}
 colLg_ : Int -> Int -> Int -> Int -> List Html -> Html
 colLg_ xs sm md lg = div' {class = "col-xs-" ++ toString xs ++ " col-sm-" ++ toString sm ++ " col-md-" ++ toString md ++ " col-lg-" ++ toString lg}
+
+colXsOffset_ : Int -> Int -> List Html -> Html
+colXsOffset_ xs xs_offset =
+    div' {class = "col-xs-" ++ toString xs ++ "col-xs-offset-" ++ toString xs_offset}
+
+colSmOffset_ : Int -> Int -> Int -> Int -> List Html -> Html
+colSmOffset_ xs xs_offset sm sm_offset =
+    div' {class = "col-xs-" ++ toString xs ++ " col-sm-" ++ toString sm ++
+              "col-xs-offset-" ++ toString xs_offset ++ " col-sm-offset-" ++ toString sm_offset}
+
+colMdOffset_ : Int -> Int -> Int -> Int -> Int -> Int -> List Html -> Html
+colMdOffset_ xs xs_offset sm sm_offset md md_offset =
+    div' {class = "col-xs-" ++ toString xs ++ " col-sm-" ++ toString sm ++ " col-md-" ++ toString md ++
+              "col-xs-offset-" ++ toString xs_offset ++ " col-sm-offset-" ++ toString sm_offset ++ " col-md-offset-" ++ toString md_offset}
+
+colLgOffset_ : Int -> Int -> Int -> Int -> Int -> Int -> Int -> Int -> List Html -> Html
+colLgOffset_ xs xs_offset sm sm_offset md md_offset lg lg_offset =
+    div' {class = "col-xs-" ++ toString xs ++ " col-sm-" ++ toString sm ++ " col-md-" ++ toString md ++ " col-lg-" ++ toString lg ++
+              "col-xs-offset-" ++ toString xs_offset ++ " col-sm-offset-" ++ toString sm_offset ++
+              " col-md-offset-" ++ toString md_offset ++ " col-lg-offset-" ++ toString lg_offset}
 
 -- Typography
 
