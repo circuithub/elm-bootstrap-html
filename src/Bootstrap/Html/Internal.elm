@@ -59,3 +59,10 @@ btncNoevent c typ {icon,label,tooltip} =
           (_         , Just label') -> [text label']
           _                         -> []
       )
+
+-- | Create a class string for the `col-__-__ col-__-offset-__` pattern
+colOffset : String -> Int -> Int -> ClassString
+colOffset gridsize colspan offset =
+  let prefix = "col-" ++ '-' `String.cons` gridsize ++ "-"
+  in if | offset > 0 -> prefix ++ toString colspan ++ ' ' `String.cons` prefix ++ "offset-" ++ toString offset
+        | otherwise  -> prefix ++ toString colspan

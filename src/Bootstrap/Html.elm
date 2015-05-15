@@ -338,42 +338,35 @@ colMd_ xs sm md    = div' {class = "col-xs-" ++ toString xs ++ " col-sm-" ++ toS
 colLg_ : Int -> Int -> Int -> Int -> List Html -> Html
 colLg_ xs sm md lg = div' {class = "col-xs-" ++ toString xs ++ " col-sm-" ++ toString sm ++ " col-md-" ++ toString md ++ " col-lg-" ++ toString lg}
 
-offsetCls : Int -> String -> String
-offsetCls offset cls =
-    if | offset > 0 -> " " ++ cls ++ toString offset
-       | otherwise -> ""
-
 colXsOffset_ : Int -> Int -> List Html -> Html
 colXsOffset_ xs xsOffset =
-    let xsOffsetCls = offsetCls xsOffset "col-xs-offset-" in
-    div' {class = "col-xs-" ++ toString xs ++ xsOffsetCls}
+  div'
+    { class = Internal.colOffset "xs" xs xsOffset
+    }
 
 colSmOffset_ : Int -> Int -> Int -> Int -> List Html -> Html
 colSmOffset_ xs xsOffset sm smOffset =
-    let xsOffsetCls = offsetCls xsOffset "col-xs-offset-"
-        smOffsetCls = offsetCls smOffset "col-sm-offset-" in
-    div' {class = "col-xs-" ++ toString xs ++ xsOffsetCls ++
-          " col-sm-" ++ toString sm ++ smOffsetCls}
+  div'
+    { class = Internal.colOffset "xs" xs xsOffset
+              ++ ' ' `String.cons` Internal.colOffset "sm" sm smOffset
+    }
 
 colMdOffset_ : Int -> Int -> Int -> Int -> Int -> Int -> List Html -> Html
 colMdOffset_ xs xsOffset sm smOffset md mdOffset =
-    let xsOffsetCls = offsetCls xsOffset "col-xs-offset-"
-        smOffsetCls = offsetCls smOffset "col-sm-offset-"
-        mdOffsetCls = offsetCls mdOffset "col-md-offset-" in
-    div' {class = "col-xs-" ++ toString xs ++ xsOffsetCls ++
-          " col-sm-" ++ toString sm ++ smOffsetCls ++
-          " col-md-" ++ toString md ++ mdOffsetCls}
+  div'
+    { class = Internal.colOffset "xs" xs xsOffset
+              ++ ' ' `String.cons` Internal.colOffset "sm" sm smOffset
+              ++ ' ' `String.cons` Internal.colOffset "md" md mdOffset
+    }
 
 colLgOffset_ : Int -> Int -> Int -> Int -> Int -> Int -> Int -> Int -> List Html -> Html
 colLgOffset_ xs xsOffset sm smOffset md mdOffset lg lgOffset =
-    let xsOffsetCls = offsetCls xsOffset "col-xs-offset-"
-        smOffsetCls = offsetCls smOffset "col-sm-offset-"
-        mdOffsetCls = offsetCls mdOffset "col-md-offset-"
-        lgOffsetCls = offsetCls lgOffset "col-lg-offset-" in
-    div' {class = "col-xs-" ++ toString xs ++ xsOffsetCls ++
-          " col-sm-" ++ toString sm ++ smOffsetCls ++
-          " col-md-" ++ toString md ++ mdOffsetCls ++
-          " col-lg-" ++ toString lg ++ lgOffsetCls}
+    div'
+    { class = Internal.colOffset "xs" xs xsOffset
+              ++ ' ' `String.cons` Internal.colOffset "sm" sm smOffset
+              ++ ' ' `String.cons` Internal.colOffset "md" md mdOffset
+              ++ ' ' `String.cons` Internal.colOffset "lg" lg lgOffset
+    }
 
 -- Typography
 
