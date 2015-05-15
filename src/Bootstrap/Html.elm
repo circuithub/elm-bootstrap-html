@@ -1556,6 +1556,12 @@ panelDefault' t btns bs =
       , panelBody_ bs
       ]
 
+
 -- Responsive embed
+embedResponsive16x9_ : List Html -> Html
+embedResponsive16x9_ = div' {class = "embed-responsive embed-responsive-16by9"}
+embedResponsive4x3_ : List Html -> Html
+embedResponsive4x3_ = div' {class = "embed-responsive embed-responsive-4by3"}
+
 
 -- Wells
