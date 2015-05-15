@@ -340,33 +340,34 @@ colLg_ xs sm md lg = div' {class = "col-xs-" ++ toString xs ++ " col-sm-" ++ toS
 
 colXsOffset_ : Int -> Int -> List Html -> Html
 colXsOffset_ xs xs_offset =
-    div' {class = "col-xs-" ++ toString xs ++ " col-xs-offset-" ++ toString xs_offset}
+    div' {class = "col-xs-" ++ toString xs ++
+          " col-xs-offset-" ++ toString xs_offset}
 
 colSmOffset_ : Int -> Int -> Int -> Int -> List Html -> Html
 colSmOffset_ xs xs_offset sm sm_offset =
     div' {class = "col-xs-" ++ toString xs ++
-          " col-sm-" ++ toString sm ++
           " col-xs-offset-" ++ toString xs_offset ++
+          " col-sm-" ++ toString sm ++
           " col-sm-offset-" ++ toString sm_offset}
 
 colMdOffset_ : Int -> Int -> Int -> Int -> Int -> Int -> List Html -> Html
 colMdOffset_ xs xs_offset sm sm_offset md md_offset =
     div' {class = "col-xs-" ++ toString xs ++
-          " col-sm-" ++ toString sm ++
-          " col-md-" ++ toString md ++
           " col-xs-offset-" ++ toString xs_offset ++
+          " col-sm-" ++ toString sm ++
           " col-sm-offset-" ++ toString sm_offset ++
+          " col-md-" ++ toString md ++
           " col-md-offset-" ++ toString md_offset}
 
 colLgOffset_ : Int -> Int -> Int -> Int -> Int -> Int -> Int -> Int -> List Html -> Html
 colLgOffset_ xs xs_offset sm sm_offset md md_offset lg lg_offset =
     div' {class = "col-xs-" ++ toString xs ++
-          " col-sm-" ++ toString sm ++
-          " col-md-" ++ toString md ++
-          " col-lg-" ++ toString lg ++
           " col-xs-offset-" ++ toString xs_offset ++
+          " col-sm-" ++ toString sm ++
           " col-sm-offset-" ++ toString sm_offset ++
+          " col-md-" ++ toString md ++
           " col-md-offset-" ++ toString md_offset ++
+          " col-lg-" ++ toString lg ++
           " col-lg-offset-" ++ toString lg_offset}
 
 -- Typography
