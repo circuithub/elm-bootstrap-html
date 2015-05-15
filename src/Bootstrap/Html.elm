@@ -305,8 +305,10 @@ See [elm-bootstrap-dropdown](https://github.com/circuithub/elm-bootstrap-dropdow
 @docs panelTitle_, panelDefault'
 
 ## Responsive embed
+@docs embedResponsive16x9_,embedResponsive4x3_
 
 ## Wells
+@docs well_,wellSm_,wellLg_
 
 -}
 
