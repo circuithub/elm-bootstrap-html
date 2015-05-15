@@ -338,36 +338,42 @@ colMd_ xs sm md    = div' {class = "col-xs-" ++ toString xs ++ " col-sm-" ++ toS
 colLg_ : Int -> Int -> Int -> Int -> List Html -> Html
 colLg_ xs sm md lg = div' {class = "col-xs-" ++ toString xs ++ " col-sm-" ++ toString sm ++ " col-md-" ++ toString md ++ " col-lg-" ++ toString lg}
 
+offsetCls : Int -> String -> String
+offsetCls offset cls =
+    if | offset > 0 -> " " ++ cls ++ toString offset
+       | otherwise -> ""
+
 colXsOffset_ : Int -> Int -> List Html -> Html
-colXsOffset_ xs xs_offset =
-    div' {class = "col-xs-" ++ toString xs ++ " col-xs-offset-" ++ toString xs_offset}
+colXsOffset_ xs xsOffset =
+    let xsOffsetCls = offsetCls xsOffset "col-xs-offset-" in
+    div' {class = "col-xs-" ++ toString xs ++ xsOffsetCls}
 
 colSmOffset_ : Int -> Int -> Int -> Int -> List Html -> Html
-colSmOffset_ xs xs_offset sm sm_offset =
-    div' {class = "col-xs-" ++ toString xs ++
-          " col-sm-" ++ toString sm ++
-          " col-xs-offset-" ++ toString xs_offset ++
-          " col-sm-offset-" ++ toString sm_offset}
+colSmOffset_ xs xsOffset sm smOffset =
+    let xsOffsetCls = offsetCls xsOffset "col-xs-offset-"
+        smOffsetCls = offsetCls smOffset "col-sm-offset-" in
+    div' {class = "col-xs-" ++ toString xs ++ xsOffsetCls ++
+          " col-sm-" ++ toString sm ++ smOffsetCls}
 
 colMdOffset_ : Int -> Int -> Int -> Int -> Int -> Int -> List Html -> Html
-colMdOffset_ xs xs_offset sm sm_offset md md_offset =
-    div' {class = "col-xs-" ++ toString xs ++
-          " col-sm-" ++ toString sm ++
-          " col-md-" ++ toString md ++
-          " col-xs-offset-" ++ toString xs_offset ++
-          " col-sm-offset-" ++ toString sm_offset ++
-          " col-md-offset-" ++ toString md_offset}
+colMdOffset_ xs xsOffset sm smOffset md mdOffset =
+    let xsOffsetCls = offsetCls xsOffset "col-xs-offset-"
+        smOffsetCls = offsetCls smOffset "col-sm-offset-"
+        mdOffsetCls = offsetCls mdOffset "col-md-offset-" in
+    div' {class = "col-xs-" ++ toString xs ++ xsOffsetCls ++
+          " col-sm-" ++ toString sm ++ smOffsetCls ++
+          " col-md-" ++ toString md ++ mdOffsetCls}
 
 colLgOffset_ : Int -> Int -> Int -> Int -> Int -> Int -> Int -> Int -> List Html -> Html
-colLgOffset_ xs xs_offset sm sm_offset md md_offset lg lg_offset =
-    div' {class = "col-xs-" ++ toString xs ++
-          " col-sm-" ++ toString sm ++
-          " col-md-" ++ toString md ++
-          " col-lg-" ++ toString lg ++
-          " col-xs-offset-" ++ toString xs_offset ++
-          " col-sm-offset-" ++ toString sm_offset ++
-          " col-md-offset-" ++ toString md_offset ++
-          " col-lg-offset-" ++ toString lg_offset}
+colLgOffset_ xs xsOffset sm smOffset md mdOffset lg lgOffset =
+    let xsOffsetCls = offsetCls xsOffset "col-xs-offset-"
+        smOffsetCls = offsetCls smOffset "col-sm-offset-"
+        mdOffsetCls = offsetCls mdOffset "col-md-offset-"
+        lgOffsetCls = offsetCls lgOffset "col-lg-offset-" in
+    div' {class = "col-xs-" ++ toString xs ++ xsOffsetCls ++
+          " col-sm-" ++ toString sm ++ smOffsetCls ++
+          " col-md-" ++ toString md ++ mdOffsetCls ++
+          " col-lg-" ++ toString lg ++ lgOffsetCls}
 
 -- Typography
 
