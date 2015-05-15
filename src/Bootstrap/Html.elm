@@ -1565,3 +1565,9 @@ embedResponsive4x3_ = div' {class = "embed-responsive embed-responsive-4by3"}
 
 
 -- Wells
+well_ : List Html -> Html
+well_ = div' {class = "well"}
+wellSm_ : List Html -> Html
+wellSm_ = div' {class = "well well-sm"}
+wellLg_ : List Html -> Html
+wellLg_ = div' {class = "well well-lg"}
