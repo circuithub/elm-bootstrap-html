@@ -305,8 +305,10 @@ See [elm-bootstrap-dropdown](https://github.com/circuithub/elm-bootstrap-dropdow
 @docs panelTitle_, panelDefault'
 
 ## Responsive embed
+@docs embedResponsive16x9_,embedResponsive4x3_
 
 ## Wells
+@docs well_,wellSm_,wellLg_
 
 -}
 
@@ -1556,6 +1558,18 @@ panelDefault' t btns bs =
       , panelBody_ bs
       ]
 
+
 -- Responsive embed
+embedResponsive16x9_ : List Html -> Html
+embedResponsive16x9_ = div' {class = "embed-responsive embed-responsive-16by9"}
+embedResponsive4x3_ : List Html -> Html
+embedResponsive4x3_ = div' {class = "embed-responsive embed-responsive-4by3"}
+
 
 -- Wells
+well_ : List Html -> Html
+well_ = div' {class = "well"}
+wellSm_ : List Html -> Html
+wellSm_ = div' {class = "well well-sm"}
+wellLg_ : List Html -> Html
+wellLg_ = div' {class = "well well-lg"}
