@@ -420,7 +420,7 @@ tableStriped_ = tableStriped' ""
 {-| A table with striped `tbody`s instead of rows. See [Can we have multiple &lt;tbody&gt; in same &lt;table&gt;?](http://stackoverflow.com/questions/3076708/can-we-have-multiple-tbody-in-same-table)
 -}
 tableBodyStriped' : ClassString -> List Html -> Html
-tableBodyStriped' c = table' {class = "table table-body-striped " ++ c}
+tableBodyStriped' c = table' {class = "table table-striped " ++ c}
 
 {-|
     import Html exposing (text)
