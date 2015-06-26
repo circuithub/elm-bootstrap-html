@@ -415,7 +415,7 @@ tableStriped' c = table' {class = "table table-striped " ++ c}
     main = view
 -}
 tableStriped_ : List Html -> Html
-tableStriped_ = tableBodyStriped' ""
+tableStriped_ = tableStriped' ""
 
 {-| A table with striped `tbody`s instead of rows. See [Can we have multiple &lt;tbody&gt; in same &lt;table&gt;?](http://stackoverflow.com/questions/3076708/can-we-have-multiple-tbody-in-same-table)
 -}
