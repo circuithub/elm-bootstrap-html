@@ -1,5 +1,7 @@
 module Bootstrap.Html.Internal where
 {-| Internals for Bootstrap.Html See [Bootstrap.Html](http://package.elm-lang.org/packages/circuithub/elm-bootstrap-html/latest/Bootstrap-Html)
+
+@docs BtnParam, btnc, btncNoevent, colOffset
 -}
 
 --import String
@@ -16,14 +18,16 @@ import Signal exposing (Address)
 --appendWithSpace : String -> String -> String
 --appendWithSpace x y = x ++ ' ' `String.cons` y
 
---| Button parameters
+{-| Button parameters
+-}
 type alias BtnParam =
   { icon    : Maybe Html
   , label   : Maybe TextString
   , tooltip : Maybe String
   }
 
---| Helper for creating buttons
+{-| Helper for creating buttons
+-}
 btnc : ClassString -> String -> BtnParam -> Address a -> a -> Html
 btnc c typ {icon,label,tooltip} addr x =
   let filterJust = List.filterMap identity
@@ -42,7 +46,8 @@ btnc c typ {icon,label,tooltip} addr x =
           _                         -> []
       )
 
---| Same as `btnc`, but without an event (used for submit buttons)
+{-| Same as `btnc`, but without an event (used for submit buttons)
+-}
 btncNoevent : ClassString -> String -> BtnParam -> Html
 btncNoevent c typ {icon,label,tooltip} =
   let filterJust = List.filterMap identity
@@ -60,7 +65,8 @@ btncNoevent c typ {icon,label,tooltip} =
           _                         -> []
       )
 
--- | Create a class string for the `col-__-__ col-__-offset-__` pattern
+{-| Create a class string for the `col-__-__ col-__-offset-__` pattern
+-}
 colOffset : String -> Int -> Int -> ClassString
 colOffset gridsize colspan offset =
   let prefix = "col" ++ '-' `String.cons` gridsize ++ "-"
