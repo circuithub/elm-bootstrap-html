@@ -1,4 +1,5 @@
 module Bootstrap.Html where
+
 {-| Shorthand for Bootstrap Html.
 
 # Conventions
@@ -98,7 +99,7 @@ One major difference is that idiomatic elements such as `panelDefault'` are freq
 * Showing and hiding content
 * Screen reader and keyboard navigation content
 * Image replacement
-@docs skipNavigation', skipNavigation_
+@docs skipNavigation_
 
 ## Responsive utilities
 * Available classes
