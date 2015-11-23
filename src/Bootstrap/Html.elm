@@ -409,17 +409,19 @@ tableStriped' c = table' {class = "table table-striped " ++ c}
         , th' {class = "text-right"} [ text "Units" ]
         , th' {class = "text-right"} [ text "Price" ]
         ]
-      , tr_
-        [ td_ [ text "X" ]
-        , td_ [ text "This is an X"]
-        , td_ [ text "55"]
-        , td_ [ text "$ 100"]
-        ]
-      , tr_
-        [ td_ [ text "Y" ]
-        , td_ [ text "This is an Y"]
-        , td_ [ text "3"]
-        , td_ [ text "$ 10"]
+      , tbody_
+        [ tr_
+          [ td_ [ text "X" ]
+          , td_ [ text "This is an X"]
+          , td_ [ text "55"]
+          , td_ [ text "$ 100"]
+          ]
+        , tr_
+          [ td_ [ text "Y" ]
+          , td_ [ text "This is an Y"]
+          , td_ [ text "3"]
+          , td_ [ text "$ 10"]
+          ]
         ]
       ]
 
