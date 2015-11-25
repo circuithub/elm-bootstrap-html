@@ -1,5 +1,5 @@
 {
-    "version": "6.3.3",
+    "version": "6.3.4",
     "summary": "Html shorthand for Bootstrap",
     "repository": "https://github.com/circuithub/elm-bootstrap-html.git",
     "license": "MIT",
@@ -11,7 +11,7 @@
         "Bootstrap.Html.Internal"
     ],
     "dependencies": {
-        "circuithub/elm-html-shorthand": "8.0.0 <= v < 10.0.0",
+        "circuithub/elm-html-shorthand": "10.0.0 <= v < 11.0.0",
         "elm-lang/core": "2.0.0 <= v < 4.0.0",
         "evancz/elm-html": "4.0.0 <= v < 5.0.0"
     },
