@@ -70,5 +70,5 @@ btncNoevent c typ {icon,label,tooltip} =
 colOffset : String -> Int -> Int -> ClassString
 colOffset gridsize colspan offset =
   let prefix = "col" ++ '-' `String.cons` gridsize ++ "-"
-  in if | offset > 0 -> prefix ++ toString colspan ++ ' ' `String.cons` prefix ++ "offset-" ++ toString offset
-        | otherwise  -> prefix ++ toString colspan
+  in if offset > 0 then prefix ++ toString colspan ++ ' ' `String.cons` prefix ++ "offset-" ++ toString offset
+     else prefix ++ toString colspan
