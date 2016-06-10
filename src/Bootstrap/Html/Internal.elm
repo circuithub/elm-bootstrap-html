@@ -1,4 +1,4 @@
-module Bootstrap.Html.Internal where
+module Bootstrap.Html.Internal exposing (..)
 {-| Internals for Bootstrap.Html See [Bootstrap.Html](http://package.elm-lang.org/packages/circuithub/elm-bootstrap-html/latest/Bootstrap-Html)
 
 @docs BtnParam, btnc, btncNoevent, colOffset
@@ -13,28 +13,27 @@ import Json.Decode as Json
 import String
 import List exposing ((::))
 import Maybe
-import Signal exposing (Address)
 
 --appendWithSpace : String -> String -> String
 --appendWithSpace x y = x ++ ' ' `String.cons` y
 
 {-| Button parameters
 -}
-type alias BtnParam =
-  { icon    : Maybe Html
+type alias BtnParam msg =
+  { icon    : Maybe (Html msg)
   , label   : Maybe TextString
   , tooltip : Maybe String
   }
 
 {-| Helper for creating buttons
 -}
-btnc : ClassString -> String -> BtnParam -> Address a -> a -> Html
-btnc c typ {icon,label,tooltip} addr x =
+btnc : ClassString -> String -> BtnParam msg -> msg -> Html msg
+btnc c typ {icon,label,tooltip} x =
   let filterJust = List.filterMap identity
   in button
       ( type' typ
         :: class' ("btn " ++ c)
-        :: Html.onClick addr x
+        :: Html.onClick x
         :: filterJust
             [ Maybe.map title tooltip
             ]
@@ -48,7 +47,7 @@ btnc c typ {icon,label,tooltip} addr x =
 
 {-| Same as `btnc`, but without an event (used for submit buttons)
 -}
-btncNoevent : ClassString -> String -> BtnParam -> Html
+btncNoevent : ClassString -> String -> BtnParam msg -> Html msg
 btncNoevent c typ {icon,label,tooltip} =
   let filterJust = List.filterMap identity
   in button
