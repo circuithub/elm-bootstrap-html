@@ -303,7 +303,7 @@ See [elm-bootstrap-dropdown](https://github.com/circuithub/elm-bootstrap-dropdow
 * With tables
 * With list groups
 @docs panelDefault_,panelHeading_,panelBody_
-@docs panelTitle_, panelDefault'
+@docs panelTitle_, panelFooter_, panelDefault'
 
 ## Responsive embed
 @docs embedResponsive16x9_,embedResponsive4x3_
@@ -1993,6 +1993,9 @@ panelHeading_ = div' {class = "panel-heading"}
 {-| panelBody_ -}
 panelBody_ : List (Html msg) -> Html msg
 panelBody_ = div' {class = "panel-body"}
+{-| panelFooter_ -}
+panelFooter_ : List (Html msg) -> Html msg
+panelFooter_ = div' {class = "panel-footer"}
 
 {-| panelTitle_ -}
 panelTitle_ : TextString -> Html msg
